@@ -1,0 +1,27 @@
+{
+  "composeName": "camelcase",
+  "prefix": "$",
+  "theme": {
+    "name": "Theme",
+    "children": {
+      "Typography": {
+        "root": {
+          "fontFamily": "fontFamily"
+        },
+        "extract": {
+          "lineHeightPx": "lineHeight",
+          "fontSize": "fontSize",
+          "fontWeight": "fontWeight",
+          "textCase": "textCase"
+        }
+      },
+      "Palette": {
+        "extract": ["fills"]
+      }
+    }
+  },
+  "components": {
+    "name": "Components",
+    "extensionRequired": true
+  }
+}

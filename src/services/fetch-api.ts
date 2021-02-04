@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {Document} from './figma';
+import {Document} from '../interfaces';
 
 export interface Response {
   version: string;
@@ -8,6 +8,6 @@ export interface Response {
   document: Document
 }
 
-export async function fetchJson(token: string, document: string): Promise<Response> {
+export async function fetchApi(token: string, document: string): Promise<Response> {
   return axios.get(`https://api.figma.com/v1/files/${document}`, {headers: {'x-figma-token': token}})
 }
