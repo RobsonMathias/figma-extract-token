@@ -1,4 +1,4 @@
-export type TYPE = 'DOCUMENT' | 'CANVAS' | 'FRAME'
+export type TYPE = 'DOCUMENT' | 'CANVAS' | 'FRAME' | 'GROUP'
 
 export interface Document {
   id: string;
@@ -20,6 +20,7 @@ export interface Node {
   children?: Node[];
   id: string;
   name: string;
+  style: {[key: string]: string};
   prototypeDevice: {[key: string]: string};
   type: TYPE;
   absoluteBoundingBox: {x: number, y: number, width: number, height: number};

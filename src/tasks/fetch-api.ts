@@ -1,9 +1,11 @@
 import {composeArgs, requiredArgs} from '../helpers';
 import {fetchApi} from '../services';
+import {MainFactory} from '../factories';
+import {TasksConfig} from '../interfaces';
 
 export const fetchApiTask = {
   title: 'Fetching Figma API JSON',
-  task: async () => {
+  task: async ({factory}: TasksConfig) => {
     return new Promise(async (res, rej) => {
       const args = composeArgs(process.argv);
       const required = requiredArgs(['token', 'document'], args);
@@ -12,6 +14,7 @@ export const fetchApiTask = {
         rej(required.map(r => r.error));
       } else {
         const json = await fetchApi(args.token, args.document);
+        factory.json = json;
         res(json)
       }
     })

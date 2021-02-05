@@ -1,8 +1,9 @@
-{
+export const CONFIG_MOCK_DEFAULT = {
   "composeName": "camelcase",
   "prefix": "$",
   "theme": {
     "name": "Theme",
+    "extensionRequired": true,
     "children": {
       "Typography": {
         "__base__": {
