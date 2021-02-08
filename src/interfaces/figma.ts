@@ -32,5 +32,6 @@ export interface Node {
   fills: Paint[]
   strokeAlign: string;
   strokeWeight: number;
+  cornerRadius: number;
   strokes: any[]
 }

@@ -18,8 +18,15 @@ export class Style {
     return `rgba(${this.calcRGB(fill.color.r)}, ${this.calcRGB(fill.color.g)}, ${this.calcRGB(fill.color.b)}, ${fill.color.a})`
   }
 
-  static valueByUnit(value: string, unit: string): string {
+  static valueByUnit(value: string|number, unit: string): string {
     return `${value}${this.getUnit(unit)}`;
+  }
+
+  static textTransform(value: string) {
+    const data: {[key: string]: string} = {
+      'UPPER': 'uppercase'
+    };
+    return data[value] || value;
   }
 
   static extract(attribute: string, node: Node): string {
@@ -34,6 +41,12 @@ export class Style {
       case 'fontFamily':
       case 'fontWeight':
         return node.style[attribute];
+      case 'textCase':
+        return this.textTransform(node.style[attribute]);
+      case 'cornerRadius':
+        return this.valueByUnit(node[attribute], 'PIXELS');
+      case 'width':
+        return this.valueByUnit(node.absoluteBoundingBox[attribute], 'PIXELS');
       default:
         return attribute;
     }

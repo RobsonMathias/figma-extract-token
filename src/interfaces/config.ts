@@ -1,10 +1,14 @@
 export type ComposeType = 'camelcase' | 'snakecase';
 
 export type Extract = string[] | {[key: string]: string|null};
+export type Inheritance = string[];
+export type Variant = string[];
 
 export interface Child {
   __base__?: {[key: string]: string|null};
   extract?: Extract;
+  inheritance?: Inheritance;
+  variant?: Variant;
 }
 
 export interface Children {
@@ -13,13 +17,10 @@ export interface Children {
 
 export interface Canvas {
   name: string;
-  extensionRequired?: boolean;
   children?: Children;
 }
 
 export interface Config {
-  composeName:ComposeType;
-  prefix: string;
-  theme: Canvas;
+  foundation: Canvas;
   components: Canvas;
 }

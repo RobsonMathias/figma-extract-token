@@ -2,7 +2,7 @@ export const FIGMA_MOCK_DEFAULT = {
   "document": {
     "id": "0:0", "name": "Document", "type": "DOCUMENT", "children": [{
       "id": "0:1",
-      "name": "Theme",
+      "name": "Foundation",
       "type": "CANVAS",
       "children": [{
         "id": "1:2",
@@ -16,7 +16,7 @@ export const FIGMA_MOCK_DEFAULT = {
           "blendMode": "PASS_THROUGH",
           "children": [{
             "id": "4:5",
-            "name": "3",
+            "name": "spacing.padding.3",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": -249, "y": -148, "width": 16, "height": 16},
@@ -37,7 +37,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "effects": []
           }, {
             "id": "4:3",
-            "name": "2",
+            "name": "spacing.padding.2",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": -263, "y": -148, "width": 8, "height": 8},
@@ -58,7 +58,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "effects": []
           }, {
             "id": "3:25",
-            "name": "1",
+            "name": "spacing.padding.1",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": -273, "y": -148, "width": 4, "height": 4},
@@ -79,7 +79,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "effects": []
           }, {
             "id": "4:12",
-            "name": "!!Label",
+            "name": "!! Label",
             "type": "TEXT",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": -273, "y": -168, "width": 40, "height": 20},
@@ -128,7 +128,7 @@ export const FIGMA_MOCK_DEFAULT = {
           "blendMode": "PASS_THROUGH",
           "children": [{
             "id": "4:11",
-            "name": "3",
+            "name": "spacing.margin.3",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": -173, "y": -148, "width": 16, "height": 16},
@@ -149,7 +149,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "effects": []
           }, {
             "id": "4:10",
-            "name": "2",
+            "name": "spacing.margin.2",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": -187, "y": -148, "width": 8, "height": 8},
@@ -170,7 +170,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "effects": []
           }, {
             "id": "4:8",
-            "name": "1",
+            "name": "spacing.margin.1",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": -197, "y": -148, "width": 4, "height": 4},
@@ -191,7 +191,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "effects": []
           }, {
             "id": "4:14",
-            "name": "!!Label",
+            "name": "!! Label",
             "type": "TEXT",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": -197, "y": -168, "width": 40, "height": 20},
@@ -251,10 +251,10 @@ export const FIGMA_MOCK_DEFAULT = {
         "blendMode": "PASS_THROUGH",
         "children": [{
           "id": "52:0",
-          "name": "Button",
+          "name": "typography.button",
           "type": "TEXT",
           "blendMode": "PASS_THROUGH",
-          "absoluteBoundingBox": {"x": -233, "y": 636, "width": 296, "height": 16},
+          "absoluteBoundingBox": {"x": 311, "y": 66, "width": 234, "height": 16},
           "constraints": {"vertical": "CENTER", "horizontal": "SCALE"},
           "fills": [{
             "opacity": 0.8700000047683716,
@@ -267,7 +267,7 @@ export const FIGMA_MOCK_DEFAULT = {
           "strokeAlign": "CENTER",
           "styles": {"fill": "1:4", "text": "8:0"},
           "effects": [],
-          "characters": "Label Button/Roboto/Medium/14px",
+          "characters": "Label /Roboto/Medium/14px",
           "style": {
             "fontFamily": "Roboto",
             "fontPostScriptName": "Roboto-Medium",
@@ -290,7 +290,7 @@ export const FIGMA_MOCK_DEFAULT = {
           "name": "__base__",
           "type": "TEXT",
           "blendMode": "PASS_THROUGH",
-          "absoluteBoundingBox": {"x": -233, "y": 562, "width": 219, "height": 16},
+          "absoluteBoundingBox": {"x": 311, "y": 40, "width": 219, "height": 16},
           "constraints": {"vertical": "CENTER", "horizontal": "SCALE"},
           "fills": [{
             "opacity": 0.8700000047683716,
@@ -322,7 +322,7 @@ export const FIGMA_MOCK_DEFAULT = {
           "characterStyleOverrides": [],
           "styleOverrideTable": {}
         }],
-        "absoluteBoundingBox": {"x": -297, "y": 339, "width": 504, "height": 462},
+        "absoluteBoundingBox": {"x": 247, "y": -183, "width": 504, "height": 462},
         "constraints": {"vertical": "TOP", "horizontal": "LEFT"},
         "clipsContent": true,
         "background": [{"blendMode": "NORMAL", "type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 1}}],
@@ -343,32 +343,11 @@ export const FIGMA_MOCK_DEFAULT = {
           "type": "GROUP",
           "blendMode": "PASS_THROUGH",
           "children": [{
-            "id": "3:15",
-            "name": "00",
-            "type": "RECTANGLE",
-            "blendMode": "PASS_THROUGH",
-            "absoluteBoundingBox": {"x": 850, "y": -135, "width": 68, "height": 68},
-            "constraints": {"vertical": "SCALE", "horizontal": "SCALE"},
-            "fills": [{
-              "blendMode": "NORMAL",
-              "type": "SOLID",
-              "color": {"r": 0.3843137323856354, "g": 0, "b": 0.9333333373069763, "a": 1}
-            }],
-            "strokes": [{
-              "blendMode": "NORMAL",
-              "visible": false,
-              "type": "SOLID",
-              "color": {"r": 0.16078431904315948, "g": 0.16078431904315948, "b": 0.16078431904315948, "a": 1}
-            }],
-            "strokeWeight": 0,
-            "strokeAlign": "CENTER",
-            "effects": []
-          }, {
             "id": "1:50",
-            "name": "05",
+            "name": "shape.rounded.md",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
-            "absoluteBoundingBox": {"x": 932, "y": -135, "width": 68, "height": 68},
+            "absoluteBoundingBox": {"x": 817, "y": -135, "width": 68, "height": 68},
             "constraints": {"vertical": "SCALE", "horizontal": "SCALE"},
             "fills": [{
               "blendMode": "NORMAL",
@@ -387,10 +366,10 @@ export const FIGMA_MOCK_DEFAULT = {
             "cornerRadius": 4
           }, {
             "id": "3:14",
-            "name": "10",
+            "name": "shape.rounded.xs",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
-            "absoluteBoundingBox": {"x": 1014, "y": -135, "width": 68, "height": 68},
+            "absoluteBoundingBox": {"x": 899, "y": -135, "width": 68, "height": 68},
             "constraints": {"vertical": "SCALE", "horizontal": "SCALE"},
             "fills": [{
               "blendMode": "NORMAL",
@@ -406,10 +385,10 @@ export const FIGMA_MOCK_DEFAULT = {
             "strokeWeight": 0,
             "strokeAlign": "CENTER",
             "effects": [],
-            "cornerRadius": 17,
-            "rectangleCornerRadii": [17, 17, 17, 17]
+            "cornerRadius": 16,
+            "rectangleCornerRadii": [16, 16, 16, 16]
           }],
-          "absoluteBoundingBox": {"x": 850, "y": -135, "width": 232, "height": 68},
+          "absoluteBoundingBox": {"x": 817, "y": -135, "width": 150, "height": 68},
           "constraints": {"vertical": "SCALE", "horizontal": "SCALE"},
           "clipsContent": false,
           "background": [{
@@ -442,7 +421,7 @@ export const FIGMA_MOCK_DEFAULT = {
         "effects": []
       }, {
         "id": "3:0",
-        "name": "Palette",
+        "name": "Color",
         "type": "FRAME",
         "blendMode": "PASS_THROUGH",
         "children": [{
@@ -452,7 +431,7 @@ export const FIGMA_MOCK_DEFAULT = {
           "blendMode": "PASS_THROUGH",
           "children": [{
             "id": "3:2",
-            "name": "main",
+            "name": "color.primary.main",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": 1361, "y": -30, "width": 68, "height": 68},
@@ -474,7 +453,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "cornerRadius": 4
           }, {
             "id": "3:5",
-            "name": "100",
+            "name": "color.primary.100",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": 1361, "y": -108, "width": 68, "height": 68},
@@ -522,7 +501,7 @@ export const FIGMA_MOCK_DEFAULT = {
           "blendMode": "PASS_THROUGH",
           "children": [{
             "id": "3:7",
-            "name": "main",
+            "name": "color.secondary.main",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": 1450, "y": -30, "width": 68, "height": 68},
@@ -544,7 +523,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "cornerRadius": 4
           }, {
             "id": "3:8",
-            "name": "100",
+            "name": "color.secondary.100",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": 1450, "y": -108, "width": 68, "height": 68},
@@ -566,72 +545,6 @@ export const FIGMA_MOCK_DEFAULT = {
             "cornerRadius": 4
           }],
           "absoluteBoundingBox": {"x": 1450, "y": -108, "width": 68, "height": 146},
-          "constraints": {"vertical": "SCALE", "horizontal": "SCALE"},
-          "clipsContent": false,
-          "background": [{
-            "blendMode": "NORMAL",
-            "visible": false,
-            "type": "SOLID",
-            "color": {"r": 1, "g": 1, "b": 1, "a": 1}
-          }],
-          "fills": [{
-            "blendMode": "NORMAL",
-            "visible": false,
-            "type": "SOLID",
-            "color": {"r": 1, "g": 1, "b": 1, "a": 1}
-          }],
-          "strokes": [],
-          "strokeWeight": 1,
-          "strokeAlign": "INSIDE",
-          "backgroundColor": {"r": 0, "g": 0, "b": 0, "a": 0},
-          "effects": []
-        }, {
-          "id": "3:9",
-          "name": "Grey",
-          "type": "GROUP",
-          "blendMode": "PASS_THROUGH",
-          "children": [{
-            "id": "3:10",
-            "name": "main",
-            "type": "RECTANGLE",
-            "blendMode": "PASS_THROUGH",
-            "absoluteBoundingBox": {"x": 1539, "y": -30, "width": 68, "height": 68},
-            "constraints": {"vertical": "SCALE", "horizontal": "SCALE"},
-            "fills": [{"blendMode": "NORMAL", "type": "SOLID", "color": {"r": 0, "g": 0, "b": 0, "a": 1}}],
-            "strokes": [{
-              "blendMode": "NORMAL",
-              "visible": false,
-              "type": "SOLID",
-              "color": {"r": 0.16078431904315948, "g": 0.16078431904315948, "b": 0.16078431904315948, "a": 1}
-            }],
-            "strokeWeight": 0,
-            "strokeAlign": "CENTER",
-            "effects": [],
-            "cornerRadius": 4
-          }, {
-            "id": "3:11",
-            "name": "100",
-            "type": "RECTANGLE",
-            "blendMode": "PASS_THROUGH",
-            "absoluteBoundingBox": {"x": 1539, "y": -108, "width": 68, "height": 68},
-            "constraints": {"vertical": "SCALE", "horizontal": "SCALE"},
-            "fills": [{
-              "blendMode": "NORMAL",
-              "type": "SOLID",
-              "color": {"r": 0.8791666626930237, "g": 0.8791666626930237, "b": 0.8791666626930237, "a": 1}
-            }],
-            "strokes": [{
-              "blendMode": "NORMAL",
-              "visible": false,
-              "type": "SOLID",
-              "color": {"r": 0.16078431904315948, "g": 0.16078431904315948, "b": 0.16078431904315948, "a": 1}
-            }],
-            "strokeWeight": 0,
-            "strokeAlign": "CENTER",
-            "effects": [],
-            "cornerRadius": 4
-          }],
-          "absoluteBoundingBox": {"x": 1539, "y": -108, "width": 68, "height": 146},
           "constraints": {"vertical": "SCALE", "horizontal": "SCALE"},
           "clipsContent": false,
           "background": [{
@@ -682,7 +595,7 @@ export const FIGMA_MOCK_DEFAULT = {
           "blendMode": "PASS_THROUGH",
           "children": [{
             "id": "5:3",
-            "name": "Padding",
+            "name": "spacing.padding.3",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": -208, "y": -173, "width": 16, "height": 16},
@@ -704,7 +617,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "effects": []
           }, {
             "id": "5:2",
-            "name": "Shape",
+            "name": "shape.rounded.md",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": -208, "y": -173, "width": 91, "height": 42},
@@ -724,7 +637,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "rectangleCornerRadii": [7, 7, 7, 7]
           }, {
             "id": "5:4",
-            "name": "Button",
+            "name": "typography.button",
             "type": "TEXT",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": -193, "y": -160, "width": 61, "height": 16},
@@ -822,8 +735,8 @@ export const FIGMA_MOCK_DEFAULT = {
     "1:5": {"key": "bce3ca6f1ad6d02d583e2a986a2c78c3aff798f6", "name": "Button", "styleType": "TEXT", "description": ""}
   },
   "name": "POC Design Tokens Extract",
-  "lastModified": "2021-02-05T17:36:05Z",
-  "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/582b0969-590f-4047-b3a4-e8740d0cd407?Expires=1613347200&Signature=aZQ6eOu5C5~d7wA~S-fjkUvBKj2zVd-EoCy8VePCZAPXDiHyVEr2fLZz9VSy0FEyo2IkcNjZU~gAG9UO1EcZLF8AXXF3fYs6HOoeQLGxVKU8VlI9PZZK3jwvO9LNwvm~ACjRYXQVaomQY-4QQVKSz~y4E1jIZlXFLAua~eMo9SXY4oeN8fE-fDHKdwMcP8w~RViERugut557A9YLp1pJXJ1VIxrILwY08Zm30mw9Xri0gF2SU~u2IKGjDiXBfhUDVfa15ybyF4pMJJQUxlTHHdV~EWqNXVUp3CCJeGsqlloRo4R5YzHF6998vLB1fJlQS-3kPfIjsGwxQMNzP8MwuA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  "version": "664162286",
+  "lastModified": "2021-02-08T14:09:48Z",
+  "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/aa07a99a-11f0-4547-9dd7-c846517c590e?Expires=1613952000&Signature=IS51GW5TG2d2qsnakUKsZPAMqYRNqSzoB8uTZw-n0VZh~5Bj8l2ipsd5EVM2QFub4bWxJ3xENibHKLBjUtVu2ujlshWyaF2sQQ521NwJsxPYw70PjxGVkrEeOVIt2ItjXzb4uinhSxJ-6dkMSgj5tq3D8NUUHZwNTVnQXaQOwXF3TRNBsH~TjI~68FFFbwd6d73Ba1mTzMoBVL7Elz4xCN4~kiQejzZIzYDDNizb9OWKWSIrHUEbRtaDzbi99OoW29mz-a75qF2RXZoDu1qdSrDhJ8K8hUbYb6nUXonX~dlBZGwNbMuBKGHxCvrX6ZoNiqR33SExoKqIGkkcUILGnw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  "version": "667304490",
   "role": "owner"
 }

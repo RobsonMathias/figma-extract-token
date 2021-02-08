@@ -1,9 +1,6 @@
 export const CONFIG_MOCK_DEFAULT = {
-  "composeName": "camelcase",
-  "prefix": "$",
-  "theme": {
-    "name": "Theme",
-    "extensionRequired": true,
+  "foundation": {
+    "name": "Foundation",
     "children": {
       "Typography": {
         "__base__": {
@@ -19,13 +16,24 @@ export const CONFIG_MOCK_DEFAULT = {
           "textCase": "textTransform"
         }
       },
-      "Palette": {
+      "Color": {
         "extract": ["fills"]
+      },
+      "Spacing": {
+        "extract": ["width"],
+        "variant": ["left", "top", "right", "bottom"]
+      },
+      "Shape": {
+        "extract": {
+          "cornerRadius": "borderRadius"
+        }
       }
     }
   },
   "components": {
     "name": "Components",
-    "extensionRequired": true
+    "root": {
+      "extract": ["Color", "Shape"]
+    }
   }
-}
+};

@@ -28,7 +28,7 @@ export class ParentFactory extends Compose<ChildFactory> {
     return result;
   }
 
-  call(canvas: Canvas): void {
+  call(canvas: Canvas, autoRef?: boolean): void {
     this.name = canvas.name;
     this.canvas = canvas;
     this.canvas.children = this.canvas.children || {};

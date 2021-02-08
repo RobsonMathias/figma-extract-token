@@ -7,7 +7,7 @@ export class ChildFactory extends Compose<ChildFactory> {
 
   constructor(name: string, child: Child, node: Node, main: MainFactory) {
     super(main);
-    this.name = name.replace(/_/g, '');
+    this.name = name;
     this.node = node;
     this.child = child;
     this.call();
@@ -30,7 +30,8 @@ export class ChildFactory extends Compose<ChildFactory> {
   }
 
   addChildren(name: string, child: Child, node: Node|undefined) {
-    this.children.push(new ChildFactory(name, child, node!!, this.main));
+    if (!ChildFactory.ignoreElement(name))
+      this.children.push(new ChildFactory(name, child, node!!, this.main));
   }
 
   call(): void {
@@ -39,11 +40,5 @@ export class ChildFactory extends Compose<ChildFactory> {
         this.addChildren(n.name, this.child!!, n);
       });
     }
-    // else if (ChildFactory.hasBaseExtraction(this.child!!)) {
-    //   const [node] = (this.node?.children || []);
-    //   if (node) {
-    //     this.addChildren('base', this.child!!, node!!);
-    //   }
-    // }
   }
 }

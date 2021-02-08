@@ -1,5 +1,5 @@
 import {MainFactory} from './main';
-import {Child, Children, Dictionary, Node} from '../interfaces';
+import {Child, Dictionary, Node} from '../interfaces';
 import {Style} from '../services';
 
 export abstract class Compose<C> {
@@ -13,8 +13,8 @@ export abstract class Compose<C> {
     this.main = main;
   }
 
-  static hasBaseExtraction(child: Child): boolean {
-    return !!child.__base__;
+  static hasBaseExtraction(name: string): boolean {
+    return name === '__base__';
   }
 
   static isAGroup(node: Node): boolean {
@@ -28,16 +28,17 @@ export abstract class Compose<C> {
     }
   }
 
+  static ignoreElement(name: string): boolean {
+    return name.indexOf('!!') === 0;
+  }
+
   get composedName(): string {
-    return this.name.toLowerCase();
+    return this.name.toLowerCase()
+      .replace(/(.*\.)|(__)/g, '');
   }
 
   fetchNode(name: string, where: Node[] = []): Node|undefined {
     return where.find(node => name === node.name);
-  }
-
-  fetchChild(name: string, where: Children): Child|undefined {
-    return where[name];
   }
 
   composeChild(nodes: Node[] = [], name: string, child: Child): Node|undefined {
@@ -51,27 +52,30 @@ export abstract class Compose<C> {
   }
 
   extractStyle(): Dictionary {
-    const extract = this.convertToObject();
+    const extract = this.extractionToObject();
     const styled: Dictionary = {};
     Object.keys(extract).forEach((e: string) => {
-      styled['value'] = Style.extract(e, this.node!!);
+      if (Object.keys(extract).length > 1) {
+        styled[extract[e] as string] = {
+          ['value']: Style.extract(e, this.node!!)
+        };
+      } else {
+        styled['value'] = Style.extract(e, this.node!!);
+      }
     });
     return styled;
   }
 
-  private extractValue() {
-
-  }
-
-  private convertToObject(): Dictionary {
-    if (Array.isArray(this.child!!.extract)) {
+  private extractionToObject(): Dictionary {
+    const baseExtraction = Compose.hasBaseExtraction(this.name) ? this.child!!.__base__ : this.child!!.extract;
+    if (Array.isArray(baseExtraction)) {
       const convert: Dictionary = {};
-      this.child!!.extract.forEach((key: string) => {
+      baseExtraction.forEach((key: string) => {
         convert[key] = key;
       });
       return convert as Dictionary;
     }
-    return this.child!!.extract as Dictionary;
+    return baseExtraction as Dictionary;
   }
 
   abstract compose(): Dictionary
