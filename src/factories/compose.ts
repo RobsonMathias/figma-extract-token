@@ -67,6 +67,7 @@ export abstract class Compose<C> {
   }
 
   private extractionToObject(): Dictionary {
+    // if (!this.child || !this.child.extract) return {};
     const baseExtraction = Compose.hasBaseExtraction(this.name) ? this.child!!.__base__ : this.child!!.extract;
     if (Array.isArray(baseExtraction)) {
       const convert: Dictionary = {};
@@ -80,7 +81,7 @@ export abstract class Compose<C> {
 
   abstract compose(): Dictionary
 
-  abstract addChildren(name: string, child: Child, node: Node|undefined): void;
+  abstract addChildren(name: string, instance: C): void;
 
   abstract call(...args: any): void
 

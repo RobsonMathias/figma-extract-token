@@ -20,20 +20,30 @@ export const CONFIG_MOCK_DEFAULT = {
         "extract": ["fills"]
       },
       "Spacing": {
-        "extract": ["width"],
-        "variant": ["left", "top", "right", "bottom"]
+        "children": {
+          "Padding": {
+            "extract": ["width"],
+            "variant": ["left", "top", "right", "bottom"]
+          },
+          "Margin": {
+            "extract": ["width"],
+            "variant": ["left", "top", "right", "bottom"]
+          }
+        }
       },
       "Shape": {
         "extract": {
           "cornerRadius": "borderRadius"
         }
+      },
+      "Motion": {
+        "extract": ["characters"]
       }
     }
   },
   "components": {
     "name": "Components",
-    "root": {
-      "extract": ["Color", "Shape"]
-    }
-  }
-};
+    "inheritance": ["Color", "Shape"]
+}
+}
+;

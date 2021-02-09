@@ -47,6 +47,8 @@ export class Style {
         return this.valueByUnit(node[attribute], 'PIXELS');
       case 'width':
         return this.valueByUnit(node.absoluteBoundingBox[attribute], 'PIXELS');
+      case 'characters':
+        return node[attribute];
       default:
         return attribute;
     }

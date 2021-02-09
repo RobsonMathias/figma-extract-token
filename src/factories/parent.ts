@@ -1,18 +1,18 @@
 import {Compose} from './compose';
 import {MainFactory} from './main';
 import {Canvas, Child, Dictionary, Node} from '../interfaces';
-import {ChildFactory} from './child';
+import {FoundationFactory} from './foundation';
 
-export class ParentFactory extends Compose<ChildFactory> {
+export class ParentFactory extends Compose<FoundationFactory> {
   public canvas: Canvas|undefined;
 
   constructor(main: MainFactory) {
     super(main);
   }
 
-  addChildren(name: string, child: Child, node: Node|undefined) {
-    if (node) {
-      this.children.push(new ChildFactory(name, child, node, this.main));
+  addChildren(name: string, instance: FoundationFactory) {
+    if (!FoundationFactory.ignoreElement(name)) {
+      this.children.push(instance);
     }
   }
 
@@ -34,11 +34,19 @@ export class ParentFactory extends Compose<ChildFactory> {
     this.canvas.children = this.canvas.children || {};
     this.node = this.fetchNode(this.name, this.main.json.document.children);
     if (this.node) {
-      Object.keys(this.canvas.children).forEach(name => {
-        //@ts-ignore
-        const child = this.canvas.children[name];
-        this.addChildren(name, child, this.composeChild(this.node?.children, name, child));
-      });
+      if (autoRef) {
+
+      } else {
+        Object.keys(this.canvas.children).forEach(name => {
+          //@ts-ignore
+          const child = this.canvas.children[name];
+          const node = this.composeChild(this.node?.children, name, child);
+          if (node) {
+            const instance = new FoundationFactory(name, child, node, this.main);
+            this.addChildren(name, instance);
+          }
+        });
+      }
     } else {
       console.error(`Node ${this.name} was not found on figma JSON`);
     }

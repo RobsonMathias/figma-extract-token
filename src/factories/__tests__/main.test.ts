@@ -19,11 +19,51 @@ describe('MainFactory', () => {
     factory.foundation.call(factory.config.foundation);
     factory.components.call(factory.config.components);
     expect(factory.compose()).toEqual({
-      color: {
-        grey: {
-          100: {value: 'rgba(224, 224, 224, 1)'},
-          main: {value: 'rgba(0, 0, 0, 1)'}
+      shape: {
+        rounded: {
+          md: {
+            value: '4px'
+          },
+          xs: {
+            value: '16px'
+          }
+        }
+      },
+      motion: {
+        time: {
+          "2s": {
+            "value": "0.2s"
+          },
+          "4s": {
+            "value": "0.4s"
+          }
+        }
+      },
+      spacing: {
+        margin: {
+          1: {
+            "value": "4px"
+          },
+          2: {
+            "value": "8px"
+          },
+          3: {
+            "value": "16px"
+          }
         },
+        padding: {
+          1: {
+            "value": "4px"
+          },
+          2: {
+            "value": "8px"
+          },
+          3: {
+            "value": "16px"
+          }
+        }
+      },
+      color: {
         primary: {
           100: {value: 'rgba(188, 159, 231, 1)'},
           main: {value: 'rgba(98, 0, 238, 1)'}
@@ -46,14 +86,6 @@ describe('MainFactory', () => {
           fontWeight: {value: '{typography.base.fontWeight}'},
           textTransform: {value: 'uppercase'},
         }
-      },
-      button: {
-        outlined: {
-          lineHeight: {value: '{typography.button.lineHeight}'},
-          fontSize: {value: '{typography.button.fontSize}'},
-          fontWeight: {value: '{typography.button.fontWeight}'},
-          textTransform: {value: '{typography.button.textTransform}'},
-        },
       },
     })
   });

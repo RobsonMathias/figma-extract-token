@@ -30,6 +30,7 @@ export interface Node {
   constraints: {vertical: string, horizontal: string}
   effects: any[]
   fills: Paint[]
+  characters: string;
   strokeAlign: string;
   strokeWeight: number;
   cornerRadius: number;
