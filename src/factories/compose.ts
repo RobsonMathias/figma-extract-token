@@ -28,13 +28,12 @@ export abstract class Compose<C> {
     }
   }
 
-  static ignoreElement(name: string): boolean {
-    return name.indexOf('!!') === 0;
+  static isComponent(node: Node): boolean {
+    return node.type === 'FRAME';
   }
 
-  get composedName(): string {
-    return this.name.toLowerCase()
-      .replace(/(.*\.)|(__)/g, '');
+  static ignoreElement(name: string): boolean {
+    return name.indexOf('!!') === 0;
   }
 
   fetchNode(name: string, where: Node[] = []): Node|undefined {
@@ -67,7 +66,7 @@ export abstract class Compose<C> {
   }
 
   private extractionToObject(): Dictionary {
-    // if (!this.child || !this.child.extract) return {};
+    if (!this.child || !this.child.extract) return {};
     const baseExtraction = Compose.hasBaseExtraction(this.name) ? this.child!!.__base__ : this.child!!.extract;
     if (Array.isArray(baseExtraction)) {
       const convert: Dictionary = {};
@@ -84,5 +83,7 @@ export abstract class Compose<C> {
   abstract addChildren(name: string, instance: C): void;
 
   abstract call(...args: any): void
+
+  abstract get composedName(): string;
 
 }

@@ -15,6 +15,11 @@ export class FoundationFactory extends Compose<FoundationFactory> {
     }
   }
 
+  get composedName(): string {
+    return this.name.toLowerCase()
+      .replace(/(.*\.)|(__)/g, '');
+  }
+
   compose(): Dictionary {
     const result: Dictionary = {
       [this.composedName]: {}
@@ -26,7 +31,6 @@ export class FoundationFactory extends Compose<FoundationFactory> {
         result[this.composedName] = {...root, ...c.compose()};
 
       });
-      console.log(this.composedName, this.child, this.children.length, 44444);
     } else {
       result[this.composedName] = {...this.extractStyle()};
     }

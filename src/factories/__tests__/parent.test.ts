@@ -174,34 +174,26 @@ describe('ParentFactory', () => {
     })
   });
 
-  // it('should create components with auto ref successfully', () => {
-  //   const main = new MainFactory();
-  //   main.config = CONFIG_MOCK_DEFAULT as Config;
-  //   main.json = FIGMA_MOCK_DEFAULT as any;
-  //   const factory = new ParentFactory(main);
-  //   factory.call(main.config.components, true);
-  //   expect(factory.name).toBe('Components');
-  //   expect(factory.compose()).toEqual({
-  //     components: {
-  //       button: {
-  //         primary: {
-  //           full: {
-  //             medium: {
-  //               default: {
-  //                 padding: '{spacing.padding.3}',
-  //                 typography: '{typography.button}',
-  //                 borderWidth: '1px',
-  //                 borderType: 'solid',
-  //                 borderColor: '{color.primary.main}',
-  //               },
-  //               hover: {
-  //                 background: '{color.primary.main}'
-  //               }
-  //             }
-  //           }
-  //         },
-  //       }
-  //     }
-  //   })
-  // });
+  it('should create components with auto ref successfully', () => {
+    const main = new MainFactory();
+    main.config = CONFIG_MOCK_DEFAULT as Config;
+    main.json = FIGMA_MOCK_DEFAULT as any;
+    const factory = new ParentFactory(main);
+    factory.call(main.config.components, true);
+    expect(factory.name).toBe('Components');
+    expect(factory.compose()).toEqual({
+      components: {
+        button: {
+          primaryFullMediumDefault: {
+            color: '#BC9FE7',
+            'spacing.padding.3': {},
+            'typography.button': {}
+          },
+          primaryFullMediumHover: {
+            color: '#6200EE'
+          }
+        }
+      }
+    })
+  });
 });

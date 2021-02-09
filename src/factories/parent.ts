@@ -1,13 +1,18 @@
 import {Compose} from './compose';
 import {MainFactory} from './main';
-import {Canvas, Child, Dictionary, Node} from '../interfaces';
+import {Canvas, Dictionary} from '../interfaces';
 import {FoundationFactory} from './foundation';
+import {ComponentFactory} from './component';
 
 export class ParentFactory extends Compose<FoundationFactory> {
   public canvas: Canvas|undefined;
 
   constructor(main: MainFactory) {
     super(main);
+  }
+
+  get composedName(): string {
+    return this.name.toLowerCase();
   }
 
   addChildren(name: string, instance: FoundationFactory) {
@@ -34,16 +39,22 @@ export class ParentFactory extends Compose<FoundationFactory> {
     this.canvas.children = this.canvas.children || {};
     this.node = this.fetchNode(this.name, this.main.json.document.children);
     if (this.node) {
+      Object.keys(this.canvas.children).forEach(name => {
+        //@ts-ignore
+        const child = this.canvas.children[name];
+        const node = this.composeChild(this.node?.children, name, child);
+        if (node) {
+          const instance = new FoundationFactory(name, child, node, this.main);
+          this.addChildren(name, instance);
+        }
+      });
       if (autoRef) {
-
-      } else {
-        Object.keys(this.canvas.children).forEach(name => {
-          //@ts-ignore
-          const child = this.canvas.children[name];
-          const node = this.composeChild(this.node?.children, name, child);
-          if (node) {
-            const instance = new FoundationFactory(name, child, node, this.main);
-            this.addChildren(name, instance);
+        (this.node.children || []).forEach(n => {
+          if (ParentFactory.isComponent(n)) {
+            // @ts-ignore
+            const child = this.child ? this.child[n.name] : this.child!!;
+            const instance = new ComponentFactory(n.name, child, n, this.main);
+            this.addChildren(n.name, instance);
           }
         });
       }

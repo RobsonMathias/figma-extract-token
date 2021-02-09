@@ -13,6 +13,11 @@ export class ComponentFactory extends Compose<ComponentFactory> {
     this.call();
   }
 
+  get composedName(): string {
+    const name = `${this.name.charAt(0).toLowerCase()}${this.name.slice(1)}`;
+    return name.replace(/( \/ )+|(__)/g, '');
+  }
+
   compose(): Dictionary {
     const result: Dictionary = {
       [this.composedName]: {}
@@ -22,6 +27,7 @@ export class ComponentFactory extends Compose<ComponentFactory> {
         const root = result[this.composedName];
         // @ts-ignore
         result[this.composedName] = {...root, ...c.compose()};
+
       });
     } else {
       result[this.composedName] = {...this.extractStyle()};
@@ -37,7 +43,7 @@ export class ComponentFactory extends Compose<ComponentFactory> {
   call(): void {
     if (ComponentFactory.isAGroup(this.node as Node)) {
       (this.node?.children || []).forEach(n => {
-        const instance = new ComponentFactory(name, this.child!!, n, this.main);
+        const instance = new ComponentFactory(n.name, this.child!!, n, this.main);
         this.addChildren(n.name, instance);
       });
     }
