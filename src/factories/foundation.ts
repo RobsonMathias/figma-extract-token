@@ -1,11 +1,11 @@
-import {Compose} from './compose';
-import {MainFactory} from './main';
+import {Abstracter} from './abstracter';
+import {InitializerFactory} from './initializer';
 import {Child, Dictionary, Node} from '../interfaces';
 
-export class FoundationFactory extends Compose<FoundationFactory> {
+export class FoundationFactory extends Abstracter<FoundationFactory> {
   public children: Array<FoundationFactory> = [];
 
-  constructor(name: string, child: Child, node: Node, main: MainFactory) {
+  constructor(name: string, child: Child, node: Node, main: InitializerFactory) {
     super(main);
     this.name = name;
     this.node = node;

@@ -1,13 +1,13 @@
-import {Compose} from './compose';
-import {MainFactory} from './main';
+import {Abstracter} from './abstracter';
+import {InitializerFactory} from './initializer';
 import {Canvas, Dictionary} from '../interfaces';
 import {FoundationFactory} from './foundation';
 import {ComponentFactory} from './component';
 
-export class ParentFactory extends Compose<FoundationFactory> {
+export class ComposerFactory extends Abstracter<FoundationFactory> {
   public canvas: Canvas|undefined;
 
-  constructor(main: MainFactory) {
+  constructor(main: InitializerFactory) {
     super(main);
   }
 
@@ -50,7 +50,7 @@ export class ParentFactory extends Compose<FoundationFactory> {
       });
       if (autoRef) {
         (this.node.children || []).forEach(n => {
-          if (ParentFactory.isComponent(n)) {
+          if (ComposerFactory.isComponent(n)) {
             // @ts-ignore
             const child = this.child ? this.child[n.name] : this.child!!;
             const instance = new ComponentFactory(n.name, child, n, this.main);

@@ -1,15 +1,15 @@
-import {MainFactory} from '../main';
+import {InitializerFactory} from '../initializer';
 import {CONFIG_MOCK_DEFAULT, FIGMA_MOCK_DEFAULT} from '../../__mock__';
 import {Config} from '../../interfaces';
-import {ParentFactory} from '../parent';
+import {ComposerFactory} from '../composer';
 
 
-describe('ParentFactory', () => {
+describe('ComposerFactory', () => {
   it('should create foundation successfully', () => {
-    const main = new MainFactory();
+    const main = new InitializerFactory();
     main.config = CONFIG_MOCK_DEFAULT as Config;
     main.json = FIGMA_MOCK_DEFAULT as any;
-    const factory = new ParentFactory(main);
+    const factory = new ComposerFactory(main);
     factory.call(main.config.foundation);
     expect(factory.name).toBe('Foundation');
     expect(factory.compose()).toEqual({
@@ -175,10 +175,10 @@ describe('ParentFactory', () => {
   });
 
   it('should create components with auto ref successfully', () => {
-    const main = new MainFactory();
+    const main = new InitializerFactory();
     main.config = CONFIG_MOCK_DEFAULT as Config;
     main.json = FIGMA_MOCK_DEFAULT as any;
-    const factory = new ParentFactory(main);
+    const factory = new ComposerFactory(main);
     factory.call(main.config.components, true);
     expect(factory.name).toBe('Components');
     expect(factory.compose()).toEqual({

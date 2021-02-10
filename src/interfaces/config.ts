@@ -1,7 +1,7 @@
 export type ComposeType = 'camelcase' | 'snakecase';
 
 export type Extract = string[] | {[key: string]: string|null};
-export type Inheritance = string[];
+export type Inheritance = {[key: string]: string|null};
 export type Variant = string[];
 
 export interface Child {

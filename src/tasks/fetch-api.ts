@@ -1,6 +1,6 @@
 import {composeArgs, requiredArgs} from '../helpers';
 import {fetchApi} from '../services';
-import {MainFactory} from '../factories';
+import {InitializerFactory} from '../factories';
 import {TasksConfig} from '../interfaces';
 
 export const fetchApiTask = {

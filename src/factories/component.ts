@@ -1,11 +1,12 @@
-import {Compose} from './compose';
-import {MainFactory} from './main';
+import {Abstracter} from './abstracter';
+import {InitializerFactory} from './initializer';
 import {Child, Dictionary, Node} from '../interfaces';
+import {Style} from '../services';
 
-export class ComponentFactory extends Compose<ComponentFactory> {
+export class ComponentFactory extends Abstracter<ComponentFactory> {
   public children: Array<ComponentFactory> = [];
 
-  constructor(name: string, child: Child, node: Node, main: MainFactory) {
+  constructor(name: string, child: Child, node: Node, main: InitializerFactory) {
     super(main);
     this.name = name;
     this.node = node;
@@ -18,10 +19,18 @@ export class ComponentFactory extends Compose<ComponentFactory> {
     return name.replace(/( \/ )+|(__)/g, '');
   }
 
+  private extractStyleFromComponent(): {[key: string]: any} {
+    return ComponentFactory.isComponent(this.node!!) && this.name.indexOf('/') > -1 ?
+      Style.extractFromComponent(this.node!!, this.child!!, this.main.foundation.compose()) : {};
+  }
+
   compose(): Dictionary {
     const result: Dictionary = {
       [this.composedName]: {}
     };
+
+    const style = this.extractStyleFromComponent();
+
     if (this.children.length) {
       this.children.forEach(c => {
         const root = result[this.composedName];
@@ -30,7 +39,7 @@ export class ComponentFactory extends Compose<ComponentFactory> {
 
       });
     } else {
-      result[this.composedName] = {...this.extractStyle()};
+      result[this.composedName] = {...this.extractStyle(), ...style};
     }
     return result;
   }

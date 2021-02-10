@@ -1,18 +1,18 @@
 import {Response} from '../services';
 import {Config, Dictionary} from '../interfaces';
-import {ParentFactory} from './parent';
+import {ComposerFactory} from './composer';
 
-export class MainFactory {
+export class InitializerFactory {
   //@ts-ignore
   public json: Response;
   //@ts-ignore
   private _config: Config;
-  public foundation: ParentFactory;
-  public components: ParentFactory;
+  public foundation: ComposerFactory;
+  public components: ComposerFactory;
 
   constructor() {
-    this.foundation =  new ParentFactory(this);
-    this.components =  new ParentFactory(this);
+    this.foundation =  new ComposerFactory(this);
+    this.components =  new ComposerFactory(this);
   }
 
   get config(): Config {
@@ -27,12 +27,13 @@ export class MainFactory {
 
   compose(): Dictionary {
     const foundationComposed = this.inheritanceFoundation(this.foundation.compose());
-    const componentsComposed = this.inheritanceComponent(
-      this.components.compose(),
-      foundationComposed as Dictionary
-    );
+    // const componentsComposed = this.inheritanceComponent(
+    //   this.components.compose(),
+    //   foundationComposed as Dictionary
+    // );
     return {
       ...(foundationComposed as any).foundation,
+      // ...(componentsComposed as any).components
     };
   }
 
@@ -61,7 +62,6 @@ export class MainFactory {
   }
 
   private inheritanceComponent(item: Dictionary, foundation: Dictionary): Dictionary {
-    console.log(item);
     return item;
   }
 

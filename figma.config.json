@@ -35,8 +35,16 @@
   },
   "components": {
     "name": "Components",
-    "root": {
-      "inheritance": ["Color", "Shape"]
+    "inheritance": {
+      "fills":  "color",
+      "lineHeightPx": "lineHeight",
+      "letterSpacing": "letterSpacing",
+      "fontSize": "fontSize",
+      "fontFamily": "fontFamily",
+      "fontWeight": "fontWeight",
+      "textCase": "textTransform",
+      "cornerRadius": "rounded",
+      "background": "background"
     }
   }
 }

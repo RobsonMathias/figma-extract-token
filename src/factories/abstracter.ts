@@ -1,15 +1,15 @@
-import {MainFactory} from './main';
+import {InitializerFactory} from './initializer';
 import {Child, Dictionary, Node} from '../interfaces';
 import {Style} from '../services';
 
-export abstract class Compose<C> {
-  public main: MainFactory;
+export abstract class Abstracter<C> {
+  public main: InitializerFactory;
   public name: string = '';
   public node: Node|undefined;
   public child: Child|undefined;
   public children: Array<C> = [];
 
-  protected constructor(main: MainFactory) {
+  protected constructor(main: InitializerFactory) {
     this.main = main;
   }
 
@@ -43,7 +43,7 @@ export abstract class Compose<C> {
   composeChild(nodes: Node[] = [], name: string, child: Child): Node|undefined {
     if (!child) return;
     const node = this.fetchNode(name, nodes);
-    if (this.node && Compose.isAGroup(this.node)) {
+    if (this.node && Abstracter.isAGroup(this.node)) {
       return node;
     } else {
       console.error(`Node ${this.name} was not found on figma JSON`);
@@ -67,7 +67,7 @@ export abstract class Compose<C> {
 
   private extractionToObject(): Dictionary {
     if (!this.child || !this.child.extract) return {};
-    const baseExtraction = Compose.hasBaseExtraction(this.name) ? this.child!!.__base__ : this.child!!.extract;
+    const baseExtraction = Abstracter.hasBaseExtraction(this.name) ? this.child!!.__base__ : this.child!!.extract;
     if (Array.isArray(baseExtraction)) {
       const convert: Dictionary = {};
       baseExtraction.forEach((key: string) => {

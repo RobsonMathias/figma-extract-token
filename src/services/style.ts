@@ -1,4 +1,4 @@
-import {Node, Paint} from '../interfaces';
+import {Child, Dictionary, Node, Paint} from '../interfaces';
 
 export class Style {
 
@@ -13,13 +13,13 @@ export class Style {
     return Math.round(value*255);
   }
 
-  static fills(fills: Paint[]): string {
-    const [fill] = fills;
+  static fills(colors: Paint[]): string {
+    const [fill] = colors;
     return `rgba(${this.calcRGB(fill.color.r)}, ${this.calcRGB(fill.color.g)}, ${this.calcRGB(fill.color.b)}, ${fill.color.a})`
   }
 
   static valueByUnit(value: string|number, unit: string): string {
-    return `${value}${this.getUnit(unit)}`;
+    return value ? `${value}${this.getUnit(unit)}`: '';
   }
 
   static textTransform(value: string) {
@@ -30,19 +30,21 @@ export class Style {
   }
 
   static extract(attribute: string, node: Node): string {
+    const style = node.style || {};
     switch (attribute) {
       case 'fills':
-        return this.fills(node.fills);
+      case 'background':
+        return this.fills(node[attribute]);
       case 'lineHeightPx':
-        return this.valueByUnit(node.style.lineHeightPx, node.style.lineHeightUnit);
+        return this.valueByUnit(style.lineHeightPx, style.lineHeightUnit);
       case 'letterSpacing':
       case 'fontSize':
-        return this.valueByUnit(node.style[attribute], 'PIXELS');
+        return this.valueByUnit(style[attribute], 'PIXELS');
       case 'fontFamily':
       case 'fontWeight':
-        return node.style[attribute];
+        return style[attribute];
       case 'textCase':
-        return this.textTransform(node.style[attribute]);
+        return this.textTransform(style[attribute]);
       case 'cornerRadius':
         return this.valueByUnit(node[attribute], 'PIXELS');
       case 'width':
@@ -52,5 +54,27 @@ export class Style {
       default:
         return attribute;
     }
+  }
+
+  static extractFromComponent(node: Node, child: Child, inheritance: any): {[key: string]: object}  {
+    const attributes = [
+      'fills',
+      'lineHeightPx',
+      'letterSpacing',
+      'fontSize',
+      'fontFamily',
+      'fontWeight',
+      'textCase',
+      'cornerRadius',
+      'background',
+    ];
+    let result: {[key: string]: any} = {};
+    attributes.forEach(a => {
+      const value = this.extract(a, node);
+      if (value) {
+        result[a] = {value};
+      }
+    });
+    return result;
   }
 }

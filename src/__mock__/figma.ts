@@ -344,7 +344,7 @@ export const FIGMA_MOCK_DEFAULT = {
           "blendMode": "PASS_THROUGH",
           "children": [{
             "id": "1:50",
-            "name": "shape.rounded.md",
+            "name": "shape.rounded.xs",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": 817, "y": -135, "width": 68, "height": 68},
@@ -366,7 +366,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "cornerRadius": 4
           }, {
             "id": "3:14",
-            "name": "shape.rounded.xs",
+            "name": "shape.rounded.md",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": 899, "y": -135, "width": 68, "height": 68},
@@ -385,8 +385,8 @@ export const FIGMA_MOCK_DEFAULT = {
             "strokeWeight": 0,
             "strokeAlign": "CENTER",
             "effects": [],
-            "cornerRadius": 16,
-            "rectangleCornerRadii": [16, 16, 16, 16]
+            "cornerRadius": 10,
+            "rectangleCornerRadii": [10, 10, 10, 10]
           }],
           "absoluteBoundingBox": {"x": 817, "y": -135, "width": 150, "height": 68},
           "constraints": {"vertical": "SCALE", "horizontal": "SCALE"},
@@ -1167,8 +1167,16 @@ export const FIGMA_MOCK_DEFAULT = {
           "absoluteBoundingBox": {"x": -96, "y": -150, "width": 131, "height": 44},
           "constraints": {"vertical": "SCALE", "horizontal": "SCALE"},
           "clipsContent": false,
-          "background": [{"blendMode": "NORMAL", "type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 1}}],
-          "fills": [{"blendMode": "NORMAL", "type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 1}}],
+          "background": [{
+            "blendMode": "NORMAL",
+            "type": "SOLID",
+            "color": {"r": 0.7372549176216125, "g": 0.6235294342041016, "b": 0.9058823585510254, "a": 1}
+          }],
+          "fills": [{
+            "blendMode": "NORMAL",
+            "type": "SOLID",
+            "color": {"r": 0.7372549176216125, "g": 0.6235294342041016, "b": 0.9058823585510254, "a": 1}
+          }],
           "strokes": [{
             "blendMode": "NORMAL",
             "type": "SOLID",
@@ -1178,7 +1186,7 @@ export const FIGMA_MOCK_DEFAULT = {
           "rectangleCornerRadii": [10, 10, 10, 10],
           "strokeWeight": 1,
           "strokeAlign": "INSIDE",
-          "backgroundColor": {"r": 1, "g": 1, "b": 1, "a": 1},
+          "backgroundColor": {"r": 0.7372549176216125, "g": 0.6235294342041016, "b": 0.9058823585510254, "a": 1},
           "layoutGrids": [],
           "effects": []
         }, {
@@ -1457,8 +1465,8 @@ export const FIGMA_MOCK_DEFAULT = {
     "100:10": {"key": "e23daad5d5596b946eb8750058df8fdfb19cb282", "name": "90", "styleType": "FILL", "description": ""}
   },
   "name": "POC Design Tokens Extract",
-  "lastModified": "2021-02-08T17:57:07Z",
+  "lastModified": "2021-02-09T14:18:09Z",
   "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/bb8c45e3-86b6-4c5c-b441-a43f1cb90800?Expires=1613952000&Signature=QfWACqcIh7b0kyjSgb~otchY7tUfsrnpcVEjSkgDJrYtgtuNIfU3uTyXupPGWoBJrHK-EYqtPGkHaLx9E~mndoBj8E-r7y20z25aKHu0t8fZFUlqz7QV8c4hV~gBsxYr-fz7NS0OuE5gzeMB8N6FZOkCXNMFr4Sn6rYSBthSPJyyPC83aV3YFwIvRKnAfVbIXXCVpG8EIjSs-vI1VR0EC0BCFP54K86nNQEQVvo~N3UtOdTzDZNif0LfcLqyw9APBNGEMhhPF-JWpeORJcRFCvielubt-r7uZZfzf9cLWxE8CLzzDNOG3N4v7YFF72cs6euW1Q-x8CcoFtOxeXGuJA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  "version": "667733500",
+  "version": "669510293",
   "role": "owner"
 }

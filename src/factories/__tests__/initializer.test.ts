@@ -1,31 +1,31 @@
-import {MainFactory} from '../main';
+import {InitializerFactory} from '../initializer';
 import {CONFIG_MOCK_DEFAULT, FIGMA_MOCK_DEFAULT} from '../../__mock__';
 import {Config} from '../../interfaces';
-import {ParentFactory} from '../parent';
+import {ComposerFactory} from '../composer';
 
-describe('MainFactory', () => {
+describe('InitializerFactory', () => {
   it('should create successfully', () => {
-    const factory = new MainFactory();
+    const factory = new InitializerFactory();
     factory.config = CONFIG_MOCK_DEFAULT as Config;
     factory.json = FIGMA_MOCK_DEFAULT as any;
-    expect(factory.foundation).toBeInstanceOf(ParentFactory);
-    expect(factory.components).toBeInstanceOf(ParentFactory);
+    expect(factory.foundation).toBeInstanceOf(ComposerFactory);
+    expect(factory.components).toBeInstanceOf(ComposerFactory);
   });
 
   it('should compose json successfully', () => {
-    const factory = new MainFactory();
+    const factory = new InitializerFactory();
     factory.config = CONFIG_MOCK_DEFAULT as Config;
     factory.json = FIGMA_MOCK_DEFAULT as any;
     factory.foundation.call(factory.config.foundation);
-    factory.components.call(factory.config.components);
+    factory.components.call(factory.config.components, true);
     expect(factory.compose()).toEqual({
       shape: {
         rounded: {
           md: {
-            value: '4px'
+            value: '10px'
           },
           xs: {
-            value: '16px'
+            value: '4px'
           }
         }
       },
@@ -87,6 +87,26 @@ describe('MainFactory', () => {
           textTransform: {value: 'uppercase'},
         }
       },
+      button: {
+        primaryFullMediumDefault: {
+          background: {
+            value: '{color.primary.100}'
+          },
+          padding: {
+            value: '{spacing.padding.3}',
+          },
+          typography: {
+            value: '{typography.button}',
+          },
+          rounded: {
+            value: '{shape.rounded.md}',
+          }
+        },
+        primaryFullMediumHover: {
+          background: '{color.primary.main}',
+          rounded: '{shape.rounded.md}'
+        }
+      }
     })
   });
 });

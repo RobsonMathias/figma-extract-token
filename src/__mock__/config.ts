@@ -42,7 +42,6 @@ export const CONFIG_MOCK_DEFAULT = {
     }
   },
   "components": {
-    "name": "Components",
-    "inheritance": ["Color", "Shape"],
+    "name": "Components"
   }
 };
