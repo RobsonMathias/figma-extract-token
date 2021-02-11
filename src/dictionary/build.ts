@@ -1,7 +1,7 @@
-export function build(config: object|string) {
-  const StyleDictionary = require('style-dictionary').extend(config);
+export function build(config: object|string, StyleDictionary?: any) {
+  const Dictionary = StyleDictionary || require('style-dictionary').extend(config);
   return new Promise(async (res) => {
-    StyleDictionary.buildAllPlatforms();
+    Dictionary.buildAllPlatforms();
     res();
   });
 }

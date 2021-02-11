@@ -4,10 +4,10 @@ import {build} from '../dictionary';
 
 export const runDictionary = {
   title: 'Running dictionary',
-  task: async ({factory}: TasksConfig) => {
+  task: async ({factory, StyleDictionary}: TasksConfig) => {
     return new Promise(async (res) => {
       const config = await loadConfig(factory.config.dictionaryConfig);
-      await build(config);
+      await build(config, StyleDictionary);
       res(config)
     })
   }

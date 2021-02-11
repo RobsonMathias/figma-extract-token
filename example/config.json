@@ -1,0 +1,37 @@
+{
+  "source": ["build/**/*.json"],
+  "platforms": {
+    "web": {
+      "transformGroup": "custom/web",
+      "buildPath": "build/web/",
+      "files": [{
+        "destination": "tokens.js",
+        "format": "javascript/es6"
+      }]
+    },
+    "scss": {
+      "transformGroup": "custom/scss",
+      "buildPath": "build/web/",
+      "files": [{
+        "destination": "tokens.scss",
+        "format": "scss/variables"
+      }]
+    },
+    "androidCustom": {
+      "transformGroup": "custom/android",
+      "buildPath": "build/androidCustom/",
+      "files": [{
+        "destination": "tokens.xml",
+        "format": "custom/android/xml"
+      }]
+    },
+    "android": {
+      "transformGroup": "android",
+      "buildPath": "build/android/",
+      "files": [{
+        "destination": "tokens.ts",
+        "format": "javascript/es6"
+      }]
+    }
+  }
+}
