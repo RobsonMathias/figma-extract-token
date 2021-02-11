@@ -1,5 +1,5 @@
 import {Paint} from '../../interfaces';
-import {Style} from '../../factories/style';
+import {Style} from '../style';
 
 describe('Style', () => {
   it('should convert fills to style', () => {

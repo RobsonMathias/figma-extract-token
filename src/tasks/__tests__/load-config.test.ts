@@ -1,13 +1,16 @@
 import {when} from 'jest-when';
-
+import {InitializerFactory} from '../../factories';
 const loadConfig = jest.fn();
 const composeArgs = jest.fn();
 const requiredArgs = jest.fn();
 const error = new Error('mocked');
 jest.mock('../../helpers', () => ({composeArgs, requiredArgs}));
 jest.mock('../../services', () => ({loadConfig}));
+jest.mock('../../factories');
 
 import {loadConfigTask} from '../load-config';
+
+const factory = new InitializerFactory();
 
 describe('loadConfig', () => {
   it('should compose args successfully', async () => {
@@ -16,7 +19,7 @@ describe('loadConfig', () => {
     when(composeArgs).calledWith(expect.anything()).mockReturnValue(args);
     when(requiredArgs).calledWith(['config'], args).mockReturnValue([]);
 
-    const result = await loadConfigTask.task();
+    const result = await loadConfigTask.task({factory});
 
     expect(loadConfigTask.title).toEqual('Loading configurations');
     expect(loadConfig).toHaveBeenCalledWith('file.json');
@@ -28,7 +31,7 @@ describe('loadConfig', () => {
     const log = jest.fn();
     when(composeArgs).calledWith(expect.anything()).mockReturnValue(args);
     when(requiredArgs).calledWith(['config'], args).mockReturnValue([{log, error}]);
-    expect(loadConfigTask.task()).rejects.toHaveLength(1);
+    expect(loadConfigTask.task({factory})).rejects.toHaveLength(1);
     expect(log).toHaveBeenCalledTimes(1);
   });
 

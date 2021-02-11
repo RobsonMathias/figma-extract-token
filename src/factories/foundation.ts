@@ -68,7 +68,7 @@ export class FoundationFactory extends Abstracter<FoundationFactory> {
                 (baseValue && currentValue) &&
                 currentValue.value === baseValue.value
               ) {
-                currentValue.value = `{${t}.base.${v}}`;
+                currentValue.value = `{${t}.base.${v}.value}`;
               }
             });
           }

@@ -65,14 +65,18 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
     return item;
   }
 
+  private static composeInheritanceName(name: string) {
+    return name.replace(/(\.value})|(})$/g, '.value}');
+  }
+
   private componentForEach(item: any, foundation: any) {
     Object.keys(item).forEach((key: string) => {
       const current = item[key];
       if (current.value) {
-        current.value = this.findByValue(current.value, foundation);
+        current.value =  ComponentFactory.composeInheritanceName(this.findByValue(current.value, foundation));
       } else if (Object.keys(current).length === 0) {
         item[ComponentFactory.formatName(key)] = {
-          value: `{${key}}`
+          value: `{${key}.value}`
         };
         delete item[key];
       } else {

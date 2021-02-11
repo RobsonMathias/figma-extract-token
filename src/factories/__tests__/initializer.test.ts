@@ -4,6 +4,7 @@ import {Config} from '../../interfaces';
 import {ComposerFactory} from '../composer';
 
 describe('InitializerFactory', () => {
+
   it('should create successfully', () => {
     const factory = new InitializerFactory();
     factory.json = FIGMA_MOCK_DEFAULT as any;
@@ -79,42 +80,43 @@ describe('InitializerFactory', () => {
           lineHeight: {value: '16px'},
         },
         button: {
-          lineHeight: {value: '{typography.base.lineHeight}'},
-          fontSize: {value: '{typography.base.fontSize}'},
-          fontWeight: {value: '{typography.base.fontWeight}'},
+          lineHeight: {value: '{typography.base.lineHeight.value}'},
+          fontSize: {value: '{typography.base.fontSize.value}'},
+          fontWeight: {value: '{typography.base.fontWeight.value}'},
           textTransform: {value: 'uppercase'},
         }
       },
       button: {
         primaryFullMediumDefault: {
           background: {
-            value: '{color.primary.100}'
+            value: '{color.primary.100.value}'
           },
           padding: {
-            value: '{spacing.padding.3}',
+            value: '{spacing.padding.3.value}',
           },
           color: {
-            value: '{color.primary.100}',
+            value: '{color.primary.100.value}',
           },
           typography: {
-            value: '{typography.button}',
+            value: '{typography.button.value}',
           },
           rounded: {
-            value: '{shape.rounded.md}',
+            value: '{shape.rounded.md.value}',
           }
         },
         primaryFullMediumHover: {
           background: {
-            value: '{color.primary.main}',
+            value: '{color.primary.main.value}',
           },
           rounded: {
-            value: '{shape.rounded.md}',
+            value: '{shape.rounded.md.value}',
           },
           color: {
-            value: '{color.primary.main}'
+            value: '{color.primary.main.value}'
           }
         }
       }
     })
   });
+
 });

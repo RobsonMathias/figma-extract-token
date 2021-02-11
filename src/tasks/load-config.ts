@@ -1,6 +1,5 @@
 import {requiredArgs, composeArgs} from '../helpers';
 import {loadConfig} from '../services';
-import {InitializerFactory} from '../factories';
 import {TasksConfig} from '../interfaces';
 
 export const loadConfigTask = {

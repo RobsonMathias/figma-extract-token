@@ -1,4 +1,5 @@
 export const CONFIG_MOCK_DEFAULT = {
+  "dictionaryConfig": "./dictionaryConfig.json",
   "outDir": "./dist",
   "foundation": {
     "name": "Foundation",

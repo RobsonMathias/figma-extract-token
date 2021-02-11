@@ -1,4 +1,5 @@
 import {when} from 'jest-when';
+import {InitializerFactory} from '../../factories';
 
 const fetchApi = jest.fn();
 const composeArgs = jest.fn();
@@ -6,8 +7,10 @@ const requiredArgs = jest.fn();
 const error = new Error('mocked');
 jest.mock('../../helpers', () => ({requiredArgs, composeArgs}));
 jest.mock('../../services', () => ({fetchApi}));
+jest.mock('../../factories');
 
 import {fetchApiTask} from '../fetch-api';
+const factory = new InitializerFactory();
 
 describe('fetchApiTask', () => {
   it('should compose args successfully', async () => {
@@ -16,7 +19,7 @@ describe('fetchApiTask', () => {
     when(composeArgs).calledWith(expect.anything()).mockReturnValue(args);
     when(requiredArgs).calledWith(['token', 'document'], args).mockReturnValue([]);
 
-    const result = await fetchApiTask.task();
+    const result = await fetchApiTask.task({factory});
 
     expect(fetchApiTask.title).toEqual('Fetching Figma API JSON');
     expect(fetchApi).toHaveBeenCalledWith('TOKEN', 'DOCUMENT');
@@ -28,7 +31,7 @@ describe('fetchApiTask', () => {
     const log = jest.fn();
     when(composeArgs).calledWith(expect.anything()).mockReturnValue(args);
     when(requiredArgs).calledWith(['token', 'document'], args).mockReturnValue([{log, error}]);
-    expect(fetchApiTask.task()).rejects.toHaveLength(1);
+    expect(fetchApiTask.task({factory: factory as any})).rejects.toHaveLength(1);
     expect(log).toHaveBeenCalledTimes(1);
   });
 
@@ -37,7 +40,7 @@ describe('fetchApiTask', () => {
     const log = jest.fn();
     when(composeArgs).calledWith(expect.anything()).mockReturnValue(args);
     when(requiredArgs).calledWith(['token', 'document'], args).mockReturnValue([{log, error}]);
-    expect(fetchApiTask.task()).rejects.toHaveLength(1);
+    expect(fetchApiTask.task({factory})).rejects.toHaveLength(1);
     expect(log).toHaveBeenCalledTimes(1);
   });
 });

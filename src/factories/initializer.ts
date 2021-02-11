@@ -28,11 +28,6 @@ export class InitializerFactory {
   compose(): Dictionary {
     const {foundation} = this.foundation.compose();
     const {components} = this.components.compose(foundation);
-    // const foundationComposed = this.inheritanceFoundation(foundation as Dictionary);
-    // const componentsComposed = this.inheritanceComponent(
-    //   components as Dictionary,
-    //   Style.mapFoundation(foundationComposed) as Dictionary
-    // );
     return {
       ...(foundation as any),
       ...(components as any)

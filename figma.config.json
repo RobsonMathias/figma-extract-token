@@ -1,5 +1,6 @@
 {
-  "outDir": "./dist-tokens",
+  "dictionaryConfig": "./dictionary.config.json",
+  "outDir": "./build",
   "foundation": {
     "name": "Foundation",
     "children": {

@@ -22,6 +22,7 @@ export interface Canvas {
 
 export interface Config {
   outDir: string;
+  dictionaryConfig: string;
   foundation: Canvas;
   components: Canvas;
 }
