@@ -14,7 +14,7 @@ export const fetchApiTask = {
         rej(required.map(r => r.error));
       } else {
         const json = await fetchApi(args.token, args.document);
-        factory.json = json;
+        factory.json = json.data;
         res(json)
       }
     })

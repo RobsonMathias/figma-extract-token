@@ -8,6 +8,6 @@ export interface Response {
   document: Document
 }
 
-export async function fetchApi(token: string, document: string): Promise<Response> {
+export async function fetchApi(token: string, document: string): Promise<{data: Response}> {
   return axios.get(`https://api.figma.com/v1/files/${document}`, {headers: {'x-figma-token': token}})
 }

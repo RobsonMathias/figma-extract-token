@@ -21,48 +21,22 @@ export class InitializerFactory {
 
   set config(value: Config) {
     this._config = value;
-    this.foundation.name = value.foundation.name;
-    this.components.name = value.components.name;
+    this.foundation.call(value.foundation);
+    this.components.call(value.components, true)
   }
 
   compose(): Dictionary {
-    const foundationComposed = this.inheritanceFoundation(this.foundation.compose());
+    const {foundation} = this.foundation.compose();
+    const {components} = this.components.compose(foundation);
+    // const foundationComposed = this.inheritanceFoundation(foundation as Dictionary);
     // const componentsComposed = this.inheritanceComponent(
-    //   this.components.compose(),
-    //   foundationComposed as Dictionary
+    //   components as Dictionary,
+    //   Style.mapFoundation(foundationComposed) as Dictionary
     // );
     return {
-      ...(foundationComposed as any).foundation,
-      // ...(componentsComposed as any).components
+      ...(foundation as any),
+      ...(components as any)
     };
-  }
-
-  private inheritanceFoundation(item: Dictionary): Dictionary {
-    let base: any;
-    Object.keys(item).forEach((t) => {
-      if ((item[t] as any).base) {
-        base = (item[t] as any).base;
-        Object.keys((item[t] as any)).forEach((p) => {
-          if (p !== 'base') {
-            Object.keys((item[t] as any)[p]).forEach((v) => {
-              const baseValue = (item as any)[t]['base'][v],
-                currentValue = (item as any)[t][p][v];
-              if (
-                (baseValue && currentValue) &&
-                currentValue.value === baseValue.value
-              ) {
-                currentValue.value = `{${t}.base.${v}}`;
-              }
-            });
-          }
-        });
-      }
-    });
-    return item;
-  }
-
-  private inheritanceComponent(item: Dictionary, foundation: Dictionary): Dictionary {
-    return item;
   }
 
 }

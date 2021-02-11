@@ -1,8 +1,8 @@
 import {InitializerFactory} from './initializer';
 import {Child, Dictionary, Node} from '../interfaces';
-import {Style} from '../services';
+import {Style} from './style';
 
-export abstract class Abstracter<C> {
+export abstract class Abstracter<C> extends Style {
   public main: InitializerFactory;
   public name: string = '';
   public node: Node|undefined;
@@ -10,6 +10,7 @@ export abstract class Abstracter<C> {
   public children: Array<C> = [];
 
   protected constructor(main: InitializerFactory) {
+    super();
     this.main = main;
   }
 
@@ -65,6 +66,16 @@ export abstract class Abstracter<C> {
     return styled;
   }
 
+  findByValue(value: string, object: any): string {
+    let result = value;
+    Object.keys(object).forEach((i: string) => {
+      if (object[i] === value) {
+        result = `{${i}}`;
+      }
+    });
+    return result;
+  }
+
   private extractionToObject(): Dictionary {
     if (!this.child || !this.child.extract) return {};
     const baseExtraction = Abstracter.hasBaseExtraction(this.name) ? this.child!!.__base__ : this.child!!.extract;
@@ -78,7 +89,7 @@ export abstract class Abstracter<C> {
     return baseExtraction as Dictionary;
   }
 
-  abstract compose(): Dictionary
+  abstract compose(args?: any): Dictionary
 
   abstract addChildren(name: string, instance: C): void;
 

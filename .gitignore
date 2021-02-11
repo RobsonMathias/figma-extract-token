@@ -7,6 +7,8 @@ node_modules
 # builds
 build
 dist
+dist-dictionary
+dist-tokens
 .rpt2_cache
 
 # misc

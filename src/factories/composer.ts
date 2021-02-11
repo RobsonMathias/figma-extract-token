@@ -4,7 +4,7 @@ import {Canvas, Dictionary} from '../interfaces';
 import {FoundationFactory} from './foundation';
 import {ComponentFactory} from './component';
 
-export class ComposerFactory extends Abstracter<FoundationFactory> {
+export class ComposerFactory extends Abstracter<FoundationFactory|ComponentFactory> {
   public canvas: Canvas|undefined;
 
   constructor(main: InitializerFactory) {
@@ -15,20 +15,20 @@ export class ComposerFactory extends Abstracter<FoundationFactory> {
     return this.name.toLowerCase();
   }
 
-  addChildren(name: string, instance: FoundationFactory) {
-    if (!FoundationFactory.ignoreElement(name)) {
+  addChildren(name: string, instance: FoundationFactory|ComponentFactory) {
+    if (!ComposerFactory.ignoreElement(name)) {
       this.children.push(instance);
     }
   }
 
-  compose(): Dictionary {
+  compose(arg?: any): Dictionary {
     const result: Dictionary = {
       [this.composedName]: {}
     };
     this.children.forEach(c => {
       const root = result[this.composedName];
       // @ts-ignore
-      result[this.composedName] = {...root, ...c.compose()};
+      result[this.composedName] = {...root, ...c.compose(arg)};
     });
     return result;
   }

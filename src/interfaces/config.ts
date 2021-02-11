@@ -7,7 +7,6 @@ export type Variant = string[];
 export interface Child {
   __base__?: {[key: string]: string|null};
   extract?: Extract;
-  inheritance?: Inheritance;
   variant?: Variant;
 }
 
@@ -18,9 +17,11 @@ export interface Children {
 export interface Canvas {
   name: string;
   children?: Children;
+  inheritance?: Inheritance;
 }
 
 export interface Config {
+  outDir: string;
   foundation: Canvas;
   components: Canvas;
 }

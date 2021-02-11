@@ -1,4 +1,4 @@
-import {Child, Dictionary, Node, Paint} from '../interfaces';
+import {Child, Node, Paint} from '../interfaces';
 
 export class Style {
 
@@ -56,6 +56,22 @@ export class Style {
     }
   }
 
+  static mapFoundation(foundation: any):  {[key: string]: string|number} {
+    const map: {[key: string]: string|number} = {};
+    function extract(name: string, _foundation: any) {
+      Object.keys(_foundation).forEach((i: string) => {
+        if (i === 'value') {
+          map[name] = _foundation[i];
+        } else {
+          const newName = `${name}.${i}`;
+          extract(newName, _foundation[i]);
+        }
+      });
+    }
+    Object.keys(foundation).forEach(f => extract(f, foundation[f]));
+    return map;
+  }
+
   static extractFromComponent(node: Node, child: Child, inheritance: any): {[key: string]: object}  {
     const attributes = [
       'fills',
@@ -72,9 +88,14 @@ export class Style {
     attributes.forEach(a => {
       const value = this.extract(a, node);
       if (value) {
-        result[a] = {value};
+        result[inheritance[a] || a] = {value};
       }
     });
     return result;
+  }
+
+  static formatName(name: string): string {
+    const value = name.match(/\w+/g) || [name];
+    return value[value.length - 2] || value[value.length -1];
   }
 }

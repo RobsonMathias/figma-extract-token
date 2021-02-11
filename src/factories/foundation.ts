@@ -34,7 +34,7 @@ export class FoundationFactory extends Abstracter<FoundationFactory> {
     } else {
       result[this.composedName] = {...this.extractStyle()};
     }
-    return result;
+    return this.inheritanceFoundation(result);
   }
 
   addChildren(name: string, instance: FoundationFactory) {
@@ -52,5 +52,29 @@ export class FoundationFactory extends Abstracter<FoundationFactory> {
         this.addChildren(n.name, instance);
       });
     }
+  }
+
+  inheritanceFoundation(item: Dictionary): Dictionary {
+    let base: any;
+    Object.keys(item).forEach((t) => {
+      if ((item[t] as any).base) {
+        base = (item[t] as any).base;
+        Object.keys((item[t] as any)).forEach((p) => {
+          if (p !== 'base') {
+            Object.keys((item[t] as any)[p]).forEach((v) => {
+              const baseValue = (item as any)[t]['base'][v],
+                currentValue = (item as any)[t][p][v];
+              if (
+                (baseValue && currentValue) &&
+                currentValue.value === baseValue.value
+              ) {
+                currentValue.value = `{${t}.base.${v}}`;
+              }
+            });
+          }
+        });
+      }
+    });
+    return item;
   }
 }

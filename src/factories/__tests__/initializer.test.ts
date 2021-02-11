@@ -6,18 +6,16 @@ import {ComposerFactory} from '../composer';
 describe('InitializerFactory', () => {
   it('should create successfully', () => {
     const factory = new InitializerFactory();
-    factory.config = CONFIG_MOCK_DEFAULT as Config;
     factory.json = FIGMA_MOCK_DEFAULT as any;
+    factory.config = CONFIG_MOCK_DEFAULT as Config;
     expect(factory.foundation).toBeInstanceOf(ComposerFactory);
     expect(factory.components).toBeInstanceOf(ComposerFactory);
   });
 
   it('should compose json successfully', () => {
     const factory = new InitializerFactory();
-    factory.config = CONFIG_MOCK_DEFAULT as Config;
     factory.json = FIGMA_MOCK_DEFAULT as any;
-    factory.foundation.call(factory.config.foundation);
-    factory.components.call(factory.config.components, true);
+    factory.config = CONFIG_MOCK_DEFAULT as Config;
     expect(factory.compose()).toEqual({
       shape: {
         rounded: {
@@ -95,6 +93,9 @@ describe('InitializerFactory', () => {
           padding: {
             value: '{spacing.padding.3}',
           },
+          color: {
+            value: '{color.primary.100}',
+          },
           typography: {
             value: '{typography.button}',
           },
@@ -103,8 +104,15 @@ describe('InitializerFactory', () => {
           }
         },
         primaryFullMediumHover: {
-          background: '{color.primary.main}',
-          rounded: '{shape.rounded.md}'
+          background: {
+            value: '{color.primary.main}',
+          },
+          rounded: {
+            value: '{shape.rounded.md}',
+          },
+          color: {
+            value: '{color.primary.main}'
+          }
         }
       }
     })

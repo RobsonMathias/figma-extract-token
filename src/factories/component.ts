@@ -1,7 +1,6 @@
 import {Abstracter} from './abstracter';
-import {InitializerFactory} from './initializer';
 import {Child, Dictionary, Node} from '../interfaces';
-import {Style} from '../services';
+import {InitializerFactory} from './initializer';
 
 export class ComponentFactory extends Abstracter<ComponentFactory> {
   public children: Array<ComponentFactory> = [];
@@ -19,29 +18,22 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
     return name.replace(/( \/ )+|(__)/g, '');
   }
 
-  private extractStyleFromComponent(): {[key: string]: any} {
-    return ComponentFactory.isComponent(this.node!!) && this.name.indexOf('/') > -1 ?
-      Style.extractFromComponent(this.node!!, this.child!!, this.main.foundation.compose()) : {};
-  }
-
-  compose(): Dictionary {
+  compose(foundation: any): Dictionary {
     const result: Dictionary = {
       [this.composedName]: {}
     };
-
-    const style = this.extractStyleFromComponent();
-
+    const style = this.extractStyleFromComponent(foundation);
     if (this.children.length) {
       this.children.forEach(c => {
         const root = result[this.composedName];
         // @ts-ignore
-        result[this.composedName] = {...root, ...c.compose()};
-
+        result[this.composedName] = {...root, ...c.compose(foundation), ...style};
       });
     } else {
       result[this.composedName] = {...this.extractStyle(), ...style};
     }
-    return result;
+
+    return this.inheritanceComponent(result, foundation);
   }
 
   addChildren(name: string, instance: ComponentFactory) {
@@ -56,5 +48,36 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
         this.addChildren(n.name, instance);
       });
     }
+  }
+
+  private extractStyleFromComponent(foundation: any): {[key: string]: any} {
+    return ComponentFactory.isComponent(this.node!!) && this.name.indexOf('/') > -1 ?
+      ComponentFactory.extractFromComponent(
+        this.node!!,
+        foundation,
+        this.main.config.components.inheritance
+      ) : {};
+  }
+
+  private inheritanceComponent(item: Dictionary, foundation: any): Dictionary {
+    const mapped = ComponentFactory.mapFoundation(foundation);
+    Object.keys(item).forEach((e: string) => this.componentForEach(item[e], mapped));
+    return item;
+  }
+
+  private componentForEach(item: any, foundation: any) {
+    Object.keys(item).forEach((key: string) => {
+      const current = item[key];
+      if (current.value) {
+        current.value = this.findByValue(current.value, foundation);
+      } else if (Object.keys(current).length === 0) {
+        item[ComponentFactory.formatName(key)] = {
+          value: `{${key}}`
+        };
+        delete item[key];
+      } else {
+        this.componentForEach(current, foundation);
+      }
+    });
   }
 }

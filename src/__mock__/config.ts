@@ -1,4 +1,5 @@
 export const CONFIG_MOCK_DEFAULT = {
+  "outDir": "./dist",
   "foundation": {
     "name": "Foundation",
     "children": {
@@ -42,6 +43,17 @@ export const CONFIG_MOCK_DEFAULT = {
     }
   },
   "components": {
-    "name": "Components"
+    "name": "Components",
+    "inheritance": {
+      "fills":  "color",
+      "lineHeightPx": "lineHeight",
+      "letterSpacing": "letterSpacing",
+      "fontSize": "fontSize",
+      "fontFamily": "fontFamily",
+      "fontWeight": "fontWeight",
+      "textCase": "textTransform",
+      "cornerRadius": "rounded",
+      "background": "background"
+    }
   }
 };
