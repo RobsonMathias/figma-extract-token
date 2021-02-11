@@ -73,6 +73,10 @@ describe('InitializerFactory', () => {
             xs: {value: '1px'}
           }
         },
+        shadow: {
+          lg: {value: '0px 28px 64px rgba(20, 20, 20, 0.16)'},
+          xs: {value: '0px 2px 5px rgba(199, 206, 201, 0.16)'}
+        },
         color: {
           primary: {
             100: {value: 'rgba(188, 159, 231, 1)'},

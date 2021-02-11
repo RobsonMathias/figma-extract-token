@@ -40,6 +40,9 @@ export const CONFIG_MOCK_DEFAULT = {
         "extract": {
           "strokeWeight": "width"
         }
+      },
+      "Shadow": {
+        "extract": ["dropShadow"]
       }
     }
   },

@@ -40,6 +40,9 @@
         "extract": {
           "strokeWeight": "width"
         }
+      },
+      "Shadow": {
+        "extract": ["dropShadow"]
       }
     }
   },

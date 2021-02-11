@@ -9,6 +9,16 @@ export interface Document {
 
 export interface Color {r: number, g: number, b: number, a: number}
 
+export interface offset {x: number, y: number}
+
+export interface Effect {
+  blendMode: string;
+  color: Color;
+  type: string;
+  offset: offset;
+  radius: number;
+}
+
 export interface Paint {
   blendMode: string;
   color: Color;
@@ -28,7 +38,7 @@ export interface Node {
   blendMode: string;
   clipsContent: boolean;
   constraints: {vertical: string, horizontal: string}
-  effects: any[]
+  effects: Effect[]
   fills: Paint[]
   characters: string;
   strokeAlign: string;

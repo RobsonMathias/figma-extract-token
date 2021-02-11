@@ -1,4 +1,4 @@
-import {Child, Node, Paint} from '../interfaces';
+import {Child, Color, Effect, Node, Paint} from '../interfaces';
 
 export class Style {
 
@@ -15,11 +15,16 @@ export class Style {
 
   static fills(colors: Paint[]): string {
     const [fill] = colors;
-    return `rgba(${this.calcRGB(fill.color.r)}, ${this.calcRGB(fill.color.g)}, ${this.calcRGB(fill.color.b)}, ${fill.color.a})`
+    return this.color(fill.color);
+  }
+
+  static color(color: Color): string {
+    const a = color.a < 1 && color.a > 0 ? color.a.toFixed(2) : color.a;
+    return `rgba(${this.calcRGB(color.r)}, ${this.calcRGB(color.g)}, ${this.calcRGB(color.b)}, ${a})`
   }
 
   static valueByUnit(value: string|number, unit: string): string {
-    return value ? `${value}${this.getUnit(unit)}`: '';
+    return value !== undefined ? `${value}${this.getUnit(unit)}`: '';
   }
 
   static textTransform(value: string) {
@@ -27,6 +32,14 @@ export class Style {
       'UPPER': 'uppercase'
     };
     return data[value] || value;
+  }
+
+  static effectShadow(effects: Effect[]): string{
+    const [effect] = effects;
+    const x = this.valueByUnit(effect.offset.x, 'PIXELS');
+    const y = this.valueByUnit(effect.offset.y, 'PIXELS');
+    const radius = this.valueByUnit(effect.radius, 'PIXELS');
+    return `${x} ${y} ${radius} ${this.color(effect.color)}`;
   }
 
   static extract(attribute: string, node: Node): string {
@@ -52,6 +65,8 @@ export class Style {
         return this.valueByUnit(node.absoluteBoundingBox[attribute], 'PIXELS');
       case 'opacity':
         return node[attribute].toFixed(3).toString();
+      case 'dropShadow':
+        return this.effectShadow(node.effects);
       case 'characters':
         return node[attribute];
       default:
