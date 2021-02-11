@@ -28,10 +28,7 @@ export class InitializerFactory {
   compose(): Dictionary {
     const {foundation} = this.foundation.compose();
     const {components} = this.components.compose(foundation);
-    return {
-      ...(foundation as any),
-      ...(components as any)
-    };
+    return {foundation, components};
   }
 
 }

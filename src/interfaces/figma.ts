@@ -32,6 +32,7 @@ export interface Node {
   fills: Paint[]
   characters: string;
   strokeAlign: string;
+  opacity: number;
   strokeWeight: number;
   cornerRadius: number;
   strokes: any[]

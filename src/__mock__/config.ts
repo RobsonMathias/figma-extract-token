@@ -1,6 +1,6 @@
 export const CONFIG_MOCK_DEFAULT = {
-  "dictionaryConfig": "./dictionaryConfig.json",
-  "outDir": "./dist",
+  "dictionaryConfig": "./dictionary.config.json",
+  "outDir": "./build",
   "foundation": {
     "name": "Foundation",
     "children": {
@@ -22,16 +22,8 @@ export const CONFIG_MOCK_DEFAULT = {
         "extract": ["fills"]
       },
       "Spacing": {
-        "children": {
-          "Padding": {
-            "extract": ["width"],
-            "variant": ["left", "top", "right", "bottom"]
-          },
-          "Margin": {
-            "extract": ["width"],
-            "variant": ["left", "top", "right", "bottom"]
-          }
-        }
+        "extract": ["width"],
+        "variant": ["left", "top", "right", "bottom"]
       },
       "Shape": {
         "extract": {
@@ -40,6 +32,14 @@ export const CONFIG_MOCK_DEFAULT = {
       },
       "Motion": {
         "extract": ["characters"]
+      },
+      "Opacity": {
+        "extract": ["opacity"]
+      },
+      "Stroke": {
+        "extract": {
+          "strokeWeight": "width"
+        }
       }
     }
   },
@@ -57,4 +57,4 @@ export const CONFIG_MOCK_DEFAULT = {
       "background": "background"
     }
   }
-};
+}

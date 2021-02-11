@@ -9,12 +9,15 @@ const factory = new InitializerFactory();
 
 describe('composeFoundation', () => {
   it('should compose foundation successfully', async () => {
-    const spyCompose = spyOn(factory, 'compose').and.returnValue({mocked: true});
+    const foundation = {mocked: true},
+          components = {mocked: true};
+    const spyCompose = spyOn(factory, 'compose').and.returnValue({foundation, components});
     factory.config = {outDir: 'DIR'} as any;
     const result = await composeToken.task({factory});
     expect(composeToken.title).toEqual('Composing tokens');
     expect(spyCompose).toHaveBeenCalled();
-    expect(result).toEqual({mocked: true});
-    expect(generateToken).toHaveBeenCalledWith('DIR', {mocked: true});
+    expect(result).toEqual({foundation, components});
+    expect(generateToken).toHaveBeenCalledWith('DIR', {mocked: true}, '_foundation');
+    expect(generateToken).toHaveBeenCalledWith('DIR', {mocked: true}, 'components');
   });
 });

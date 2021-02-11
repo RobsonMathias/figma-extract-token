@@ -32,6 +32,14 @@
       },
       "Motion": {
         "extract": ["characters"]
+      },
+      "Opacity": {
+        "extract": ["opacity"]
+      },
+      "Stroke": {
+        "extract": {
+          "strokeWeight": "width"
+        }
       }
     }
   },

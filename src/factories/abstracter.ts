@@ -37,6 +37,10 @@ export abstract class Abstracter<C> extends Style {
     return name.indexOf('!!') === 0;
   }
 
+  static composeInheritanceName(name: string) {
+    return name.replace(/(\.value})|(})$/g, '.value}');
+  }
+
   fetchNode(name: string, where: Node[] = []): Node|undefined {
     return where.find(node => name === node.name);
   }
@@ -74,6 +78,24 @@ export abstract class Abstracter<C> extends Style {
       }
     });
     return result;
+  }
+
+  findChildByValue(name: string, object: any): object {
+    let current: {[key: string]: any} = {};
+    Object.keys(object).forEach(o => {
+      if (o.indexOf(name) === 0 && o !== name) {
+        const key = o.split('.');
+        current[key[key.length - 1] as string] = {
+          value: `{${o}.value}`
+        };
+      }
+    });
+    if (!Object.keys(current).length) {
+      current = {
+        value: `{${name}.value}`
+      };
+    }
+    return current;
   }
 
   private extractionToObject(): Dictionary {

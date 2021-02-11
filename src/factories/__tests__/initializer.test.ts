@@ -18,101 +18,118 @@ describe('InitializerFactory', () => {
     factory.json = FIGMA_MOCK_DEFAULT as any;
     factory.config = CONFIG_MOCK_DEFAULT as Config;
     expect(factory.compose()).toEqual({
-      shape: {
-        rounded: {
-          md: {
-            value: '10px'
-          },
-          xs: {
-            value: '4px'
-          }
-        }
-      },
-      motion: {
-        time: {
-          "2s": {
-            "value": "0.2s"
-          },
-          "4s": {
-            "value": "0.4s"
-          }
-        }
-      },
-      spacing: {
-        margin: {
-          1: {
-            "value": "4px"
-          },
-          2: {
-            "value": "8px"
-          },
-          3: {
-            "value": "16px"
+      foundation: {
+        shape: {
+          rounded: {
+            md: {
+              value: '10px'
+            },
+            xs: {
+              value: '4px'
+            }
           }
         },
-        padding: {
-          1: {
-            "value": "4px"
-          },
-          2: {
-            "value": "8px"
-          },
-          3: {
-            "value": "16px"
+        motion: {
+          time: {
+            "2s": {
+              "value": "0.2s"
+            },
+            "4s": {
+              "value": "0.4s"
+            }
           }
-        }
-      },
-      color: {
-        primary: {
-          100: {value: 'rgba(188, 159, 231, 1)'},
-          main: {value: 'rgba(98, 0, 238, 1)'}
         },
-        secondary: {
-          100: {value: 'rgba(218, 152, 199, 1)'},
-          main: {value: 'rgba(169, 66, 140, 1)'}
-        }
-      },
-      typography: {
-        base: {
-          fontFamily: {value: 'Roboto'},
-          fontWeight: {value: 500},
-          fontSize: {value: '14px'},
-          lineHeight: {value: '16px'},
-        },
-        button: {
-          lineHeight: {value: '{typography.base.lineHeight.value}'},
-          fontSize: {value: '{typography.base.fontSize.value}'},
-          fontWeight: {value: '{typography.base.fontWeight.value}'},
-          textTransform: {value: 'uppercase'},
-        }
-      },
-      button: {
-        primaryFullMediumDefault: {
-          background: {
-            value: '{color.primary.100.value}'
+        spacing: {
+          margin: {
+            1: {
+              "value": "4px"
+            },
+            2: {
+              "value": "8px"
+            },
+            3: {
+              "value": "16px"
+            }
           },
           padding: {
-            value: '{spacing.padding.3.value}',
-          },
-          color: {
-            value: '{color.primary.100.value}',
-          },
-          typography: {
-            value: '{typography.button.value}',
-          },
-          rounded: {
-            value: '{shape.rounded.md.value}',
+            1: {
+              "value": "4px"
+            },
+            2: {
+              "value": "8px"
+            },
+            3: {
+              "value": "16px"
+            }
           }
         },
-        primaryFullMediumHover: {
-          background: {
-            value: '{color.primary.main.value}',
+        opacity: {
+          '3xl': {value: '0.950'},
+          'xs': {value: '0.050'}
+        },
+        stroke: {
+          width: {
+            lg: {value: '8px'},
+            xs: {value: '1px'}
+          }
+        },
+        color: {
+          primary: {
+            100: {value: 'rgba(188, 159, 231, 1)'},
+            main: {value: 'rgba(98, 0, 238, 1)'}
           },
-          rounded: {
-            value: '{shape.rounded.md.value}',
+          secondary: {
+            100: {value: 'rgba(218, 152, 199, 1)'},
+            main: {value: 'rgba(169, 66, 140, 1)'}
+          }
+        },
+        typography: {
+          base: {
+            fontFamily: {value: 'Roboto'},
+            fontWeight: {value: 500},
+            fontSize: {value: '14px'},
+            lineHeight: {value: '16px'},
           },
-          color: {
-            value: '{color.primary.main.value}'
+          button: {
+            lineHeight: {value: '{typography.base.lineHeight.value}'},
+            fontSize: {value: '{typography.base.fontSize.value}'},
+            fontWeight: {value: '{typography.base.fontWeight.value}'},
+            textTransform: {value: 'uppercase'},
+          }
+        },
+      },
+      components: {
+        button: {
+          primaryFullMediumDefault: {
+            background: {
+              value: '{color.primary.100.value}'
+            },
+            padding: {
+              value: '{spacing.padding.3.value}',
+            },
+            color: {
+              value: '{color.primary.100.value}',
+            },
+            typography: {
+              lineHeight: {value: '{typography.button.lineHeight.value}'},
+              fontSize: {value: '{typography.button.fontSize.value}'},
+              fontWeight: {value: '{typography.button.fontWeight.value}'},
+              textTransform: {value: '{typography.button.textTransform.value}'},
+            },
+            rounded: {
+              value: '{shape.rounded.md.value}',
+            }
+          },
+          primaryFullMediumHover: {
+            background: {
+              value: '{color.primary.main.value}',
+            },
+            rounded: {
+              value: '{shape.rounded.md.value}',
+            },
+            color: {
+              value: '{color.primary.main.value}'
+            }
           }
         }
       }

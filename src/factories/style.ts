@@ -46,9 +46,12 @@ export class Style {
       case 'textCase':
         return this.textTransform(style[attribute]);
       case 'cornerRadius':
+      case 'strokeWeight':
         return this.valueByUnit(node[attribute], 'PIXELS');
       case 'width':
         return this.valueByUnit(node.absoluteBoundingBox[attribute], 'PIXELS');
+      case 'opacity':
+        return node[attribute].toFixed(3).toString();
       case 'characters':
         return node[attribute];
       default:
