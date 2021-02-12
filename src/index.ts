@@ -4,8 +4,8 @@ import {InitializerFactory} from './factories';
 const factory = new InitializerFactory();
 
 const Extraction = {
-  run: (StyleDictionary?: any) => {
-    tasks.run({factory, StyleDictionary}).catch((err: any) => {
+  run: () => {
+    tasks.run({factory}).catch((err: any) => {
       console.error(err);
     });
   }

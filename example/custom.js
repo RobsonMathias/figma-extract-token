@@ -73,9 +73,4 @@ StyleDictionary.registerTransformGroup({
   ],
 })
 
-// APPLY THE CONFIGURATION
-// IMPORTANT: the registration of custom transforms
-// needs to be done _before_ applying the configuration
-StyleDictionaryExtended = StyleDictionary.extend(`${__dirname}/config.json`)
-
-Extraction.run(StyleDictionaryExtended)
+Extraction.run()
