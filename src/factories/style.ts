@@ -42,6 +42,15 @@ export class Style {
     return `${x} ${y} ${radius} ${this.color(effect.color)}`;
   }
 
+  static radiusValue(node: Node): string {
+    if (node.rectangleCornerRadii) {
+      const [top, right, bottom, left] = node.rectangleCornerRadii;
+      return `${this.valueByUnit(top, 'PIXELS')} ${this.valueByUnit(right, 'PIXELS')} ${this.valueByUnit(bottom, 'PIXELS')} ${this.valueByUnit(left, 'PIXELS')}`
+    } else {
+      return this.valueByUnit(node.cornerRadius, 'PIXELS')
+    }
+  }
+
   static extract(attribute: string, node: Node): string {
     const style = node.style || {};
     switch (attribute) {
@@ -59,6 +68,7 @@ export class Style {
       case 'textCase':
         return this.textTransform(style[attribute]);
       case 'cornerRadius':
+        return this.radiusValue(node);
       case 'strokeWeight':
         return this.valueByUnit(node[attribute], 'PIXELS');
       case 'width':
@@ -112,8 +122,8 @@ export class Style {
     return result;
   }
 
-  static formatName(name: string): string {
-    const value = name.match(/\w+/g) || [name];
-    return value[value.length - 2] || value[value.length -1];
+  static formatName(value: string): string {
+    const [name] = value.match(/\w+/g) || [value];
+    return name;
   }
 }

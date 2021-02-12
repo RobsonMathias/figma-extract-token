@@ -46,4 +46,5 @@ export interface Node {
   strokeWeight: number;
   cornerRadius: number;
   strokes: any[]
+  rectangleCornerRadii: number[]
 }

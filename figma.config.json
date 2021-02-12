@@ -1,5 +1,5 @@
 {
-  "dictionaryConfig": "./dictionary.config.json",
+  "dictionaryConfig": "./example/config.json",
   "outDir": "./build",
   "foundation": {
     "name": "Foundation",
@@ -30,6 +30,11 @@
           "cornerRadius": "borderRadius"
         }
       },
+      "Radius": {
+        "extract": {
+          "cornerRadius": "borderRadius"
+        }
+      },
       "Motion": {
         "extract": ["characters"]
       },
@@ -56,7 +61,7 @@
       "fontFamily": "fontFamily",
       "fontWeight": "fontWeight",
       "textCase": "textTransform",
-      "cornerRadius": "rounded",
+      "cornerRadius": "radius",
       "background": "background"
     }
   }

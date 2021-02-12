@@ -19,14 +19,15 @@ describe('InitializerFactory', () => {
     factory.config = CONFIG_MOCK_DEFAULT as Config;
     expect(factory.compose()).toEqual({
       foundation: {
-        shape: {
-          rounded: {
-            md: {
-              value: '10px'
-            },
-            xs: {
-              value: '4px'
-            }
+        radius: {
+          pill: {
+            value: "500px 500px 500px 500px"
+          },
+          round: {
+            value: "50px 50px 50px 50px"
+          },
+          xl: {
+            value: "10px 10px 10px 10px"
           }
         },
         motion: {
@@ -94,11 +95,27 @@ describe('InitializerFactory', () => {
             fontSize: {value: '14px'},
             lineHeight: {value: '16px'},
           },
-          button: {
-            lineHeight: {value: '{typography.base.lineHeight.value}'},
-            fontSize: {value: '{typography.base.fontSize.value}'},
-            fontWeight: {value: '{typography.base.fontWeight.value}'},
-            textTransform: {value: 'uppercase'},
+          text: {
+            fontSize: {
+              value: "{typography.base.fontSize.value}"
+            },
+            fontWeight: {
+              value: "{typography.base.fontWeight.value}"
+            },
+            lineHeight: {
+              value: "{typography.base.lineHeight.value}"
+            },
+            textTransform: {
+              value: "uppercase"
+            }
+          },
+          small: {
+            button: {
+              lineHeight: {value: '16px'},
+              fontSize: {value: '14px'},
+              fontWeight: {value: 500},
+              textTransform: {value: 'uppercase'},
+            }
           }
         },
       },
@@ -108,28 +125,28 @@ describe('InitializerFactory', () => {
             background: {
               value: '{color.primary.100.value}'
             },
-            padding: {
+            spacing: {
               value: '{spacing.padding.3.value}',
             },
             color: {
               value: '{color.primary.100.value}',
             },
             typography: {
-              lineHeight: {value: '{typography.button.lineHeight.value}'},
-              fontSize: {value: '{typography.button.fontSize.value}'},
-              fontWeight: {value: '{typography.button.fontWeight.value}'},
-              textTransform: {value: '{typography.button.textTransform.value}'},
+              lineHeight: {value: '{typography.small.button.lineHeight.value}'},
+              fontSize: {value: '{typography.small.button.fontSize.value}'},
+              fontWeight: {value: '{typography.small.button.fontWeight.value}'},
+              textTransform: {value: '{typography.small.button.textTransform.value}'},
             },
-            rounded: {
-              value: '{shape.rounded.md.value}',
+            radius: {
+              value: '{radius.xl.value}',
             }
           },
           primaryFullMediumHover: {
             background: {
               value: '{color.primary.main.value}',
             },
-            rounded: {
-              value: '{shape.rounded.md.value}',
+            radius: {
+              value: '{radius.xl.value}',
             },
             color: {
               value: '{color.primary.main.value}'

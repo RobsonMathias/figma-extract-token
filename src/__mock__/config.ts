@@ -30,6 +30,11 @@ export const CONFIG_MOCK_DEFAULT = {
           "cornerRadius": "borderRadius"
         }
       },
+      "Radius": {
+        "extract": {
+          "cornerRadius": "borderRadius"
+        }
+      },
       "Motion": {
         "extract": ["characters"]
       },
@@ -56,8 +61,9 @@ export const CONFIG_MOCK_DEFAULT = {
       "fontFamily": "fontFamily",
       "fontWeight": "fontWeight",
       "textCase": "textTransform",
-      "cornerRadius": "rounded",
+      "cornerRadius": "radius",
       "background": "background"
     }
   }
 }
+
