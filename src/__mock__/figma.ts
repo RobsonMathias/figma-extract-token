@@ -1096,7 +1096,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "cornerRadius": 4
           }, {
             "id": "3:5",
-            "name": "color.primary.100",
+            "name": "@deprecated color.primary.100",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": 1361, "y": -108, "width": 68, "height": 68},
@@ -1346,9 +1346,9 @@ export const FIGMA_MOCK_DEFAULT = {
         "type": "FRAME",
         "blendMode": "PASS_THROUGH",
         "children": [{
-          "id": "100:12",
-          "name": "Primary / Full / Medium / Default",
-          "type": "FRAME",
+          "id": "149:0",
+          "name": "@deprecated Primary / Full / Medium / Default",
+          "type": "COMPONENT",
           "blendMode": "PASS_THROUGH",
           "children": [{
             "id": "5:3",
@@ -1784,7 +1784,14 @@ export const FIGMA_MOCK_DEFAULT = {
       "prototypeDevice": {"type": "NONE", "rotation": "NONE"}
     }]
   },
-  "components": {"100:0": {"key": "aba2eff50264b838c916098e5a7e930cef780be9", "name": "Arrow-10", "description": ""}},
+  "components": {
+    "100:0": {"key": "aba2eff50264b838c916098e5a7e930cef780be9", "name": "Arrow-10", "description": ""},
+    "149:0": {
+      "key": "aea670da294417fef31a64d4d486f75aa2a1ae35",
+      "name": "@deprecated Primary / Full / Medium / Default",
+      "description": "Use on headers or actions with less priority"
+    }
+  },
   "schemaVersion": 0,
   "styles": {
     "1:37": {
@@ -1880,8 +1887,8 @@ export const FIGMA_MOCK_DEFAULT = {
     }
   },
   "name": "POC Design Tokens Extract",
-  "lastModified": "2021-02-12T18:10:57Z",
-  "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/4723c0ed-a8ac-4a0c-9ace-a2dcb1308457?Expires=1613952000&Signature=e~d6jiMQ5uj0GfOl9g0FHMK8Fkl6doj6V12K4GB3NT4s2S8GAmqR-4HpgNw-XXauvQs~f9l1cEPZDDzrMtP23AcOaDceBqmJizj1z6bio7cYFhjBoLtgbIieLCRYYUaF3BJd~TiDrGV3DM4J4EsBrfnI9nmbL3ilYhluaxqw2mOOzmDCE3WSjDwfkbDsxe18fZKPYw-fDw2ru98LufipEX5Y2JXctt84sI1USLZDlIq4UNr4iWsIbFKlk4XHssEvk51XUjQ8fmdwS01CPsR7SRBAT1beJzYEcG2l0C9GFPCF8dxb7NAWb77UEspU6b-i0okVw-njOu~G3CwMkicD1A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  "version": "676143786",
+  "lastModified": "2021-02-13T20:34:36Z",
+  "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/beaf5016-75da-4323-aea9-f89d7acd5dd7?Expires=1613952000&Signature=WzMwDcasDZpdgh1O0uGABEdeE8E4h92gFJKB3SpQIu549tv-xnyYohFq9XDvOJBhH6g3TaW5zhH4lg~yO7eJPKNq-5x88FS3MQPeeSqXDrfE-WgrtuOZBIebNpML-zwUQD7IGrBRViNgF1VsRWunM56CGq0LNT69qHKnIqHq9ggt0RbO8SO0it45dX4qSihxyi9uNqnsrx2lAdrRuB~4RVXuzAWXugaoAUWhSv9AuBBlBCnx9Uc9tCEm9Rt1OVwtKEr-izOTVafyNWKuvAHoi68zJXJn76eOsBjEScDjJca6PlENTP2UyXdZa49yckdyQLXbK6UrPjr9uL0MBUE69w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  "version": "677126762",
   "role": "owner"
 }

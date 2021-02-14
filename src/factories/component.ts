@@ -23,6 +23,7 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
       [this.composedName]: {}
     };
     const style = this.extractStyleFromComponent(foundation);
+
     if (this.children.length) {
       this.children.forEach(c => {
         const root = result[this.composedName];
@@ -30,7 +31,10 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
         result[this.composedName] = {...root, ...c.compose(foundation), ...style};
       });
     } else {
-      result[this.composedName] = {...this.extractStyle(), ...style};
+      result[this.composedName] = {
+        ...this.extractStyle(),
+        ...style,
+      };
     }
 
     return this.inheritanceComponent(result, foundation);
@@ -42,21 +46,39 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
   }
 
   call(): void {
+    this.setComment();
     if (ComponentFactory.isAGroup(this.node as Node)) {
       (this.node?.children || []).forEach(n => {
         const instance = new ComponentFactory(n.name, this.child!!, n, this.main);
         this.addChildren(n.name, instance);
+        this.inheritanceComposition();
       });
     }
   }
 
+  private inheritanceComposition() {
+    const instance = this.children[this.children.length - 1];
+    if (this.comment) instance.comment = this.comment;
+    if (this.deprecated) instance.deprecated = this.deprecated;
+  }
+
   private extractStyleFromComponent(foundation: any): {[key: string]: any} {
-    return ComponentFactory.isComponent(this.node!!) && this.name.indexOf('/') > -1 ?
-      ComponentFactory.extractFromComponent(
+    if (ComponentFactory.isComponent(this.node!!) && this.name.indexOf('/') > -1) {
+      const extracted = ComponentFactory.extractFromComponent(
         this.node!!,
         foundation,
         this.main.config.components.inheritance
-      ) : {};
+      );
+      Object.keys(extracted).forEach(k => {
+        extracted[k] = {
+          ...extracted[k],
+          ...this.setInfo(),
+        }
+      });
+      return extracted;
+    } else {
+      return {};
+    }
   }
 
   private inheritanceComponent(item: Dictionary, foundation: any): Dictionary {
@@ -78,4 +100,5 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
       }
     });
   }
+
 }

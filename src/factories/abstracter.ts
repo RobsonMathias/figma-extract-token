@@ -4,10 +4,12 @@ import {Style} from './style';
 
 export abstract class Abstracter<C> extends Style {
   public main: InitializerFactory;
-  public name: string = '';
+  public _name: string = '';
   public node: Node|undefined;
   public child: Child|undefined;
   public children: Array<C> = [];
+  public comment: string = '';
+  public deprecated = false;
 
   protected constructor(main: InitializerFactory) {
     super();
@@ -20,6 +22,7 @@ export abstract class Abstracter<C> extends Style {
 
   static isAGroup(node: Node): boolean {
     switch (node.type) {
+      case 'COMPONENT':
       case 'CANVAS':
       case 'FRAME':
       case 'GROUP':
@@ -30,7 +33,7 @@ export abstract class Abstracter<C> extends Style {
   }
 
   static isComponent(node: Node): boolean {
-    return node.type === 'FRAME';
+    return node.type === 'FRAME' || node.type === 'COMPONENT';
   }
 
   static ignoreElement(name: string): boolean {
@@ -39,6 +42,26 @@ export abstract class Abstracter<C> extends Style {
 
   static composeInheritanceName(name: string) {
     return name.replace(/(\.value})|(})$/g, '.value}');
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  set name(value: string) {
+    if (value.indexOf('@deprecated') > -1) {
+      this.deprecated = true;
+      this._name = value.replace(/@deprecated\s?/g, '');
+    } else {
+      this._name = value;
+    }
+  }
+
+  setComment() {
+    const component = this.main.json.components[this.node!!.id];
+    if (component) {
+      this.comment = component.description;
+    }
   }
 
   fetchNode(name: string, where: Node[] = []): Node|undefined {
@@ -57,14 +80,20 @@ export abstract class Abstracter<C> extends Style {
 
   extractStyle(): Dictionary {
     const extract = this.extractionToObject();
-    const styled: Dictionary = {};
+    let styled: Dictionary = {};
+
     Object.keys(extract).forEach((e: string) => {
       if (Object.keys(extract).length > 1) {
         styled[extract[e] as string] = {
-          ['value']: Style.extract(e, this.node!!)
+          ['value']: Style.extract(e, this.node!!),
+          ...this.setInfo(),
         };
       } else {
-        styled['value'] = Style.extract(e, this.node!!);
+        styled = {
+          ...styled,
+          value: Style.extract(e, this.node!!),
+          ...this.setInfo(),
+        };
       }
     });
     return styled;
@@ -83,19 +112,35 @@ export abstract class Abstracter<C> extends Style {
   findChildByValue(name: string, object: any): object {
     let current: {[key: string]: any} = {};
     Object.keys(object).forEach(o => {
+      const key = o.split('.');
       if (o.indexOf(name) === 0 && o !== name) {
-        const key = o.split('.');
         current[key[key.length - 1] as string] = {
-          value: `{${o}.value}`
+          value: `{${o}.value}`,
+          ...this.setInfo(),
+        };
+      } else if (o.indexOf(name) === 0) {
+        current = {
+          value: `{${o}.value}`,
+          ...this.setInfo(),
         };
       }
     });
     if (!Object.keys(current).length) {
       current = {
-        value: `{${name}.value}`
+        value: `{${name}.value}`,
+        ...this.setInfo(),
       };
     }
     return current;
+  }
+
+  setInfo(): object {
+    const deprecated = this.deprecated ? {deprecated: this.deprecated} : {};
+    const comment = this.comment ? {comment: this.comment} : {};
+    return {
+      ...deprecated,
+      ...comment
+    }
   }
 
   private extractionToObject(): Dictionary {

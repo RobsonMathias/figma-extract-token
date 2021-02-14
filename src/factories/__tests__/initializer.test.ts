@@ -17,140 +17,184 @@ describe('InitializerFactory', () => {
     const factory = new InitializerFactory();
     factory.json = FIGMA_MOCK_DEFAULT as any;
     factory.config = CONFIG_MOCK_DEFAULT as Config;
-    expect(factory.compose()).toEqual({
-      foundation: {
-        radius: {
-          pill: {
-            value: "500px 500px 500px 500px"
+    const composed = factory.compose();
+    expect(composed.foundation).toBeTruthy();
+    expect(composed.components).toBeTruthy();
+  });
+
+  it('should compose foundation successfully', () => {
+    const factory = new InitializerFactory();
+    factory.json = FIGMA_MOCK_DEFAULT as any;
+    factory.config = CONFIG_MOCK_DEFAULT as Config;
+    const composed = factory.compose();
+    expect(composed.foundation).toEqual({
+      radius: {
+        pill: {
+          value: "500px 500px 500px 500px"
+        },
+        round: {
+          value: "50px 50px 50px 50px"
+        },
+        xl: {
+          value: "10px 10px 10px 10px"
+        }
+      },
+      motion: {
+        time: {
+          "2s": {
+            "value": "0.2s"
           },
-          round: {
-            value: "50px 50px 50px 50px"
+          "4s": {
+            "value": "0.4s"
+          }
+        }
+      },
+      spacing: {
+        margin: {
+          1: {
+            "value": "4px"
           },
-          xl: {
-            value: "10px 10px 10px 10px"
-          }
-        },
-        motion: {
-          time: {
-            "2s": {
-              "value": "0.2s"
-            },
-            "4s": {
-              "value": "0.4s"
-            }
-          }
-        },
-        spacing: {
-          margin: {
-            1: {
-              "value": "4px"
-            },
-            2: {
-              "value": "8px"
-            },
-            3: {
-              "value": "16px"
-            }
+          2: {
+            "value": "8px"
           },
-          padding: {
-            1: {
-              "value": "4px"
-            },
-            2: {
-              "value": "8px"
-            },
-            3: {
-              "value": "16px"
-            }
+          3: {
+            "value": "16px"
           }
         },
-        opacity: {
-          '3xl': {value: '0.950'},
-          'xs': {value: '0.050'}
-        },
-        stroke: {
-          width: {
-            lg: {value: '8px'},
-            xs: {value: '1px'}
-          }
-        },
-        shadow: {
-          lg: {value: '0px 28px 64px rgba(20, 20, 20, 0.16)'},
-          xs: {value: '0px 2px 5px rgba(199, 206, 201, 0.16)'}
-        },
-        color: {
-          primary: {
-            100: {value: 'rgba(188, 159, 231, 1)'},
-            main: {value: 'rgba(98, 0, 238, 1)'}
+        padding: {
+          1: {
+            "value": "4px"
           },
-          secondary: {
-            100: {value: 'rgba(218, 152, 199, 1)'},
-            main: {value: 'rgba(169, 66, 140, 1)'}
+          2: {
+            "value": "8px"
+          },
+          3: {
+            "value": "16px"
+          }
+        }
+      },
+      opacity: {
+        '3xl': {value: '0.950'},
+        'xs': {value: '0.050'}
+      },
+      stroke: {
+        width: {
+          lg: {value: '8px'},
+          xs: {value: '1px'}
+        }
+      },
+      shadow: {
+        lg: {value: '0px 28px 64px rgba(20, 20, 20, 0.16)'},
+        xs: {value: '0px 2px 5px rgba(199, 206, 201, 0.16)'}
+      },
+      color: {
+        primary: {
+          100: {
+            value: 'rgba(188, 159, 231, 1)',
+            deprecated: true,
+          },
+          main: {
+            value: 'rgba(98, 0, 238, 1)'
           }
         },
-        typography: {
-          base: {
-            fontFamily: {value: 'Roboto'},
-            fontWeight: {value: 500},
-            fontSize: {value: '14px'},
+        secondary: {
+          100: {value: 'rgba(218, 152, 199, 1)'},
+          main: {value: 'rgba(169, 66, 140, 1)'}
+        }
+      },
+      typography: {
+        base: {
+          fontFamily: {value: 'Roboto'},
+          fontWeight: {value: 500},
+          fontSize: {value: '14px'},
+          lineHeight: {value: '16px'},
+        },
+        text: {
+          fontSize: {
+            value: "{typography.base.fontSize.value}"
+          },
+          fontWeight: {
+            value: "{typography.base.fontWeight.value}"
+          },
+          lineHeight: {
+            value: "{typography.base.lineHeight.value}"
+          },
+          textTransform: {
+            value: "uppercase"
+          }
+        },
+        small: {
+          button: {
             lineHeight: {value: '16px'},
+            fontSize: {value: '14px'},
+            fontWeight: {value: 500},
+            textTransform: {value: 'uppercase'},
+          }
+        }
+      },
+    })
+  });
+
+  it('should compose components successfully', () => {
+    const factory = new InitializerFactory();
+    factory.json = FIGMA_MOCK_DEFAULT as any;
+    factory.config = CONFIG_MOCK_DEFAULT as Config;
+    const composed = factory.compose();
+    expect(composed.components).toEqual({
+      button: {
+        primaryFullMediumDefault: {
+          background: {
+            value: '{color.primary.100.value}',
+            comment: "Use on headers or actions with less priority",
+            deprecated: true,
           },
-          text: {
+          spacing: {
+            value: '{spacing.padding.3.value}',
+            comment: "Use on headers or actions with less priority",
+            deprecated: true,
+          },
+          color: {
+            value: '{color.primary.100.value}',
+            comment: "Use on headers or actions with less priority",
+            deprecated: true,
+          },
+          typography: {
+            lineHeight: {
+              value: '{typography.small.button.lineHeight.value}',
+              comment: "Use on headers or actions with less priority",
+              deprecated: true,
+            },
             fontSize: {
-              value: "{typography.base.fontSize.value}"
+              value: '{typography.small.button.fontSize.value}',
+              comment: "Use on headers or actions with less priority",
+              deprecated: true,
             },
             fontWeight: {
-              value: "{typography.base.fontWeight.value}"
-            },
-            lineHeight: {
-              value: "{typography.base.lineHeight.value}"
+              value: '{typography.small.button.fontWeight.value}',
+              comment: "Use on headers or actions with less priority",
+              deprecated: true,
             },
             textTransform: {
-              value: "uppercase"
-            }
+              value: '{typography.small.button.textTransform.value}',
+              comment: "Use on headers or actions with less priority",
+              deprecated: true,
+            },
           },
-          small: {
-            button: {
-              lineHeight: {value: '16px'},
-              fontSize: {value: '14px'},
-              fontWeight: {value: 500},
-              textTransform: {value: 'uppercase'},
-            }
+          radius: {
+            value: '{radius.xl.value}',
+            comment: "Use on headers or actions with less priority",
+            deprecated: true,
           }
         },
-      },
-      components: {
-        button: {
-          primaryFullMediumDefault: {
-            background: {
-              value: '{color.primary.100.value}'
-            },
-            spacing: {
-              value: '{spacing.padding.3.value}',
-            },
-            color: {
-              value: '{color.primary.100.value}',
-            },
-            typography: {
-              lineHeight: {value: '{typography.small.button.lineHeight.value}'},
-              fontSize: {value: '{typography.small.button.fontSize.value}'},
-              fontWeight: {value: '{typography.small.button.fontWeight.value}'},
-              textTransform: {value: '{typography.small.button.textTransform.value}'},
-            },
-            radius: {
-              value: '{radius.xl.value}',
-            }
+        primaryFullMediumHover: {
+          background: {
+            value: '{color.primary.main.value}',
           },
-          primaryFullMediumHover: {
-            background: {
-              value: '{color.primary.main.value}',
-            },
-            radius: {
-              value: '{radius.xl.value}',
-            },
-            color: {
-              value: '{color.primary.main.value}'
-            }
+          radius: {
+            value: '{radius.xl.value}',
+          },
+          color: {
+            value: '{color.primary.main.value}'
           }
         }
       }

@@ -2,11 +2,11 @@
   "source": ["build/**/*.json"],
   "platforms": {
     "web": {
-      "transformGroup": "js",
+      "transformGroup": "typescript",
       "buildPath": "build/web/",
       "files": [{
         "destination": "index.ts",
-        "format": "javascript/es6"
+        "format": "typescript"
       }]
     },
     "mobile": {
@@ -14,7 +14,7 @@
       "buildPath": "build/mobile/",
       "files": [{
         "destination": "index.ts",
-        "format": "javascript/es6"
+        "format": "typescript"
       }]
     }
   }

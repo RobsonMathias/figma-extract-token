@@ -1,0 +1,12 @@
+<% _.each(allProperties, function(prop) {
+    var output = "";
+    var deprecated = prop.deprecated ? "@deprecated " : " ";
+    var comment = prop.comment || "";
+    var value = typeof prop.value === 'string' ? '"' + prop.value + '"' : prop.value;
+    output += "export const " + prop.name + " = " + value + ";";
+    if(prop.comment || prop.deprecated) {
+    output += " //" + deprecated + comment;
+    }
+    output += "\n";
+    print(output);
+}); %>

@@ -32,7 +32,9 @@ export class FoundationFactory extends Abstracter<FoundationFactory> {
 
       });
     } else {
-      result[this.composedName] = {...this.extractStyle()};
+      result[this.composedName] = {
+        ...this.extractStyle()
+      };
     }
     return this.inheritanceFoundation(result);
   }
@@ -44,6 +46,7 @@ export class FoundationFactory extends Abstracter<FoundationFactory> {
   }
 
   call(): void {
+    this.setComment();
     if (FoundationFactory.isAGroup(this.node as Node)) {
       (this.node?.children || []).forEach(n => {
         //@ts-ignore
@@ -64,11 +67,13 @@ export class FoundationFactory extends Abstracter<FoundationFactory> {
             Object.keys((item[t] as any)[p]).forEach((v) => {
               const baseValue = (item as any)[t]['base'][v],
                 currentValue = (item as any)[t][p][v];
-              if (
-                (baseValue && currentValue) &&
-                currentValue.value === baseValue.value
-              ) {
-                currentValue.value = `{${t}.base.${v}.value}`;
+              if (typeof currentValue === 'object') {
+                if (
+                  (baseValue && currentValue) &&
+                  currentValue.value === baseValue.value
+                ) {
+                  currentValue.value = `{${t}.base.${v}.value}`;
+                }
               }
             });
           }

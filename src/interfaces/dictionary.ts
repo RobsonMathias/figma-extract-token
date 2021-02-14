@@ -1,3 +1,3 @@
 export interface Dictionary {
-  [key: string]: Dictionary|string;
+  [key: string]: Dictionary|any;
 }
