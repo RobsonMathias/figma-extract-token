@@ -1,5 +1,5 @@
 import {InitializerFactory} from './initializer';
-import {Child, Dictionary, Node} from '../interfaces';
+import {Child, ChildType, Dictionary, Node} from '../interfaces';
 import {Style} from './style';
 
 export abstract class Abstracter<C> extends Style {
@@ -109,19 +109,19 @@ export abstract class Abstracter<C> extends Style {
     return result;
   }
 
-  findChildByValue(name: string, object: any): object {
+  findChildByValue(name: string, object: any, type?: ChildType): object {
     let current: {[key: string]: any} = {};
     Object.keys(object).forEach(o => {
       const key = o.split('.');
       if (o.indexOf(name) === 0 && o !== name) {
         current[key[key.length - 1] as string] = {
           value: `{${o}.value}`,
-          ...this.setInfo(),
+          ...this.setInfo(type),
         };
       } else if (o.indexOf(name) === 0) {
         current = {
           value: `{${o}.value}`,
-          ...this.setInfo(),
+          ...this.setInfo(type),
         };
       }
     });
@@ -134,12 +134,13 @@ export abstract class Abstracter<C> extends Style {
     return current;
   }
 
-  setInfo(): object {
+  setInfo(type = 'foundation'): object {
     const deprecated = this.deprecated ? {deprecated: this.deprecated} : {};
     const comment = this.comment ? {comment: this.comment} : {};
     return {
       ...deprecated,
-      ...comment
+      ...comment,
+      type
     }
   }
 

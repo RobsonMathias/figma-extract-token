@@ -1,6 +1,5 @@
 import {composeArgs, requiredArgs} from '../helpers';
-import {fetchApi} from '../services';
-import {InitializerFactory} from '../factories';
+import {fetchApi, fetchVersion} from '../services';
 import {TasksConfig} from '../interfaces';
 
 export const fetchApiTask = {
@@ -14,7 +13,9 @@ export const fetchApiTask = {
         rej(required.map(r => r.error));
       } else {
         const json = await fetchApi(args.token, args.document);
+        const version = await fetchVersion(args.token, args.document);
         factory.json = json.data;
+        factory.version.call(version.data);
         res(json)
       }
     })

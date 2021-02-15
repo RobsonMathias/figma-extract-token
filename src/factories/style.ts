@@ -90,7 +90,7 @@ export class Style {
       Object.keys(_foundation).forEach((i: string) => {
         if (i === 'value') {
           map[name] = _foundation[i];
-        } else {
+        } else if(typeof _foundation[i] === 'object') {
           const newName = `${name}.${i}`;
           extract(newName, _foundation[i]);
         }

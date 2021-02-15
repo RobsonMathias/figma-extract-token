@@ -1,7 +1,7 @@
 import {InitializerFactory} from '../../factories';
-const generateToken = jest.fn();
+const generateJson = jest.fn();
 jest.mock('../../factories');
-jest.mock('../../services', () => ({generateToken}));
+jest.mock('../../services', () => ({generateJson}));
 
 import {composeToken} from '../compose-token';
 
@@ -17,7 +17,7 @@ describe('composeFoundation', () => {
     expect(composeToken.title).toEqual('Composing tokens');
     expect(spyCompose).toHaveBeenCalled();
     expect(result).toEqual({foundation, components});
-    expect(generateToken).toHaveBeenCalledWith('DIR', {mocked: true}, '_foundation');
-    expect(generateToken).toHaveBeenCalledWith('DIR', {mocked: true}, 'components');
+    expect(generateJson).toHaveBeenCalledWith('DIR', {mocked: true}, '_foundation.tokens');
+    expect(generateJson).toHaveBeenCalledWith('DIR', {mocked: true}, 'components.tokens');
   });
 });

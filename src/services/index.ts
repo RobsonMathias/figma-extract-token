@@ -1,3 +1,3 @@
 export * from './fetch-api';
 export * from './load-config';
-export * from './generate-token';
+export * from './generate-json';

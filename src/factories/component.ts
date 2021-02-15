@@ -72,7 +72,7 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
       Object.keys(extracted).forEach(k => {
         extracted[k] = {
           ...extracted[k],
-          ...this.setInfo(),
+          ...this.setInfo('components'),
         }
       });
       return extracted;
@@ -91,9 +91,11 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
     Object.keys(item).forEach((key: string) => {
       const current = item[key];
       if (current.value) {
-        current.value =  ComponentFactory.composeInheritanceName(this.findByValue(current.value, foundation));
+        current.value =  ComponentFactory.composeInheritanceName(
+          this.findByValue(current.value, foundation)
+        );
       } else if (Object.keys(current).length === 0) {
-        item[ComponentFactory.formatName(key)] = this.findChildByValue(key, foundation);
+        item[ComponentFactory.formatName(key)] = this.findChildByValue(key, foundation, 'components');
         delete item[key];
       } else if(Object.keys(current).length > 1) {
         this.componentForEach(current, foundation);

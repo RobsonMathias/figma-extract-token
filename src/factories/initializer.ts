@@ -1,6 +1,7 @@
 import {Response} from '../services';
 import {Config, Dictionary} from '../interfaces';
 import {ComposerFactory} from './composer';
+import {VersionFactory} from './version';
 
 export class InitializerFactory {
   //@ts-ignore
@@ -9,10 +10,12 @@ export class InitializerFactory {
   private _config: Config;
   public foundation: ComposerFactory;
   public components: ComposerFactory;
+  public version: VersionFactory;
 
   constructor() {
     this.foundation =  new ComposerFactory(this);
     this.components =  new ComposerFactory(this);
+    this.version =  new VersionFactory(this);
   }
 
   get config(): Config {

@@ -1,5 +1,7 @@
 {
-  "source": ["build/**/*.json"],
+  "source": [
+    "build/**/*.tokens.json"
+  ],
   "platforms": {
     "web": {
       "transformGroup": "typescript",
