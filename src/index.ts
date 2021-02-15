@@ -7,7 +7,7 @@ const versioning = new Versioning();
 
 const Extraction = {
   run: () => {
-    tasks.run({factory, versioning}).catch((err: any) => {
+    tasks.run({factory}).catch((err: any) => {
       console.error(err);
     });
   }
