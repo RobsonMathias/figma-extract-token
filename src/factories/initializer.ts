@@ -11,6 +11,7 @@ export class InitializerFactory {
   public foundation: ComposerFactory;
   public components: ComposerFactory;
   public version: VersionFactory;
+  public composed: any;
 
   constructor() {
     this.foundation =  new ComposerFactory(this);
@@ -31,7 +32,8 @@ export class InitializerFactory {
   compose(): Dictionary {
     const {foundation} = this.foundation.compose();
     const {components} = this.components.compose(foundation);
-    return {foundation, components};
+    this.composed = {foundation, components};
+    return this.composed;
   }
 
 }

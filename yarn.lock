@@ -1348,6 +1348,11 @@
   dependencies:
     jest-diff "^24.3.0"
 
+"@types/json-diff@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@types/json-diff/-/json-diff-0.5.1.tgz#fcbff418cef55b324a8598f67bfd4e52949f2164"
+  integrity sha512-/XJ7OPKk+fJCJF93CCA1l2EojXd+dNysFNJN42igT96Xur0tmGQx6U+tm5boDVvgwU7M8ADaWaRuJZx98v2a9g==
+
 "@types/json-schema@^7.0.3":
   version "7.0.7"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.7.tgz#98a993516c859eb0d5c4c8f098317a9ea68db9ad"
@@ -2596,6 +2601,13 @@ clean-stack@^2.0.0:
   resolved "https://registry.yarnpkg.com/clean-stack/-/clean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
   integrity sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==
 
+cli-color@~0.1.6:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/cli-color/-/cli-color-0.1.7.tgz#adc3200fa471cc211b0da7f566b71e98b9d67347"
+  integrity sha1-rcMgD6RxzCEbDaf1ZrcemLnWc0c=
+  dependencies:
+    es5-ext "0.8.x"
+
 cli-cursor@^2.0.0, cli-cursor@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-2.1.0.tgz#b35dac376479facc3e94747d41d0d0f5238ffcb5"
@@ -3093,6 +3105,13 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
+difflib@~0.2.1:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/difflib/-/difflib-0.2.4.tgz#b5e30361a6db023176d562892db85940a718f47e"
+  integrity sha1-teMDYabbAjF21WKJLbhZQKcY9H4=
+  dependencies:
+    heap ">= 0.2.0"
+
 dir-glob@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/dir-glob/-/dir-glob-3.0.1.tgz#56dbf73d992a4a93ba1584f4534063fd2e41717f"
@@ -3183,6 +3202,13 @@ domutils@^1.5.1:
   dependencies:
     dom-serializer "0"
     domelementtype "1"
+
+dreamopt@~0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/dreamopt/-/dreamopt-0.6.0.tgz#d813ccdac8d39d8ad526775514a13dda664d6b4b"
+  integrity sha1-2BPM2sjTnYrVJndVFKE92mZNa0s=
+  dependencies:
+    wordwrap ">=0.0.2"
 
 dtrace-provider@~0.8:
   version "0.8.8"
@@ -3339,6 +3365,11 @@ es-to-primitive@^1.2.1:
     is-callable "^1.1.4"
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
+
+es5-ext@0.8.x:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.8.2.tgz#aba8d9e1943a895ac96837a62a39b3f55ecd94ab"
+  integrity sha1-q6jZ4ZQ6iVrJaDemKjmz9V7NlKs=
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -4337,6 +4368,11 @@ hash.js@^1.0.0, hash.js@^1.0.3:
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
+
+"heap@>= 0.2.0":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/heap/-/heap-0.2.6.tgz#087e1f10b046932fc8594dd9e6d378afc9d1e5ac"
+  integrity sha1-CH4fELBGky/IWU3Z5tN4r8nR5aw=
 
 hmac-drbg@^1.0.1:
   version "1.0.1"
@@ -5415,6 +5451,15 @@ jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
   integrity sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=
+
+json-diff@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/json-diff/-/json-diff-0.5.4.tgz#7bc8198c441756632aab66c7d9189d365a7a035a"
+  integrity sha512-q5Xmx9QXNOzOzIlMoYtLrLiu4Jl/Ce2bn0CNcv54PhyH89CI4GWlGVDye8ei2Ijt9R3U+vsWPsXpLUNob8bs8Q==
+  dependencies:
+    cli-color "~0.1.6"
+    difflib "~0.2.1"
+    dreamopt "~0.6.0"
 
 json-parse-better-errors@^1.0.1, json-parse-better-errors@^1.0.2:
   version "1.0.2"
@@ -8814,6 +8859,11 @@ word-wrap@~1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
   integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
+
+wordwrap@>=0.0.2:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
+  integrity sha1-J1hIEIkUVqQXHI0CJkQa3pDLyus=
 
 worker-farm@^1.7.0:
   version "1.7.0"

@@ -1,6 +1,6 @@
 {
   "name": "figma-extract-token",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Compose and Extract design tokens from Figma",
   "author": "robson.mathias<robsond.mathias@gmail.com>",
   "main": "./dist/index.js",
@@ -10,7 +10,7 @@
   "preferGlobal": true,
   "scripts": {
     "extract": "node dist/index.js --token=156841-f37d0ebd-15eb-4710-a885-7abe41b7a812 --document=PodXJDGjtBAdWiWtbrNtIP --config=figma.config.json",
-    "custom:extract": "node example/custom.js --token=156841-f37d0ebd-15eb-4710-a885-7abe41b7a812 --document=PodXJDGjtBAdWiWtbrNtIP --config=figma.config.json",
+    "custom:extract": "node example/custom.js --token=156841-f37d0ebd-15eb-4710-a885-7abe41b7a812 --document=PodXJDGjtBAdWiWtbrNtIP --config=figma.config.json --versioning=true",
     "build": "run-s build:**",
     "build:clean": "rimraf dist",
     "build:source": "tsc",
@@ -21,15 +21,18 @@
     "precommit": "lint-staged"
   },
   "peerDependencies": {
+    "lodash": "^4.17.20",
     "style-dictionary": "^2.10.2",
-    "lodash": "^4.17.20"
+    "json-diff": "^0.5.4"
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
     "@types/execa": "^2.0.0",
+    "@types/json-diff": "^0.5.1",
     "@types/listr": "^0.14.2",
     "axios": "^0.21.1",
     "execa": "^5.0.0",
+    "json-diff": "^0.5.4",
     "listr": "^0.14.3",
     "lodash": "^4.17.20",
     "style-dictionary": "^2.10.2"

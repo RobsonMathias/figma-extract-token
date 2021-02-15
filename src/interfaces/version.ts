@@ -16,3 +16,10 @@ export interface User {
   imgUrl: string;
   id: string;
 }
+
+export type VersionComposedType = 'minor' | 'major' | 'current';
+
+export interface VersionComposed {
+  type: VersionComposedType;
+  data: any;
+}
