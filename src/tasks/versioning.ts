@@ -15,7 +15,6 @@ export const versioning = {
       const files = await Promise.all(
         config.source.map((f: string) => loadMultipleConfig(f, /.tokens.json/g))
       );
-      console.log(files);
       const mapped = files.reduce((prev: unknown = [], current: unknown) => {
         //@ts-ignore
         return [...prev, ...current]
