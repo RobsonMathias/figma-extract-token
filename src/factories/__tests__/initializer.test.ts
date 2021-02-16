@@ -129,7 +129,7 @@ describe('InitializerFactory', () => {
           }
         },
         secondary: {
-          100: {
+          0: {
             value: 'rgba(218, 152, 199, 1)',
             type: 'foundation',
           },

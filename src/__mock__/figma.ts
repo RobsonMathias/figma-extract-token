@@ -1026,7 +1026,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "cornerRadius": 4
           }, {
             "id": "3:8",
-            "name": "color.secondary.100",
+            "name": "0",
             "type": "RECTANGLE",
             "blendMode": "PASS_THROUGH",
             "absoluteBoundingBox": {"x": 375, "y": -108, "width": 68, "height": 68},
@@ -1207,7 +1207,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "name": "font.size.xs",
             "type": "TEXT",
             "blendMode": "PASS_THROUGH",
-            "absoluteBoundingBox": {"x": 2171, "y": 57, "width": 16, "height": 48},
+            "absoluteBoundingBox": {"x": 2269, "y": 57, "width": 16, "height": 48},
             "constraints": {"vertical": "SCALE", "horizontal": "CENTER"},
             "layoutAlign": "INHERIT",
             "layoutGrow": 0,
@@ -1239,7 +1239,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "name": "font.size.md",
             "type": "TEXT",
             "blendMode": "PASS_THROUGH",
-            "absoluteBoundingBox": {"x": 2259, "y": 57, "width": 25, "height": 48},
+            "absoluteBoundingBox": {"x": 2357, "y": 57, "width": 25, "height": 48},
             "constraints": {"vertical": "SCALE", "horizontal": "CENTER"},
             "layoutAlign": "INHERIT",
             "layoutGrow": 0,
@@ -1271,7 +1271,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "name": "font.size.10xl",
             "type": "TEXT",
             "blendMode": "PASS_THROUGH",
-            "absoluteBoundingBox": {"x": 2356, "y": 57, "width": 169, "height": 48},
+            "absoluteBoundingBox": {"x": 2454, "y": 57, "width": 169, "height": 48},
             "constraints": {"vertical": "SCALE", "horizontal": "CENTER"},
             "layoutAlign": "INHERIT",
             "layoutGrow": 0,
@@ -1299,7 +1299,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "characterStyleOverrides": [],
             "styleOverrideTable": {}
           }],
-          "absoluteBoundingBox": {"x": 1931, "y": -183, "width": 834, "height": 462},
+          "absoluteBoundingBox": {"x": 2029, "y": -183, "width": 834, "height": 462},
           "constraints": {"vertical": "TOP", "horizontal": "LEFT"},
           "clipsContent": true,
           "background": [{"blendMode": "NORMAL", "type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 1}}],
@@ -1352,7 +1352,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "name": "font.family.base",
             "type": "TEXT",
             "blendMode": "PASS_THROUGH",
-            "absoluteBoundingBox": {"x": 3029, "y": 57, "width": 710, "height": 96},
+            "absoluteBoundingBox": {"x": 3127, "y": 57, "width": 710, "height": 96},
             "constraints": {"vertical": "TOP", "horizontal": "LEFT"},
             "layoutAlign": "INHERIT",
             "layoutGrow": 0,
@@ -1384,7 +1384,7 @@ export const FIGMA_MOCK_DEFAULT = {
             "characterStyleOverrides": [],
             "styleOverrideTable": {}
           }],
-          "absoluteBoundingBox": {"x": 2789, "y": -183, "width": 857, "height": 462},
+          "absoluteBoundingBox": {"x": 2887, "y": -183, "width": 857, "height": 462},
           "constraints": {"vertical": "TOP", "horizontal": "LEFT"},
           "clipsContent": true,
           "background": [{"blendMode": "NORMAL", "type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 1}}],
@@ -1524,7 +1524,7 @@ export const FIGMA_MOCK_DEFAULT = {
           "paddingBottom": 240,
           "effects": []
         }],
-        "absoluteBoundingBox": {"x": 1289, "y": -183, "width": 2357, "height": 462},
+        "absoluteBoundingBox": {"x": 1289, "y": -183, "width": 2455, "height": 462},
         "constraints": {"vertical": "TOP", "horizontal": "LEFT"},
         "clipsContent": false,
         "background": [],
@@ -2281,8 +2281,8 @@ export const FIGMA_MOCK_DEFAULT = {
     "100:10": {"key": "e23daad5d5596b946eb8750058df8fdfb19cb282", "name": "90", "styleType": "FILL", "description": ""}
   },
   "name": "POC Design Tokens Extract",
-  "lastModified": "2021-02-16T12:06:27Z",
-  "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/22b2e884-4e41-488b-b914-d59e89e2e385?Expires=1614556800&Signature=hBeXfPqRdEy-52vihdmuGNkeYFCbFgvpGLM7fSA3u7Ta9M~y8ZnpViegyq-FlzVtNHWZSWQq44KKLBAexqtjsC4csqTORNYrkQGJ-2hmPgV3U0GNJg6EJn5QApcz80u9PPvs7oBJxVNet2KqZ9wOs0QQJMFu6Iztcrd2SAviH2kEzOlCargRQBblv3J~N-LuUChqqSvF-ekzyrUCukpKa-CHhTOIZs8pQ0qn1EVSmCoIr3EUrwqQCtjkFQA1bw4VwcO9x8YfOZjNPxJEQ4rdipmV-onlJWl-FakwdbOesIQFmVygBmO3ax-YQM83hDthMUrqvQSnKyc0lZ0NVNZXKQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  "version": "680659419",
+  "lastModified": "2021-02-16T12:54:48Z",
+  "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/8dee846c-70e7-4c11-b290-b2bc86d0752a?Expires=1614556800&Signature=UdBetepft2e7mvOX5Y4~uSxkK7qXYqt5Jvux-Uza32b5Ntknh234ZfGe55ftJ9IxJ~Zqwrf1-U7wm3Kh7WLdy3uFtK7581EwsWc2IGkLozTnrQ5Z~yYUDox3X4U9Tv4Qy8yGnb~FeSec0JvO3wmzaAcyiaedvy~rvkG2IS4bK1QDZfgu9Uhj3OOjQ5MzpgRBffzdwBQfMIWqvz9-GmMLFaDFGxPTTWOdayOwVBz6pvxNe8hYVuXVzzBFHde6Q0NE4kB~dw8WaSpYO5IBVKFvq5JB5jVYy6op4YWEsIhySuSGTXXjwv07~Tu40KcabzREF4P0NeJaE5OGpUTTX9T8iQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  "version": "680752103",
   "role": "editor"
 }
