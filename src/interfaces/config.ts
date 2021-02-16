@@ -21,6 +21,7 @@ export interface Canvas {
   name: string;
   children?: Children;
   inheritance?: Inheritance;
+  matchInheritance?: Inheritance;
 }
 
 export interface Config {

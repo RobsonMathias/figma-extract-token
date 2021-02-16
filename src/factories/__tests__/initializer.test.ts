@@ -139,62 +139,64 @@ describe('InitializerFactory', () => {
           }
         }
       },
-      typography: {
-        base: {
-          fontFamily: {
-            value: 'Roboto',
+      font: {
+        weight: {
+          lg: {
+            value: 700,
             type: 'foundation',
           },
-          fontWeight: {
+          md: {
             value: 500,
             type: 'foundation',
           },
-          fontSize: {
-            value: '14px',
+          xs: {
+            value: 300,
             type: 'foundation',
           },
-          lineHeight: {
+        },
+        size: {
+          '10xl': {
+            value: '72px',
+            type: 'foundation',
+          },
+          md: {
             value: '16px',
             type: 'foundation',
           },
+          xs: {
+            value: '12px',
+            type: 'foundation',
+          },
         },
-        text: {
-          fontSize: {
-            value: "{typography.base.fontSize.value}",
+        family: {
+          base: {
+            value: 'Roboto',
             type: 'foundation',
           },
-          fontWeight: {
-            value: "{typography.base.fontWeight.value}",
-            type: 'foundation',
-          },
-          lineHeight: {
-            value: "{typography.base.lineHeight.value}",
-            type: 'foundation',
-          },
-          textTransform: {
-            value: "uppercase",
-            type: 'foundation',
-          }
         },
-        small: {
-          button: {
-            lineHeight: {
-              value: '16px',
-              type: 'foundation',
-            },
-            fontSize: {
-              value: '14px',
-              type: 'foundation',
-            },
-            fontWeight: {
-              value: 500,
-              type: 'foundation',
-            },
-            textTransform: {
-              value: 'uppercase',
-              type: 'foundation',
-            },
-          }
+      },
+      letterSpacing: {
+        xs: {
+          value: '0.3',
+          type: 'foundation',
+        },
+        md: {
+          value:  '1.5',
+          type: 'foundation',
+        }
+      },
+      lineHeight: {
+        '8xl': {
+          value: '96px',
+          type: 'foundation',
+        },
+        sm: {
+          value:  '20px',
+          type: 'foundation',
+        },
+        xs: {
+          value:  '16px',
+          type: 'foundation',
         }
       },
     })
@@ -226,27 +228,33 @@ describe('InitializerFactory', () => {
             deprecated: true,
             type: 'components',
           },
-          typography: {
+          font: {
             lineHeight: {
-              value: '{typography.small.button.lineHeight.value}',
+              value: '{lineHeight.xs.value}',
               comment: "Use on headers or actions with less priority",
               deprecated: true,
               type: 'components',
             },
-            fontSize: {
-              value: '{typography.small.button.fontSize.value}',
+            letterSpacing: {
+              value: '{letterSpacing.md.value}',
               comment: "Use on headers or actions with less priority",
               deprecated: true,
               type: 'components',
             },
-            fontWeight: {
-              value: '{typography.small.button.fontWeight.value}',
+            size: {
+              value: '{font.size.md.value}',
               comment: "Use on headers or actions with less priority",
               deprecated: true,
               type: 'components',
             },
-            textTransform: {
-              value: '{typography.small.button.textTransform.value}',
+            weight: {
+              value: '{font.weight.md.value}',
+              comment: "Use on headers or actions with less priority",
+              deprecated: true,
+              type: 'components',
+            },
+            family: {
+              value: '{font.family.base.value}',
               comment: "Use on headers or actions with less priority",
               deprecated: true,
               type: 'components',
@@ -262,14 +270,17 @@ describe('InitializerFactory', () => {
         primaryFullMediumHover: {
           background: {
             value: '{color.primary.main.value}',
+            comment: "Other component",
             type: 'components',
           },
           radius: {
             value: '{radius.xl.value}',
+            comment: "Other component",
             type: 'components',
           },
           color: {
             value: '{color.primary.main.value}',
+            comment: "Other component",
             type: 'components',
           }
         }

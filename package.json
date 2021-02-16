@@ -1,6 +1,6 @@
 {
   "name": "figma-extract-token",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Compose and Extract design tokens from Figma",
   "author": "robson.mathias<robsond.mathias@gmail.com>",
   "main": "./dist/index.js",
@@ -21,15 +21,16 @@
     "precommit": "lint-staged"
   },
   "peerDependencies": {
+    "json-diff": "^0.5.4",
     "lodash": "^4.17.20",
-    "style-dictionary": "^2.10.2",
-    "json-diff": "^0.5.4"
+    "style-dictionary": "^2.10.2"
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
     "@types/execa": "^2.0.0",
     "@types/json-diff": "^0.5.1",
     "@types/listr": "^0.14.2",
+    "@types/lodash": "^4.14.168",
     "axios": "^0.21.1",
     "execa": "^5.0.0",
     "json-diff": "^0.5.4",

@@ -23,11 +23,9 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
       [this.composedName]: {}
     };
     const style = this.extractStyleFromComponent(foundation);
-
     if (this.children.length) {
       this.children.forEach(c => {
         const root = result[this.composedName];
-        // @ts-ignore
         result[this.composedName] = {...root, ...c.compose(foundation), ...style};
       });
     } else {
@@ -36,7 +34,6 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
         ...style,
       };
     }
-
     return this.inheritanceComponent(result, foundation);
   }
 
@@ -51,19 +48,19 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
       (this.node?.children || []).forEach(n => {
         const instance = new ComponentFactory(n.name, this.child!!, n, this.main);
         this.addChildren(n.name, instance);
-        this.inheritanceComposition();
+        this.inheritanceInfo();
       });
     }
   }
 
-  private inheritanceComposition() {
-    const instance = this.children[this.children.length - 1];
+  private inheritanceInfo() {
+    const instance = this.children[this.children.length - 1] || this;
     if (this.comment) instance.comment = this.comment;
     if (this.deprecated) instance.deprecated = this.deprecated;
   }
 
   private extractStyleFromComponent(foundation: any): {[key: string]: any} {
-    if (ComponentFactory.isComponent(this.node!!) && this.name.indexOf('/') > -1) {
+    if (ComponentFactory.isComponent(this.node!!) && this.name.indexOf('.') === -1) {
       const extracted = ComponentFactory.extractFromComponent(
         this.node!!,
         foundation,
@@ -91,9 +88,12 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
     Object.keys(item).forEach((key: string) => {
       const current = item[key];
       if (current.value) {
-        current.value =  ComponentFactory.composeInheritanceName(
-          this.findByValue(current.value, foundation)
-        );
+        const value = this.findByValue(current.value, foundation, key);
+        if (value.indexOf('{') === 0) {
+          current.value =  ComponentFactory.composeInheritanceName(value);
+        } else {
+          delete item[key];
+        }
       } else if (Object.keys(current).length === 0) {
         item[ComponentFactory.formatName(key)] = this.findChildByValue(key, foundation, 'components');
         delete item[key];

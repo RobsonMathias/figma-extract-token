@@ -33,6 +33,10 @@ export abstract class Abstracter<C> extends Style {
   }
 
   static isComponent(node: Node): boolean {
+    return node.type !== 'FRAME' && node.type !== 'GROUP' && node.type !== 'CANVAS';
+  }
+
+  static isComponentGroup(node: Node): boolean {
     return node.type === 'FRAME' || node.type === 'COMPONENT';
   }
 
@@ -40,8 +44,8 @@ export abstract class Abstracter<C> extends Style {
     return name.indexOf('!!') === 0;
   }
 
-  static composeInheritanceName(name: string) {
-    return name.replace(/(\.value})|(})$/g, '.value}');
+  static composeInheritanceName(name: any) {
+    return typeof name === 'string' ? name.replace(/(\.value})|(})$/g, '.value}') : name;
   }
 
   get name(): string {
@@ -99,10 +103,11 @@ export abstract class Abstracter<C> extends Style {
     return styled;
   }
 
-  findByValue(value: string, object: any): string {
+  findByValue(value: string, object: any, name: string): string {
     let result = value;
+    const matchName = (this.main.config.components.matchInheritance!![name]) || name;
     Object.keys(object).forEach((i: string) => {
-      if (object[i] === value) {
+      if (object[i] === value && i.indexOf(matchName) >= 0) {
         result = `{${i}}`;
       }
     });

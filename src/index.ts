@@ -1,9 +1,7 @@
 import {tasks} from './tasks';
 import {InitializerFactory} from './factories';
-import {Versioning} from './versioning';
 
 const factory = new InitializerFactory();
-const versioning = new Versioning();
 
 const Extraction = {
   run: () => {

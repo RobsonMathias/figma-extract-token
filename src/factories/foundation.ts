@@ -1,6 +1,7 @@
 import {Abstracter} from './abstracter';
 import {InitializerFactory} from './initializer';
 import {Child, Dictionary, Node} from '../interfaces';
+import {camelcase} from '../helpers';
 
 export class FoundationFactory extends Abstracter<FoundationFactory> {
   public children: Array<FoundationFactory> = [];
@@ -16,8 +17,8 @@ export class FoundationFactory extends Abstracter<FoundationFactory> {
   }
 
   get composedName(): string {
-    return this.name.toLowerCase()
-      .replace(/(.*\.)|(__)/g, '');
+    return camelcase(this.name.toLowerCase()
+      .replace(/(.*\.)|(__)/g, ''));
   }
 
   compose(): Dictionary {

@@ -13,9 +13,9 @@ export class Style {
     return Math.round(value*255);
   }
 
-  static fills(colors: Paint[]): string {
+  static fills(colors: Paint[] = []): string|undefined {
     const [fill] = colors;
-    return this.color(fill.color);
+    return fill ? this.color(fill.color): undefined;
   }
 
   static color(color: Color): string {
@@ -32,6 +32,10 @@ export class Style {
       'UPPER': 'uppercase'
     };
     return data[value] || value;
+  }
+
+  static toFixed(value: number, fraction: number = 3): string {
+    return value ? value.toFixed(fraction).toString() : `${value}`;
   }
 
   static effectShadow(effects: Effect[]): string{
@@ -51,7 +55,7 @@ export class Style {
     }
   }
 
-  static extract(attribute: string, node: Node): string {
+  static extract(attribute: string, node: Node): string|undefined {
     const style = node.style || {};
     switch (attribute) {
       case 'fills':
@@ -60,6 +64,7 @@ export class Style {
       case 'lineHeightPx':
         return this.valueByUnit(style.lineHeightPx, style.lineHeightUnit);
       case 'letterSpacing':
+        return this.toFixed(style[attribute] as any, 1);
       case 'fontSize':
         return this.valueByUnit(style[attribute], 'PIXELS');
       case 'fontFamily':
@@ -115,8 +120,9 @@ export class Style {
     let result: {[key: string]: any} = {};
     attributes.forEach(a => {
       const value = this.extract(a, node);
-      if (value) {
-        result[inheritance[a] || a] = {value};
+      if (value && value !== 'undefined') {
+        const name = typeof inheritance[a] === 'object' ? inheritance[a].convert : inheritance[a];
+        result[name || a] = {value};
       }
     });
     return result;

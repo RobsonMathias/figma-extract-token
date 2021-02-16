@@ -50,7 +50,7 @@ export class ComposerFactory extends Abstracter<FoundationFactory|ComponentFacto
       });
       if (autoRef) {
         (this.node.children || []).forEach(n => {
-          if (ComposerFactory.isComponent(n)) {
+          if (ComposerFactory.isComponentGroup(n)) {
             // @ts-ignore
             const child = this.child ? this.child[n.name] : this.child!!;
             const instance = new ComponentFactory(n.name, child, n, this.main);

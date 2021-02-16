@@ -4,18 +4,25 @@
   "foundation": {
     "name": "Foundation",
     "children": {
-      "Typography": {
-        "__base__": {
-          "fontFamily": "fontFamily",
-          "lineHeightPx": "lineHeight",
-          "fontSize": "fontSize",
-          "fontWeight": "fontWeight"
-        },
+      "Font": {
+        "children": {
+          "Size": {
+            "extract": ["fontSize"]
+          },
+          "Family": {
+            "extract": ["fontFamily"]
+          },
+          "Weight": {
+            "extract": ["fontWeight"]
+          }
+        }
+      },
+      "Letter Spacing": {
+        "extract": ["letterSpacing"]
+      },
+      "Line Height": {
         "extract": {
-          "lineHeightPx": "lineHeight",
-          "fontSize": "fontSize",
-          "fontWeight": "fontWeight",
-          "textCase": "textTransform"
+          "lineHeightPx": "lineHeight"
         }
       },
       "Color": {
@@ -53,13 +60,25 @@
   },
   "components": {
     "name": "Components",
+    "matchInheritance": {
+      "background": "color"
+    },
     "inheritance": {
       "fills":  "color",
       "lineHeightPx": "lineHeight",
       "letterSpacing": "letterSpacing",
-      "fontSize": "fontSize",
-      "fontFamily": "fontFamily",
-      "fontWeight": "fontWeight",
+      "fontSize": {
+        "convert": "size",
+        "ref": "font.size"
+      },
+      "fontFamily": {
+        "convert": "family",
+        "ref": "font.family"
+      },
+      "fontWeight": {
+        "convert": "weight",
+        "ref": "font.weight"
+      },
       "textCase": "textTransform",
       "cornerRadius": "radius",
       "background": "background"
