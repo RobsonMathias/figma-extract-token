@@ -7,6 +7,7 @@ export async function loadMultipleConfig(path: string, match: RegExp): Promise<a
       const directoryPath = path.replace(/\*+\/?(.*)/g, '');
       fs.readdir(`${process.cwd()}/${directoryPath}`, async (err, files) => {
         if (err) {
+          res([]);
           return console.log('Unable to scan directory: ' + err);
         }
         const filtered = files.filter(f => f.match(match));
