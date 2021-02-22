@@ -1,1 +1,4 @@
 theme: jekyll-theme-cayman
+show_downloads: true
+title: Figma Extract Token | Compose and Extract design tokens from Figma
+description: A simple way to extract token's component from Figma and convert to your front-end project.

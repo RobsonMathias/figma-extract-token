@@ -87,21 +87,21 @@ More examples of dictionary configuration check it out on [Style dictionary Conf
   "outDir": "./build",
   "dictionaryConfig": "./dictionary.config.json",
   "foundation": {
-    "name": "Foundation", // Should be the same name with figma Page
+    "name": "Foundation",
     "children": {
-      "Letter Spacing": {  // Should be the same name with figma Canvas or group
-        "extract": ["letterSpacing"]  /// Element property that should be extracted
+      "Letter Spacing": {
+        "extract": ["letterSpacing"]
       },
       "Color": {
-        "extract": ["fills"] // Element property that should be extracted
+        "extract": ["fills"]
       }
     }
   },
   "components": {
-    "name": "Components", // All components created on this page on Figma, it will be auto-detected and extracted
+    "name": "Components",
     "inheritance": {
-      "fills":  "color", // Translated name for composition output example: ($buttonColor  insted of $buttonFills)
-      "letterSpacing": "letterSpacing" // output example: ($buttonColor  insted of $buttonFills)
+      "fills":  "color",
+      "letterSpacing": "letterSpacing"
     }
   }
 }
