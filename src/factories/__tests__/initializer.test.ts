@@ -29,18 +29,18 @@ describe('InitializerFactory', () => {
     const composed = factory.compose();
     const spacing = {
       1: {
-        "value": "4px",
+        "value": "6px",
         type: 'foundation',
       },
       2: {
-        "value": "8px",
+        "value": "12px",
         type: 'foundation',
       },
       3: {
-        "value": "16px",
+        "value": "24px",
         type: 'foundation',
       }
-    }
+    };
     expect(composed.foundation).toEqual({
       radius: {
         pill: {
@@ -159,6 +159,10 @@ describe('InitializerFactory', () => {
             value: '72px',
             type: 'foundation',
           },
+          'lg': {
+            value: '32px',
+            type: 'foundation',
+          },
           md: {
             value: '16px',
             type: 'foundation',
@@ -209,85 +213,101 @@ describe('InitializerFactory', () => {
     const composed = factory.compose();
     expect(composed.components).toEqual({
       button: {
-        primaryFullMediumDefault: {
+        primaryFullLarge: {
           background: {
-            value: '{color.primary.100.value}',
-            comment: "Use on headers or actions with less priority",
-            deprecated: true,
-            type: 'components',
-          },
-          color: {
-            value: '{color.primary.100.value}',
-            comment: "Use on headers or actions with less priority",
-            deprecated: true,
+            value: '{color.primary.main.value}',
+            comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
             type: 'components',
           },
           font: {
             lineHeight: {
               value: '{lineHeight.xs.value}',
-              comment: "Use on headers or actions with less priority",
-              deprecated: true,
+              comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
               type: 'components',
             },
             letterSpacing: {
               value: '{letterSpacing.md.value}',
-              comment: "Use on headers or actions with less priority",
-              deprecated: true,
+              comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
               type: 'components',
             },
             size: {
               value: '{font.size.md.value}',
-              comment: "Use on headers or actions with less priority",
-              deprecated: true,
+              comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
               type: 'components',
             },
             weight: {
               value: '{font.weight.md.value}',
-              comment: "Use on headers or actions with less priority",
-              deprecated: true,
+              comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
               type: 'components',
             },
             family: {
               value: '{font.family.base.value}',
-              comment: "Use on headers or actions with less priority",
-              deprecated: true,
+              comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
               type: 'components',
             },
           },
           paddingY: {
-            comment: "Use on headers or actions with less priority",
-            deprecated: true,
+            comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
             type: "components",
             value: "{padding.y.2.value}"
           },
           paddingX: {
-            comment: "Use on headers or actions with less priority",
-            deprecated: true,
+            comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
             type: "components",
             value: "{padding.x.3.value}"
           },
           radius: {
             value: '{radius.xl.value}',
-            comment: "Use on headers or actions with less priority",
+            comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
+            type: 'components',
+          },
+          icon: {
+            marginLeft: {
+              value: '{margin.left.3.value}',
+              comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
+              type: 'components',
+            },
+            size: {
+              value: '{font.size.lg.value}',
+              comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
+              type: 'components',
+            }
+          },
+        },
+        primaryFullLargeHover: {
+          background: {
+            value: '{color.primary.100.value}',
+            comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
+            type: 'components',
+          },
+          shadow: {
+            value: '{shadow.lg.value}',
+            comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
+            type: 'components',
+          },
+        },
+        primaryFullLargePressed: {
+          opacity: {
+            value: '{opacity.xs.value}',
+            comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
             deprecated: true,
             type: 'components',
-          }
-        },
-        primaryFullMediumHover: {
-          background: {
-            value: '{color.primary.main.value}',
-            comment: "Other component",
-            type: 'components',
           },
-          radius: {
-            value: '{radius.xl.value}',
-            comment: "Other component",
+        }
+      },
+      icons: {
+        large: {
+          marginX: {
             type: 'components',
+            value: '{margin.x.1.value}',
           },
-          color: {
-            value: '{color.primary.main.value}',
-            comment: "Other component",
+          marginY: {
             type: 'components',
+            value: '{margin.y.1.value}',
+          },
+          size: {
+            type: 'components',
+            value: '{font.size.lg.value}'
           }
         }
       }

@@ -15,24 +15,32 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
 
   get composedName(): string {
     const name = `${this.name.charAt(0).toLowerCase()}${this.name.slice(1)}`;
-    return name.replace(/( \/ )+|(__)/g, '');
+    return name.replace(/( \/ )+|(__)|\s+/g, '');
   }
 
   compose(foundation: any): Dictionary {
-    const result: Dictionary = {
+    let result: Dictionary = {
       [this.composedName]: {}
     };
-    const style = this.extractStyleFromComponent(foundation);
+    const style = this.extractStyleFromComponent();
     if (this.children.length) {
       this.children.forEach(c => {
         const root = result[this.composedName];
         result[this.composedName] = {...root, ...c.compose(foundation), ...style};
       });
     } else {
-      result[this.composedName] = {
-        ...this.extractStyle(),
-        ...style,
-      };
+      if (ComponentFactory.isVector(this.node!!)) {
+        result = {
+          ...result,
+          ...this.extractStyle(),
+          ...style,
+        };
+      } else {
+        result[this.composedName] = {
+          ...this.extractStyle(),
+          ...style,
+        };
+      }
     }
     return this.inheritanceComponent(result, foundation);
   }
@@ -59,11 +67,12 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
     if (this.deprecated) instance.deprecated = this.deprecated;
   }
 
-  private extractStyleFromComponent(foundation: any): {[key: string]: any} {
-    if (ComponentFactory.isComponent(this.node!!) && this.name.indexOf('.') === -1) {
+  private extractStyleFromComponent(): {[key: string]: any} {
+    if ((ComponentFactory.isComponent(this.node!!) || ComponentFactory.isVector(this.node!!))
+      && this.name.indexOf('.') === -1
+    ) {
       const extracted = ComponentFactory.extractFromComponent(
         this.node!!,
-        foundation,
         this.main.config.components.inheritance
       );
       Object.keys(extracted).forEach(k => {

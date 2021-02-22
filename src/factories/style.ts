@@ -3,6 +3,14 @@ import {camelcase} from '../helpers';
 
 export class Style {
 
+  static isComponent(node: Node): boolean {
+    return node.type !== 'FRAME' && node.type !== 'GROUP' && node.type !== 'CANVAS';
+  }
+
+  static isVector(node: Node): boolean {
+    return node!!.name.toLowerCase() === 'vector' && node!!.type === 'VECTOR';
+  }
+
   private static getUnit(key: string): string {
     const data: {[key: string]: string} = {
       'PIXELS': 'px'
@@ -106,7 +114,7 @@ export class Style {
     return map;
   }
 
-  static extractFromComponent(node: Node, child: Child, inheritance: any): {[key: string]: object}  {
+  static extractFromComponent(node: Node, inheritance: any): {[key: string]: object}  {
     const attributes = [
       'fills',
       'lineHeightPx',
@@ -122,11 +130,21 @@ export class Style {
     attributes.forEach(a => {
       const value = this.extract(a, node);
       if (value && value !== 'undefined') {
-        const name = typeof inheritance[a] === 'object' ? inheritance[a].convert : inheritance[a];
-        result[name || a] = {value};
+        const name = this.getInheritanceName(a, inheritance) || a;
+        result[name] = {value};
       }
     });
+    if (this.isVector(node)) {
+      const name = this.getInheritanceName('fontSize', inheritance) || 'fontSize';
+      result[name] = {
+        value: this.extract('width', node)
+      }
+    }
     return result;
+  }
+
+  private static getInheritanceName(alias: string, inheritance: any): string {
+    return typeof inheritance[alias] === 'object' ? inheritance[alias].convert : inheritance[alias];
   }
 
   static formatName(value: string): string {

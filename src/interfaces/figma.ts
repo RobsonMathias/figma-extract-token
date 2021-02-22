@@ -1,4 +1,4 @@
-export type TYPE = 'DOCUMENT' | 'CANVAS' | 'FRAME' | 'GROUP' | 'COMPONENT'
+export type TYPE = 'DOCUMENT' | 'CANVAS' | 'FRAME' | 'GROUP' | 'COMPONENT' | 'VECTOR'
 
 export interface Document {
   id: string;

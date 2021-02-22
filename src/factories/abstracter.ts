@@ -32,10 +32,6 @@ export abstract class Abstracter<C> extends Style {
     }
   }
 
-  static isComponent(node: Node): boolean {
-    return node.type !== 'FRAME' && node.type !== 'GROUP' && node.type !== 'CANVAS';
-  }
-
   static isComponentGroup(node: Node): boolean {
     return node.type === 'FRAME' || node.type === 'COMPONENT';
   }
@@ -85,7 +81,6 @@ export abstract class Abstracter<C> extends Style {
   extractStyle(): Dictionary {
     const extract = this.extractionToObject();
     let styled: Dictionary = {};
-
     Object.keys(extract).forEach((e: string) => {
       if (Object.keys(extract).length > 1) {
         styled[extract[e] as string] = {
