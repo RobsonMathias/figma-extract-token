@@ -1,4 +1,4 @@
-<img src='https://github.com/RobsonMathias/figma-extract-token/blob/master/.github/images/figma-extraction.png' width='200' height='auto' />
+<img src='https://github.com/RobsonMathias/figma-extract-token/blob/master/docs/images/figma-extraction.png' width='200' height='auto' />
 
 # Figma extract token
 > A simple way to extract token's component from Figma and convert to your front-end project. [Documentation](https://robsonmathias.github.io/figma-extract-token/)
@@ -108,8 +108,51 @@ More examples of dictionary configuration check it out on [Style dictionary Conf
 
 ```
 ### Run the command
+
+**Run examples:**
+Add a environments var with you figma token:
+```
+export PERSONAL_TOKEN=123123...
+```
+```
+cd example/advanced
+yarn
+yarn start
+```
+```
+cd example/basic
+yarn
+yarn start
+```
+
+**Extraction:**
 ```
 figma-extract-token--token=PERSONAL_TOKEN --document=DOCUMENT_ID --config=figma.config.json
+```
+
+**Build:**
+```
+yarn build
+```
+
+**Dev:**
+```
+yarn dev
+```
+
+**Lint:**
+```
+yarn lint
+```
+
+**Test:**
+```
+yarn test
+```
+
+**Format:**
+```
+yarn format
 ```
 
 To learn more, see the [Getting Started](https://robsonmathias.github.io/figma-extract-token/getting-started) guide or read the docs.
@@ -134,8 +177,6 @@ To Do
 
 ## Related
 To Do
-
-
 
 ## Feedback 
 Any questions or suggestions?
