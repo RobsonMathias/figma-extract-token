@@ -1,5 +1,3 @@
-<img src='/images/figma-extraction.png' width='200' height='auto' />
-
 [![stars][]][github]
 [![Downloads][]][npm]
 [![Version][]][npm]
@@ -13,6 +11,9 @@
 [size]: https://flat.badgen.net/bundlephobia/minzip/figma-extract-token
 [npm]: https://npmjs.com/package/figma-extract-token
 [github]: https://github.com/RobsonMathias/figma-extract-token
+
+<img src='https://robsonmathias.github.io/figma-extract-token/images/figma-extraction.png' width='200' height='auto' />
+
 
 - [Getting Started](https://robsonmathias.github.io/figma-extract-token/getting-started)
 - [How it Works](https://robsonmathias.github.io/figma-extract-token/how-it-works)

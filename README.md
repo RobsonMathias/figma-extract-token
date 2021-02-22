@@ -1,4 +1,4 @@
-<img src='https://github.com/RobsonMathias/figma-extract-token/blob/master/docs/images/figma-extraction.png' width='200' height='auto' />
+<img src='https://robsonmathias.github.io/figma-extract-token/images/figma-extraction.png' width='200' height='auto' />
 
 # Figma extract token
 > A simple way to extract token's component from Figma and convert to your front-end project. [Documentation](https://robsonmathias.github.io/figma-extract-token/)
