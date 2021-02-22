@@ -1,5 +1,5 @@
 {
-  "dictionaryConfig": "./example/config.json",
+  "dictionaryConfig": "./config.json",
   "outDir": "./build",
   "foundation": {
     "name": "Foundation",
@@ -28,9 +28,11 @@
       "Color": {
         "extract": ["fills"]
       },
-      "Spacing": {
-        "extract": ["width"],
-        "variant": ["left", "top", "right", "bottom"]
+      "Margin": {
+        "extract": ["width"]
+      },
+      "Padding": {
+        "extract": ["width"]
       },
       "Shape": {
         "extract": {

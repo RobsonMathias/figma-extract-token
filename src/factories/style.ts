@@ -1,4 +1,5 @@
 import {Child, Color, Effect, Node, Paint} from '../interfaces';
+import {camelcase} from '../helpers';
 
 export class Style {
 
@@ -129,7 +130,7 @@ export class Style {
   }
 
   static formatName(value: string): string {
-    const [name] = value.match(/\w+/g) || [value];
-    return name;
+    const [category, type = '', _val] = value.match(/\w+/g) || [value];
+    return _val ? camelcase(`${category} ${type}`) : category;
   }
 }

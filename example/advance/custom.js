@@ -1,5 +1,5 @@
 const StyleDictionary = require('style-dictionary')
-const { Extraction } = require('../dist')
+const { Extraction } = require('figma-extract-token')
 const _ = require('lodash');
 const fs = require('fs');
 

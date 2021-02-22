@@ -1,6 +1,6 @@
 {
   "name": "figma-extract-token",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Compose and Extract design tokens from Figma",
   "author": "robson.mathias<robsond.mathias@gmail.com>",
   "main": "./dist/index.js",
@@ -9,8 +9,6 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "extract": "node dist/index.js --token=156841-f37d0ebd-15eb-4710-a885-7abe41b7a812 --document=PodXJDGjtBAdWiWtbrNtIP --config=figma.config.json",
-    "custom:extract": "node example/custom.js --token=156841-f37d0ebd-15eb-4710-a885-7abe41b7a812 --document=PodXJDGjtBAdWiWtbrNtIP --config=figma.config.json --versioning=true",
     "build": "run-s build:**",
     "build:clean": "rimraf dist",
     "build:source": "tsc",

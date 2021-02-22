@@ -1,0 +1,17 @@
+{
+  "name": "figma-extract-token-advance",
+  "version": "0.0.0",
+  "description": "Advance example with tokens extraction from Figma",
+  "author": "robson.mathias<robsond.mathias@gmail.com>",
+  "scripts": {
+    "start": "node custom.js --token=$FIGMA_TOKEN --document=PodXJDGjtBAdWiWtbrNtIP --config=figma.config.json --versioning=true"
+  },
+  "dependencies": {
+    "figma-extract-token": "^0.0.12"
+  },
+  "devDependencies": {},
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=10.16.0"
+  }
+}

@@ -27,6 +27,20 @@ describe('InitializerFactory', () => {
     factory.json = FIGMA_MOCK_DEFAULT as any;
     factory.config = CONFIG_MOCK_DEFAULT as Config;
     const composed = factory.compose();
+    const spacing = {
+      1: {
+        "value": "4px",
+        type: 'foundation',
+      },
+      2: {
+        "value": "8px",
+        type: 'foundation',
+      },
+      3: {
+        "value": "16px",
+        type: 'foundation',
+      }
+    }
     expect(composed.foundation).toEqual({
       radius: {
         pill: {
@@ -54,35 +68,21 @@ describe('InitializerFactory', () => {
           }
         }
       },
-      spacing: {
-        margin: {
-          1: {
-            "value": "4px",
-            type: 'foundation',
-          },
-          2: {
-            "value": "8px",
-            type: 'foundation',
-          },
-          3: {
-            "value": "16px",
-            type: 'foundation',
-          }
-        },
-        padding: {
-          1: {
-            "value": "4px",
-            type: 'foundation',
-          },
-          2: {
-            "value": "8px",
-            type: 'foundation',
-          },
-          3: {
-            "value": "16px",
-            type: 'foundation',
-          }
-        }
+      margin: {
+        x: spacing,
+        y: spacing,
+        left: spacing,
+        right: spacing,
+        top: spacing,
+        bottom: spacing
+      },
+      padding: {
+        x: spacing,
+        y: spacing,
+        left: spacing,
+        right: spacing,
+        top: spacing,
+        bottom: spacing
       },
       opacity: {
         '3xl': {
@@ -129,7 +129,7 @@ describe('InitializerFactory', () => {
           }
         },
         secondary: {
-          0: {
+          100: {
             value: 'rgba(218, 152, 199, 1)',
             type: 'foundation',
           },
@@ -216,12 +216,6 @@ describe('InitializerFactory', () => {
             deprecated: true,
             type: 'components',
           },
-          spacing: {
-            value: '{spacing.padding.3.value}',
-            comment: "Use on headers or actions with less priority",
-            deprecated: true,
-            type: 'components',
-          },
           color: {
             value: '{color.primary.100.value}',
             comment: "Use on headers or actions with less priority",
@@ -259,6 +253,18 @@ describe('InitializerFactory', () => {
               deprecated: true,
               type: 'components',
             },
+          },
+          paddingY: {
+            comment: "Use on headers or actions with less priority",
+            deprecated: true,
+            type: "components",
+            value: "{padding.y.2.value}"
+          },
+          paddingX: {
+            comment: "Use on headers or actions with less priority",
+            deprecated: true,
+            type: "components",
+            value: "{padding.x.3.value}"
           },
           radius: {
             value: '{radius.xl.value}',
