@@ -64,7 +64,10 @@ export const CONFIG_MOCK_DEFAULT = {
     name: 'Components',
     inheritance: {
       dropShadow: 'shadow',
-      fills: 'color',
+      fills: {
+        force: true,
+        convert: 'color',
+      },
       lineHeightPx: 'lineHeight',
       letterSpacing: 'letterSpacing',
       fontSize: {
@@ -81,7 +84,7 @@ export const CONFIG_MOCK_DEFAULT = {
       },
       textCase: 'textTransform',
       cornerRadius: 'radius',
-      vector: {
+      icon: {
         convert: 'size',
         ref: 'font.size',
       },

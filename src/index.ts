@@ -10,7 +10,6 @@ const Extraction = {
     })
   },
 }
-
 ;(async () => {
   Extraction.run()
 })()

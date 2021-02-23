@@ -1,5 +1,7 @@
 export type Extract = string[] | { [key: string]: string | null }
-export type Inheritance = { [key: string]: string | null | Inheritance }
+export type Inheritance = {
+  [key: string]: string | null | boolean | Inheritance
+}
 export type Variant = string[]
 
 export type ChildType = 'foundation' | 'components'

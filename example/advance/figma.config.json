@@ -62,9 +62,6 @@
   },
   "components": {
     "name": "Components",
-    "matchInheritance": {
-      "background": "color"
-    },
     "inheritance": {
       "fills":  "color",
       "lineHeightPx": "lineHeight",
@@ -83,7 +80,11 @@
       },
       "textCase": "textTransform",
       "cornerRadius": "radius",
-      "background": "background"
+      "background": "background",
+      "vector": {
+        "convert": "size",
+        "ref": "font.size"
+      }
     }
   }
 }

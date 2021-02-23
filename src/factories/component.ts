@@ -63,7 +63,7 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
         })
       }
     } else {
-      if (ComponentFactory.isVector(this.node!!)) {
+      if (ComponentFactory.isIcon(this.node!!)) {
         result = {
           ...result,
           ...this.extractStyle(),
@@ -113,8 +113,7 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
   }
 
   private hasDefaultComposition(): boolean {
-    return !!this.children.filter(i => i.isDefault())
-      .length
+    return !!this.children.filter(i => i.isDefault()).length
   }
 
   private inheritanceInfo() {
@@ -126,7 +125,7 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
   private extractStyleFromComponent(): { [key: string]: any } {
     if (
       (ComponentFactory.isComponent(this.node!!) ||
-        ComponentFactory.isVector(this.node!!)) &&
+        ComponentFactory.isIcon(this.node!!)) &&
       this.name.indexOf('.') === -1
     ) {
       const extracted = ComponentFactory.extractFromComponent(
@@ -164,7 +163,12 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
             value: ComponentFactory.composeInheritanceName(value),
             ...this.setInfo('components'),
           }
-        } else {
+        } else if (
+          ComponentFactory.inheritanceHasForceProperty(
+            key,
+            this.main.config.components.inheritance,
+          )
+        ) {
           delete item[key]
         }
       } else if (Object.keys(current).length === 0) {

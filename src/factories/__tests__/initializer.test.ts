@@ -323,6 +323,40 @@ describe('InitializerFactory', () => {
             value: '{font.size.lg.value}',
           },
         },
+        medium: {
+          size: {
+            type: 'components',
+            value: '{font.size.lg.value}',
+          },
+        },
+        global: {
+          '2xLarge': {
+            size: {
+              type: 'components',
+              value: '80px',
+            },
+          },
+          xSmall: {
+            size: {
+              type: 'components',
+              value: '{font.size.md.value}',
+            },
+          },
+        },
+        shape: {
+          large: {
+            size: {
+              type: 'components',
+              value: '240px',
+            },
+          },
+          xSmall: {
+            size: {
+              type: 'components',
+              value: '80px',
+            },
+          },
+        },
       },
     })
   })

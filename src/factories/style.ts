@@ -1,4 +1,4 @@
-import { Color, Effect, Node, Paint } from '../interfaces'
+import { Color, Effect, Inheritance, Node, Paint } from '../interfaces'
 import { camelcase } from '../helpers'
 
 export class Style {
@@ -8,8 +8,8 @@ export class Style {
     )
   }
 
-  static isVector(node: Node): boolean {
-    return node!!.name.toLowerCase() === 'vector' && node!!.type === 'VECTOR'
+  static isIcon(node: Node): boolean {
+    return node!!.name.toLowerCase() === 'icon' && node!!.type !== 'CANVAS'
   }
 
   private static getUnit(key: string): string {
@@ -28,7 +28,7 @@ export class Style {
     return fill ? this.color(fill.color) : undefined
   }
 
-  static color(color: Color): string|undefined {
+  static color(color: Color): string | undefined {
     if (!color) return undefined
     const a = color.a < 1 && color.a > 0 ? color.a.toFixed(2) : color.a
     return `rgba(${this.calcRGB(color.r)}, ${this.calcRGB(
@@ -132,7 +132,7 @@ export class Style {
     const attributes = Object.keys(inheritance)
     let result: { [key: string]: any } = {}
     attributes.forEach(a => {
-      if (a !== 'vector') {
+      if (a !== 'icon') {
         const value = this.extract(a, node)
         if (value && value !== 'undefined') {
           let name = this.getInheritanceName(a, inheritance) || a
@@ -140,7 +140,7 @@ export class Style {
         }
       }
     })
-    if (this.isVector(node)) {
+    if (this.isIcon(node)) {
       const name =
         this.getInheritanceName('fontSize', inheritance) || 'fontSize'
       result[name] = {
@@ -154,6 +154,18 @@ export class Style {
     return typeof inheritance[alias] === 'object'
       ? inheritance[alias].convert
       : inheritance[alias]
+  }
+
+  static inheritanceHasForceProperty(name: string, inheritance: any): boolean {
+    let found = false
+    Object.keys(inheritance).forEach(key => {
+      const matchValue =
+        typeof inheritance[key] === 'object'
+          ? inheritance[key].convert
+          : inheritance[key]
+      if (name === matchValue) found = inheritance[key].force
+    })
+    return found
   }
 
   static formatName(value: string): string {

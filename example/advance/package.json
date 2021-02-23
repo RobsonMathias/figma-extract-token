@@ -7,7 +7,7 @@
     "start": "node custom.js --token=$FIGMA_TOKEN --document=PodXJDGjtBAdWiWtbrNtIP --config=figma.config.json --versioning=true"
   },
   "dependencies": {
-    "figma-extract-token": "^0.0.12"
+    "figma-extract-token": "^0.0.18"
   },
   "devDependencies": {},
   "license": "UNLICENSED",

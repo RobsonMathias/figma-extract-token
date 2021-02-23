@@ -57,8 +57,8 @@ export class FoundationFactory extends Abstracter<FoundationFactory> {
       ;(this.node?.children || []).forEach(n => {
         //@ts-ignore
         const child = this.child.children
-          //@ts-ignore
-          ? this.child.children[n.name]
+          ? //@ts-ignore
+            this.child.children[n.name]
           : this.child!!
         const instance = new FoundationFactory(n.name, child, n, this.main)
         this.addChildren(n.name, instance)

@@ -60,7 +60,7 @@ export abstract class Abstracter<C> extends Style {
   }
 
   isDefault(): boolean {
-    return this.name.toLowerCase() === 'default';
+    return this.name.toLowerCase() === 'default'
   }
 
   setComment() {
