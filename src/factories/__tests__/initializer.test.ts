@@ -214,19 +214,19 @@ describe('InitializerFactory', () => {
     expect(composed.components).toEqual({
       button: {
         primaryFullLarge: {
-          background: {
+          color: {
             value: '{color.primary.main.value}',
             comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
             type: 'components',
           },
           font: {
             lineHeight: {
-              value: '{lineHeight.xs.value}',
+              value: '{lineHeight.sm.value}',
               comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
               type: 'components',
             },
             letterSpacing: {
-              value: '{letterSpacing.md.value}',
+              value: '{letterSpacing.xs.value}',
               comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
               type: 'components',
             },
@@ -275,7 +275,7 @@ describe('InitializerFactory', () => {
           },
         },
         primaryFullLargeHover: {
-          background: {
+          color: {
             value: '{color.primary.100.value}',
             comment: "Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.",
             type: 'components',

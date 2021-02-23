@@ -62,10 +62,8 @@ export const CONFIG_MOCK_DEFAULT = {
   },
   "components": {
     "name": "Components",
-    "matchInheritance": {
-      "background": "color"
-    },
     "inheritance": {
+      "dropShadow":  "shadow",
       "fills":  "color",
       "lineHeightPx": "lineHeight",
       "letterSpacing": "letterSpacing",

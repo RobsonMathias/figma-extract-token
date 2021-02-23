@@ -1,6 +1,5 @@
 export type Extract = string[] | {[key: string]: string|null};
 export type Inheritance = {[key: string]: string|null|Inheritance};
-export type MatchInheritance = {[key: string]: string|null};
 export type Variant = string[];
 
 export type ChildType  = 'foundation' | 'components';
@@ -22,7 +21,6 @@ export interface Canvas {
   name: string;
   children?: Children;
   inheritance?: Inheritance;
-  matchInheritance?: MatchInheritance;
 }
 
 export interface Config {

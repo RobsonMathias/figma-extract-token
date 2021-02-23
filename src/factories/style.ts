@@ -47,7 +47,8 @@ export class Style {
     return value ? value.toFixed(fraction).toString() : `${value}`;
   }
 
-  static effectShadow(effects: Effect[]): string{
+  static effectShadow(effects: Effect[] = []): string {
+    if (!effects || !effects.length) return '';
     const [effect] = effects;
     const x = this.valueByUnit(effect.offset.x, 'PIXELS');
     const y = this.valueByUnit(effect.offset.y, 'PIXELS');
@@ -115,29 +116,19 @@ export class Style {
   }
 
   static extractFromComponent(node: Node, inheritance: any): {[key: string]: object}  {
-    const attributes = [
-      'fills',
-      'lineHeightPx',
-      'letterSpacing',
-      'fontSize',
-      'fontFamily',
-      'fontWeight',
-      'textCase',
-      'cornerRadius',
-      'background',
-    ];
+    const attributes = Object.keys(inheritance);
     let result: {[key: string]: any} = {};
     attributes.forEach(a => {
       const value = this.extract(a, node);
       if (value && value !== 'undefined') {
-        const name = this.getInheritanceName(a, inheritance) || a;
+        let name = this.getInheritanceName(a, inheritance) || a;
         result[name] = {value};
       }
     });
     if (this.isVector(node)) {
       const name = this.getInheritanceName('fontSize', inheritance) || 'fontSize';
       result[name] = {
-        value: this.extract('width', node)
+        value: this.extract('width', node),
       }
     }
     return result;

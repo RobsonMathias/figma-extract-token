@@ -1,6 +1,7 @@
 import {Abstracter} from './abstracter';
 import {Child, Dictionary, Node} from '../interfaces';
 import {InitializerFactory} from './initializer';
+import {camelcase} from '../helpers';
 
 export class ComponentFactory extends Abstracter<ComponentFactory> {
   public children: Array<ComponentFactory> = [];
@@ -10,7 +11,9 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
     this.name = name;
     this.node = node;
     this.child = child;
-    this.call();
+    if (!ComponentFactory.ignoreElement(name)) {
+      this.call();
+    }
   }
 
   get composedName(): string {
@@ -24,10 +27,38 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
     };
     const style = this.extractStyleFromComponent();
     if (this.children.length) {
-      this.children.forEach(c => {
-        const root = result[this.composedName];
-        result[this.composedName] = {...root, ...c.compose(foundation), ...style};
-      });
+      if (this.hasDefaultComposition()) {
+
+
+
+        const defaultChild = this.children.find(c => c.name === '__default__');
+        const defaultChildComposed = defaultChild!!.compose(foundation);
+        result[this.composedName] = {
+          ...defaultChildComposed[Object.keys(defaultChildComposed)[0]],
+          ...style
+        };
+
+        const clone = {...result[this.composedName]};
+
+        const children = this.children.filter(c => c.name !== '__default__');
+        children.forEach(c => {
+          let composed = c.compose(foundation);
+          composed = composed[Object.keys(composed)[0]];
+
+          this.deleteEqualValues(clone, composed);
+
+          const name = camelcase(`${this.composedName} ${c.composedName}`);
+          result[name] = {...composed, ...style};
+        });
+
+
+
+      } else {
+        this.children.forEach(c => {
+          const root = result[this.composedName];
+          result[this.composedName] = {...root, ...c.compose(foundation), ...style};
+        });
+      }
     } else {
       if (ComponentFactory.isVector(this.node!!)) {
         result = {
@@ -59,6 +90,23 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
         this.inheritanceInfo();
       });
     }
+  }
+
+  private deleteEqualValues(compare: any, base: any) {
+    Object.keys(base).forEach(bKey => {
+      const current = base[bKey];
+      if (typeof current[Object.keys(current)[0]] === 'object') {
+        this.deleteEqualValues(compare[bKey], current);
+      } else {
+        const _comp = compare[bKey] || {};
+        if (current.value === _comp.value) delete base[bKey];
+      }
+    });
+    return base;
+  }
+
+  private hasDefaultComposition(): boolean {
+    return !!this.children.filter(i => i.name.toLowerCase() === '__default__').length;
   }
 
   private inheritanceInfo() {
@@ -95,11 +143,15 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
 
   private componentForEach(item: any, foundation: any) {
     Object.keys(item).forEach((key: string) => {
-      const current = item[key];
+      let current = item[key];
       if (current.value) {
         const value = this.findByValue(current.value, foundation, key);
         if (value.indexOf('{') === 0) {
-          current.value =  ComponentFactory.composeInheritanceName(value);
+          item[key] = {
+            ...current,
+            value:  ComponentFactory.composeInheritanceName(value),
+            ...this.setInfo('components')
+          };
         } else {
           delete item[key];
         }

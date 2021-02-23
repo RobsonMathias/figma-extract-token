@@ -1,4 +1,3 @@
-
 export function composeArgs(args: string[]): {[key: string]: string} {
   const result: {[key: string]: string} = {};
   args.forEach(i => {

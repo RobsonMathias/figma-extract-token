@@ -100,9 +100,8 @@ export abstract class Abstracter<C> extends Style {
 
   findByValue(value: string, object: any, name: string): string {
     let result = value;
-    const matchName = (this.main.config.components.matchInheritance!![name]) || name;
     Object.keys(object).forEach((i: string) => {
-      if (object[i] === value && i.indexOf(matchName) >= 0) {
+      if (object[i] === value && i.indexOf(name) >= 0) {
         result = `{${i}}`;
       }
     });
