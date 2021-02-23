@@ -59,6 +59,10 @@ export abstract class Abstracter<C> extends Style {
     }
   }
 
+  isDefault(): boolean {
+    return this.name.toLowerCase() === 'default';
+  }
+
   setComment() {
     const component = this.main.json.components[this.node!!.id]
     if (component) {

@@ -33,7 +33,7 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
     const style = this.extractStyleFromComponent()
     if (this.children.length) {
       if (this.hasDefaultComposition()) {
-        const defaultChild = this.children.find(c => c.name === '__default__')
+        const defaultChild = this.children.find(c => c.isDefault())
         const defaultChildComposed = defaultChild!!.compose(foundation)
         result[this.composedName] = {
           ...defaultChildComposed[Object.keys(defaultChildComposed)[0]],
@@ -42,7 +42,7 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
 
         const clone = { ...result[this.composedName] }
 
-        const children = this.children.filter(c => c.name !== '__default__')
+        const children = this.children.filter(c => !c.isDefault())
         children.forEach(c => {
           let composed = c.compose(foundation)
           composed = composed[Object.keys(composed)[0]]
@@ -113,7 +113,7 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
   }
 
   private hasDefaultComposition(): boolean {
-    return !!this.children.filter(i => i.name.toLowerCase() === '__default__')
+    return !!this.children.filter(i => i.isDefault())
       .length
   }
 

@@ -5232,7 +5232,7 @@ export const FIGMA_MOCK_DEFAULT = {
                   },
                   {
                     id: '198:31',
-                    name: '__default__',
+                    name: 'Default',
                     type: 'COMPONENT',
                     blendMode: 'PASS_THROUGH',
                     children: [
@@ -10720,7 +10720,7 @@ export const FIGMA_MOCK_DEFAULT = {
     },
     '198:31': {
       key: 'bfa97587dc96570dd0d05c6cea30a7dae90400e9',
-      name: '__default__',
+      name: 'Default',
       description:
         'Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.',
     },
