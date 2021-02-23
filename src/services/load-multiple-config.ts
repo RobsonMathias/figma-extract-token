@@ -1,23 +1,26 @@
-import * as fs from 'fs';
-import {loadConfig} from './load-config';
+import * as fs from 'fs'
+import { loadConfig } from './load-config'
 
-export async function loadMultipleConfig(path: string, match: RegExp): Promise<any[]> {
+export async function loadMultipleConfig(
+  path: string,
+  match: RegExp,
+): Promise<any[]> {
   return new Promise(async (res, rej) => {
     try {
-      const directoryPath = path.replace(/\*+\/?(.*)/g, '');
+      const directoryPath = path.replace(/\*+\/?(.*)/g, '')
       fs.readdir(`${process.cwd()}/${directoryPath}`, async (err, files) => {
         if (err) {
-          res([]);
-          return console.log('Unable to scan directory: ' + err);
+          res([])
+          return console.log('Unable to scan directory: ' + err)
         }
-        const filtered = files.filter(f => f.match(match));
-        const result = await Promise.all(filtered.map(f =>
-          loadConfig(`/${directoryPath}${f}`)
-        ));
-        res(result);
-      });
+        const filtered = files.filter(f => f.match(match))
+        const result = await Promise.all(
+          filtered.map(f => loadConfig(`/${directoryPath}${f}`)),
+        )
+        res(result)
+      })
     } catch (e) {
       rej(e)
     }
-  });
+  })
 }

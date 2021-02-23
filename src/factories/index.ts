@@ -1,1 +1,1 @@
-export * from './initializer';
+export * from './initializer'

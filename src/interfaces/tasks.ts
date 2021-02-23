@@ -1,5 +1,5 @@
-import {InitializerFactory} from '../factories';
+import { InitializerFactory } from '../factories'
 
 export interface TasksConfig {
-  factory: InitializerFactory;
+  factory: InitializerFactory
 }

@@ -1,2 +1,2 @@
-export * from './config';
-export * from './figma';
+export * from './config'
+export * from './figma'

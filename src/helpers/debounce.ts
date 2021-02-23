@@ -1,3 +1,3 @@
 export function debounce(callback: () => any) {
-  setTimeout(callback, 300);
+  setTimeout(callback, 300)
 }
