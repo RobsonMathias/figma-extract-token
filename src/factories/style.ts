@@ -28,7 +28,8 @@ export class Style {
     return fill ? this.color(fill.color) : undefined
   }
 
-  static color(color: Color): string {
+  static color(color: Color): string|undefined {
+    if (!color) return undefined
     const a = color.a < 1 && color.a > 0 ? color.a.toFixed(2) : color.a
     return `rgba(${this.calcRGB(color.r)}, ${this.calcRGB(
       color.g,
