@@ -26,7 +26,7 @@ const updateLatest = ctx => ({
             '--no-ff',
             '--no-commit',
           ])
-          return execa('git', ['pull', 'push', 'origin'])
+          return execa('git', ['push', 'origin', 'master'])
         },
       },
     ])
