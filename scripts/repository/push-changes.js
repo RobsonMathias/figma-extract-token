@@ -1,9 +1,9 @@
 const execa = require('execa')
 const Listr = require('listr')
 
-const pushChanges = () => ({
+const pushChanges = ctx => ({
   title: 'Push changes',
-  task: ctx => {
+  task: () => {
     return new Listr([
       {
         title: 'Add files',

@@ -1,9 +1,9 @@
 const execa = require('execa')
 const Listr = require('listr')
 
-const versioning = () => ({
+const versioning = ctx => ({
   title: 'Versioning',
-  task: async ctx => {
+  task: async () => {
     const body = await execa('extract-pr-titles')
     const [match] = body.stdout.match(/^\w(.*)#\d+/g) || ['']
     let type = 'minor'
