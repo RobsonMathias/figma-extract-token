@@ -21,13 +21,7 @@ const updateLatest = ctx => ({
             const branchList = await execa('git', ['branch'])
             const match = branchList.stdout.match(/v\d.x/gm) || [ctx.branch]
             const branch = match.sort()[match.length - 1]
-            await execa('git', [
-              'pull',
-              'origin',
-              branch,
-              '--no-ff',
-              '--no-commit',
-            ])
+            await execa('git', ['pull', 'origin', branch])
             return execa('git', ['push', 'origin', 'master'])
           }),
       },
