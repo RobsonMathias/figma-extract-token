@@ -116,10 +116,10 @@ jobs:
       - run:
           name: Run release 🏗
           command: |
-          git config --global -l
-          git config --global user.email $GITHUB_EMAIL
-          git config --global user.name $GITHUB_OWNER
-          CIRCLE_BRANCH=${CIRCLE_BRANCH} yarn release
+            git config --global -l
+            git config --global user.email $GITHUB_EMAIL
+            git config --global user.name $GITHUB_OWNER
+            CIRCLE_BRANCH=${CIRCLE_BRANCH} yarn release
 
 
 
@@ -133,7 +133,7 @@ jobs:
       - run:
           name: Run publish 📦
           command: |
-          npm publish --access public
+            npm publish --access public
 
 
 
