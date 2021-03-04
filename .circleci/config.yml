@@ -113,7 +113,9 @@ jobs:
             - $SSH_KEY
       - restore_packages
       - *attach_working_directory
-      - run: |
+      - run:
+          name: Run release 🏗
+          command: |
           git config --global -l
           git config --global user.email $GITHUB_EMAIL
           git config --global user.name $GITHUB_OWNER
@@ -128,7 +130,9 @@ jobs:
       - restore_packages
       - *authenticate_with_registry
       - *attach_working_directory
-      - run: |
+      - run:
+          name: Run publish 📦
+          command: |
           npm publish --access public
 
 
