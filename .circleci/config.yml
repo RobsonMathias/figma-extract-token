@@ -135,6 +135,9 @@ jobs:
       - run:
           name: Run update latest 🏗
           command: |
+            git config --global -l
+            git config --global user.email $GITHUB_EMAIL
+            git config --global user.name $GITHUB_OWNER
             CIRCLE_BRANCH=${CIRCLE_BRANCH} yarn latest
 
 workflows:
