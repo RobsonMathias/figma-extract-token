@@ -91,11 +91,14 @@ jobs:
             - $SSH_KEY
       - restore_packages
       - *attach_working_directory
+      - run: # print the name of the branch we're on
+          name: "What branch am I on?"
+          command: echo ${CIRCLE_BRANCH}
       - run: |
           git config --global -l
           git config --global user.email $GITHUB_EMAIL
           git config --global user.name $GITHUB_OWNER
-          CIRCLE_BRANCH=${CIRCLE_BRANCH} yarn release
+          CIRCLE_BRANCH={CIRCLE_BRANCH} yarn release
 
 
 
