@@ -2,8 +2,6 @@ version: 2.1
 
 orbs:
   docker: circleci/docker@0.5.13
-  jq: circleci/jq@2.2.0
-  gh-cli: mdgreenwald/gh-cli@0.0.2
 
 working_directory: &working_directory ~/app
 
@@ -58,28 +56,6 @@ jobs:
           paths:
             - node_modules
 
-  release:
-    executor: default
-    steps:
-      - checkout
-      - add_ssh_keys: &add_ssh_keys
-      firgerprints:
-        - $SSH_KEY
-      - restore_packages
-      - *attach_working_directory
-      - jq/install
-      - gh-cli/install:
-          version: latest
-      - run: |
-          git config --global -l
-          git config --global user.email $GITHUB_EMAIL
-          git config --global user.name $GITHUB_NAME
-          gh auth status
-          yarn release
-
-
-
-
   test:
     executor: default
     steps:
@@ -105,6 +81,29 @@ jobs:
             CI=true yarn lint
 
 
+
+  release:
+    executor: default
+    steps:
+      - checkout
+      - add_ssh_keys: &add_ssh_keys
+      firgerprints:
+        - $SSH_KEY
+        - restore_packages
+        - *attach_working_directory
+        - jq/install
+        - gh-cli/install:
+            version: latest
+        - run: |
+            git config --global -l
+            git config --global user.email $GITHUB_EMAIL
+            git config --global user.name $GITHUB_OWNER
+            gh auth status
+            yarn release
+
+
+
+
 workflows:
   version: 2.1
 
@@ -123,5 +122,4 @@ workflows:
             - lint
           filters:
             branches:
-              only: &deploy_branches
-                - master
+              only: /^v.*/

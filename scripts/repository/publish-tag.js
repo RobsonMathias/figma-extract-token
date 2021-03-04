@@ -1,14 +1,13 @@
 const execa = require('execa')
 const Listr = require('listr')
-const packageFile = require('../../package.json')
 
 const publishTag = () => ({
   title: 'Publishing Tag',
-  task: () => {
+  task: ctx => {
     return new Listr([
       {
-        title: `Creating tag: v${packageFile.version}`,
-        task: () => execa('git', ['tag', packageFile.version]),
+        title: `Creating tag: v${ctx.version}`,
+        task: () => execa('git', ['tag', `v${ctx.version}`]),
       },
       {
         title: 'Push tag',
