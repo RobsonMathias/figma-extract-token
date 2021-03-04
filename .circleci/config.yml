@@ -82,6 +82,22 @@ jobs:
 
 
 
+  build:
+    executor: default
+    steps:
+      - checkout
+      - restore_packages
+      - *attach_working_directory
+      - run:
+          name: Run build 🏗
+          command: |
+            CI=true yarn build
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - node_modules
+            - dist
+
   release:
     executor: default
     steps:
@@ -100,6 +116,17 @@ jobs:
 
 
 
+
+  publish:
+    executor: default
+    steps:
+      - checkout
+      - restore_packages
+      - *attach_working_directory
+      - run: |
+          npm publish
+
+
 workflows:
   version: 2.1
 
@@ -112,10 +139,16 @@ workflows:
       - test:
           requires:
             - setup
-      - release:
+      - build:
           requires:
             - test
             - lint
+      - release:
+          requires:
+            - build
           filters:
             branches:
               only: /^v.*/
+      - publish:
+          requires:
+            - release

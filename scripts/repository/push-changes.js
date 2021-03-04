@@ -16,7 +16,7 @@ const pushChanges = ctx => ({
             'commit',
             '-n',
             '-am',
-            `ci(publish): publishing version v${ctx.version}`,
+            `ci(publish): publishing version v${ctx.version} [ci skip]`,
           ]),
       },
       {
