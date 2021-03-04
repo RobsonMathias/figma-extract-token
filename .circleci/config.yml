@@ -1,0 +1,127 @@
+version: 2.1
+
+orbs:
+  docker: circleci/docker@0.5.13
+  jq: circleci/jq@2.2.0
+  gh-cli: mdgreenwald/gh-cli@0.0.2
+
+working_directory: &working_directory ~/app
+
+executors:
+  default:
+    docker:
+      - image: cypress/browsers:node12.18.0-chrome83-ff77
+        environment:
+          JOBS: 2
+    working_directory: *working_directory
+
+aliases: &attach_working_directory
+  attach_workspace:
+    at: *working_directory
+
+commands:
+  restore_packages:
+    steps:
+      - restore_cache:
+          name: Restore Yarn Package Cache 📁
+          keys:
+            - yarn-packages-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v2-{{ .Branch }}-
+            - yarn-packages-v2-
+
+  save_packages:
+    steps:
+      - save_cache:
+          name: Save Yarn Package Cache 📁
+          key: yarn-packages-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
+  install_packages:
+    steps:
+      - run:
+          name: Install project dependencies 📦
+          command: yarn install --frozen-lockfile
+
+jobs:
+
+  setup:
+    executor: default
+    steps:
+      - checkout
+      - restore_packages
+      - install_packages
+      - save_packages
+      - *attach_working_directory
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - node_modules
+
+  release:
+    executor: default
+    steps:
+      - checkout
+      - add_ssh_keys: &add_ssh_keys
+      firgerprints:
+        - $SSH_KEY
+      - restore_packages
+      - *attach_working_directory
+      - jq/install
+      - gh-cli/install:
+          version: latest
+      - run: |
+          git config --global -l
+          git config --global user.email $GITHUB_EMAIL
+          git config --global user.name $GITHUB_NAME
+          gh auth status
+          yarn release
+
+
+
+
+  test:
+    executor: default
+    steps:
+      - checkout
+      - restore_packages
+      - *attach_working_directory
+      - run:
+          name: Run test 🏗
+          command: |
+            CI=true yarn test
+      - store_artifacts:
+          path: coverage
+
+  lint:
+    executor: default
+    steps:
+      - checkout
+      - restore_packages
+      - *attach_working_directory
+      - run:
+          name: Run lint 🏗
+          command: |
+            CI=true yarn lint
+
+
+workflows:
+  version: 2.1
+
+  build_and_test:
+    jobs:
+      - setup
+      - lint:
+          requires:
+            - setup
+      - test:
+          requires:
+            - setup
+      - release:
+          requires:
+            - test
+            - lint
+          filters:
+            branches:
+              only: &deploy_branches
+                - master

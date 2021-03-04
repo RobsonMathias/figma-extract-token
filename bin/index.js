@@ -1,4 +1,5 @@
-import { Extraction } from '../dist'
+const {Extraction} = require('../dist')
+
 ;(() => {
   Extraction.run()
 })()
