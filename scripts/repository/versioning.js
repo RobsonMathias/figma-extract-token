@@ -6,6 +6,8 @@ const versioning = ctx => ({
   task: async () => {
     const body = await execa('extract-pr-titles')
     const [match] = body.stdout.match(/^\w(.*)#\d+/g) || ['']
+    /* eslint no-console: ["error", { allow: ["log"] }] */
+    console.log(match)
     let type = 'minor'
     if (match.toLowerCase().indexOf('[major]') > -1) {
       type = 'major'
@@ -19,7 +21,7 @@ const versioning = ctx => ({
         task: () => execa('git', ['checkout', ctx.branch]),
       },
       {
-        title: `Creating version: type`,
+        title: `Creating version: ${type}`,
         task: () => execa('npm', ['version', type]),
       },
     ])
