@@ -87,19 +87,16 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys: &add_ssh_keys
-      firgerprints:
-        - $SSH_KEY
-        - restore_packages
-        - *attach_working_directory
-        - jq/install
-        - gh-cli/install:
-            version: latest
-        - run: |
-            git config --global -l
-            git config --global user.email $GITHUB_EMAIL
-            git config --global user.name $GITHUB_OWNER
-            gh auth status
-            yarn release
+          firgerprints:
+            - $SSH_KEY
+      - restore_packages
+      - *attach_working_directory
+      - run: |
+          git config --global -l
+          git config --global user.email $GITHUB_EMAIL
+          git config --global user.name $GITHUB_OWNER
+          gh auth status
+          yarn release
 
 
 
