@@ -149,16 +149,16 @@ workflows:
       - test:
           requires:
             - setup
-      - build:
+      - release:
           requires:
             - test
             - lint
-      - release:
-          requires:
-            - build
           filters:
             branches:
               only: /^v.*/
-      - publish:
+      - build:
           requires:
             - release
+      - publish:
+          requires:
+            - build
