@@ -1,6 +1,7 @@
 const execa = require('execa')
 const Listr = require('listr')
 const packageFile = require('../../package.json')
+const debounce = require('./debounce')
 
 const pushChanges = ctx => ({
   title: 'Push changes',
@@ -9,21 +10,26 @@ const pushChanges = ctx => ({
     return new Listr([
       {
         title: 'Add files',
-        task: () => execa('git', ['add', '.']),
+        task: () => debounce(() => execa('git', ['add', '.'])),
       },
       {
         title: 'Commit changes',
         task: () =>
-          execa('git', [
-            'commit',
-            '-n',
-            '-am',
-            `publish(auto): publishing version v${params.version} [ci skip]`,
-          ]),
+          debounce(() =>
+            execa('git', [
+              'commit',
+              '-n',
+              '-am',
+              `publish(auto): publishing version v${params.version} [ci skip]`,
+            ]),
+          ),
       },
       {
         title: 'Push branch',
-        task: () => execa('git', ['push', 'origin', ctx.branch, '--quiet']),
+        task: () =>
+          debounce(() =>
+            execa('git', ['push', 'origin', ctx.branch, '--quiet']),
+          ),
       },
     ])
   },

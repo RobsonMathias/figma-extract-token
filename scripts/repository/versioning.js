@@ -1,5 +1,6 @@
 const execa = require('execa')
 const Listr = require('listr')
+const debounce = require('./debounce')
 
 const versioning = ctx => ({
   title: 'Versioning',
@@ -16,14 +17,11 @@ const versioning = ctx => ({
     return new Listr([
       {
         title: `Checkout on branch ${ctx.branch}`,
-        task: () => execa('git', ['checkout', ctx.branch]),
+        task: () => debounce(() => execa('git', ['checkout', ctx.branch])),
       },
       {
         title: `Creating version: ${type}`,
-        task: async () => {
-          await execa('npm', ['version', type])
-          return new Promise(res => setTimeout(res, 500))
-        },
+        task: () => debounce(() => execa('npm', ['version', type])),
       },
     ])
   },
