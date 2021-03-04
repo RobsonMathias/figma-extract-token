@@ -2,6 +2,7 @@ const Listr = require('listr')
 const createChangeLog = require('./repository/create-changelog')
 const publishTag = require('./repository/publish-tag')
 const pushChanges = require('./repository/push-changes')
+const updateLatest = require('./repository/update-latest')
 const versioning = require('./repository/versioning')
 const packageFile = require('../package.json')
 
@@ -13,6 +14,7 @@ const tasks = new Listr([
   createChangeLog(ctx),
   pushChanges(ctx),
   publishTag(ctx),
+  updateLatest(ctx),
 ])
 
 tasks.run().catch(err => {
