@@ -95,7 +95,6 @@ jobs:
           git config --global -l
           git config --global user.email $GITHUB_EMAIL
           git config --global user.name $GITHUB_OWNER
-          gh auth status
           yarn release
 
 
