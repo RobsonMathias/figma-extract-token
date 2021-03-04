@@ -122,7 +122,20 @@ jobs:
             git config --global user.name $GITHUB_OWNER
             CIRCLE_BRANCH=${CIRCLE_BRANCH} yarn release
 
-
+  latest:
+    executor: default
+    steps:
+      - checkout
+      - add_ssh_keys: &add_ssh_keys
+          firgerprints:
+            - $SSH_KEY
+      - restore_packages
+      - *authenticate_with_registry
+      - *attach_working_directory
+      - run:
+          name: Run update latest 🏗
+          command: |
+            CIRCLE_BRANCH=${CIRCLE_BRANCH} yarn latest
 
 workflows:
   version: 2.1
@@ -143,6 +156,12 @@ workflows:
       - release:
           requires:
             - build
+          filters:
+            branches:
+              only: /^v.*/
+      - latest:
+          requires:
+            - release
           filters:
             branches:
               only: /^v.*/

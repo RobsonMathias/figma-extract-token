@@ -17,6 +17,7 @@
     "lint": "kcd-scripts lint",
     "format": "kcd-scripts format",
     "precommit": "lint-staged",
+    "latest": "node ./scripts/latest.js",
     "release": "node ./scripts/release.js"
   },
   "peerDependencies": {
