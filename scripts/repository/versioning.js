@@ -6,13 +6,11 @@ const versioning = ctx => ({
   task: async () => {
     const body = await execa('extract-pr-titles')
     const [match] = body.stdout.match(/^\w(.*)#\d+/g) || ['']
-    /* eslint no-console: ["error", { allow: ["log"] }] */
-    console.log(match)
-    let type = 'minor'
+    let type = 'patch'
     if (match.toLowerCase().indexOf('[major]') > -1) {
       type = 'major'
-    } else if (match.toLowerCase().indexOf('[patch]') > -1) {
-      type = 'patch'
+    } else if (match.toLowerCase().indexOf('[minor]') > -1) {
+      type = 'minor'
     }
 
     return new Listr([
@@ -22,7 +20,10 @@ const versioning = ctx => ({
       },
       {
         title: `Creating version: ${type}`,
-        task: () => execa('npm', ['version', type]),
+        task: async () => {
+          await execa('npm', ['version', type])
+          return new Promise(res => setTimeout(res, 500))
+        },
       },
     ])
   },
