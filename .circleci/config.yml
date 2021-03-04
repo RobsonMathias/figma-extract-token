@@ -5,6 +5,12 @@ orbs:
 
 working_directory: &working_directory ~/app
 
+authenticate_with_registry: &authenticate_with_registry
+  run:
+    name: Authenticate with registry
+    command: |
+      echo "//registry.npmjs.org/:_authToken=$NPM" > ~/.npmrc
+
 executors:
   default:
     docker:
@@ -115,16 +121,16 @@ jobs:
 
 
 
-
-
   publish:
     executor: default
     steps:
       - checkout
       - restore_packages
+      - *authenticate_with_registry
       - *attach_working_directory
       - run: |
           npm publish
+
 
 
 workflows:
