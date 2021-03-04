@@ -1,13 +1,13 @@
 const execa = require('execa')
 const Listr = require('listr')
 
-const publishTag = ctx => ({
+const publishTag = () => ({
   title: 'Publishing Tag',
-  task: () => {
+  task: param => {
     return new Listr([
       {
-        title: `Creating tag: v${ctx.version}`,
-        task: () => execa('git', ['tag', `v${ctx.version}`]),
+        title: `Creating tag: v${param.version}`,
+        task: () => execa('git', ['tag', `v${param.version}`]),
       },
       {
         title: 'Push tag',

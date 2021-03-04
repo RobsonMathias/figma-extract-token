@@ -129,7 +129,7 @@ jobs:
       - *authenticate_with_registry
       - *attach_working_directory
       - run: |
-          npm publish
+          npm publish --access public
 
 
 

@@ -4,10 +4,9 @@ const publishTag = require('./repository/publish-tag')
 const pushChanges = require('./repository/push-changes')
 const updateLatest = require('./repository/update-latest')
 const versioning = require('./repository/versioning')
-const packageFile = require('../package.json')
 
 const branch = process.env.CIRCLE_BRANCH
-const ctx = { version: packageFile.version, branch }
+const ctx = { branch }
 
 const tasks = new Listr([
   versioning(ctx),

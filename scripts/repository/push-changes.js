@@ -1,9 +1,11 @@
 const execa = require('execa')
 const Listr = require('listr')
+const packageFile = require('../../package.json')
 
 const pushChanges = ctx => ({
   title: 'Push changes',
-  task: () => {
+  task: params => {
+    params.version = packageFile.version
     return new Listr([
       {
         title: 'Add files',
@@ -16,7 +18,7 @@ const pushChanges = ctx => ({
             'commit',
             '-n',
             '-am',
-            `ci(publish): publishing version v${ctx.version} [ci skip]`,
+            `ci(publish): publishing version v${params.version} [ci skip]`,
           ]),
       },
       {
