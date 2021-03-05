@@ -32,10 +32,9 @@ function calcPercentageColor(colors?: Gradient[]): string {
     .join(', ')
 }
 
-function calcDegColor(value?: Gradient[], offsets: Offset[] = []): string {
+function calcDegColor(value?: Gradient[]): string {
   if (!value) return ''
   const colors = [...value, ...value]
-  const [ref1, ref2, ref3] = offsets!!
   return colors
     .map((c: Gradient, index: number) => {
       let calc = Math.round(c.position * 360 * 100) / 100
@@ -63,7 +62,6 @@ export function calcAngular(paint: Paint) {
     paint.gradientHandlePositions!![2],
   )} at ${calcOrigin(paint.gradientHandlePositions!![0])}, ${calcDegColor(
     paint.gradientStops,
-    paint.gradientHandlePositions,
   )}`
 }
 
