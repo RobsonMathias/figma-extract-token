@@ -1,5 +1,12 @@
-import { Color, Effect, Inheritance, Node, Paint } from '../interfaces'
-import { camelcase } from '../helpers'
+import { Effect, Node, Paint } from '../interfaces'
+import {
+  calcAngular,
+  calcDiamond,
+  calcLinear,
+  calcRadial,
+  camelcase,
+  colorToRGB,
+} from '../helpers'
 
 export class Style {
   static isComponent(node: Node): boolean {
@@ -19,21 +26,34 @@ export class Style {
     return data[key] || key
   }
 
-  private static calcRGB(value: number) {
-    return Math.round(value * 255)
-  }
-
   static fills(colors: Paint[] = []): string | undefined {
-    const [fill] = colors
-    return fill ? this.color(fill.color) : undefined
+    const [paint] = colors
+    if (!paint) return undefined
+    switch (paint.type) {
+      case 'GRADIENT_LINEAR':
+      case 'GRADIENT_RADIAL':
+      case 'GRADIENT_ANGULAR':
+      case 'GRADIENT_DIAMOND':
+        return this.gradientColor(paint)
+      default:
+        return colorToRGB(paint.color!!)
+    }
   }
 
-  static color(color: Color): string | undefined {
-    if (!color) return undefined
-    const a = color.a < 1 && color.a > 0 ? color.a.toFixed(2) : color.a
-    return `rgba(${this.calcRGB(color.r)}, ${this.calcRGB(
-      color.g,
-    )}, ${this.calcRGB(color.b)}, ${a})`
+  static gradientColor(paint: Paint): string | undefined {
+    if (!paint) return undefined
+    switch (paint.type) {
+      case 'GRADIENT_LINEAR':
+        return `linear-gradient(${calcLinear(paint)})`
+      case 'GRADIENT_RADIAL':
+        return `radial-gradient(${calcRadial(paint)})`
+      case 'GRADIENT_ANGULAR':
+        return `conic-gradient(${calcAngular(paint)})`
+      case 'GRADIENT_DIAMOND':
+        return `radial-gradient(${calcDiamond(paint)})`
+      default:
+        return undefined
+    }
   }
 
   static valueByUnit(value: string | number, unit: string): string {
@@ -57,7 +77,7 @@ export class Style {
     const x = this.valueByUnit(effect.offset.x, 'PIXELS')
     const y = this.valueByUnit(effect.offset.y, 'PIXELS')
     const radius = this.valueByUnit(effect.radius, 'PIXELS')
-    return `${x} ${y} ${radius} ${this.color(effect.color)}`
+    return `${x} ${y} ${radius} ${colorToRGB(effect.color)}`
   }
 
   static radiusValue(node: Node): string {

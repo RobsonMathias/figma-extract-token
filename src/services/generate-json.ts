@@ -9,8 +9,11 @@ export async function generateJson(
     const dir = `${process.cwd()}/${outDir}`
     fs.mkdir(dir, { recursive: true }, err => {
       if (err) throw err
-      fs.writeFile(`${dir}/${name}.json`, JSON.stringify(json), 'utf8', e =>
-        res(e),
+      fs.writeFile(
+        `${dir}/${name}.json`,
+        JSON.stringify(json, null, 2),
+        'utf8',
+        e => res(e),
       )
     })
   })
