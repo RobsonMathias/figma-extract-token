@@ -18,7 +18,8 @@
     "format": "kcd-scripts format",
     "precommit": "lint-staged",
     "latest": "node ./scripts/latest.js",
-    "release": "node ./scripts/release.js"
+    "release": "node ./scripts/release.js",
+    "mock": "FIGMA_TOKEN=$FIGMA_TOKEN node ./scripts/generate-mock.js"
   },
   "peerDependencies": {
     "json-diff": "^0.5.4",

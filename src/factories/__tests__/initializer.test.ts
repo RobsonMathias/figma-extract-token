@@ -116,6 +116,28 @@ describe('InitializerFactory', () => {
         },
       },
       color: {
+        background: {
+          linear: {
+            type: 'foundation',
+            value:
+              'linear-gradient(90deg, #EDF0EF 29.32%, #DBE1DD 57.13%, #EDF0EF 86.92%)',
+          },
+          diamond: {
+            type: 'foundation',
+            value:
+              'radial-gradient(43.16% 69.24% at 78.14% 30.76%, #C4C4C4 0%, rgba(196, 196, 196, 0) 100%)',
+          },
+          angular: {
+            type: 'foundation',
+            value:
+              'conic-gradient(from 178.25deg at 50% 50%, rgba(196, 196, 196, 0) -88.7deg, #C4C4C4 90.08deg, rgba(196, 196, 196, 0) 271.3deg, #C4C4C4 450.08deg)',
+          },
+          radial: {
+            type: 'foundation',
+            value:
+              'radial-gradient(57.58% 51.6% at 67.14% 80.88%, #C4C4C4 0%, rgba(196, 196, 196, 0) 100%)',
+          },
+        },
         primary: {
           100: {
             value: 'rgba(188, 159, 231, 1)',

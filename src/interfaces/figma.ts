@@ -20,22 +20,29 @@ export interface Color {
   a: number
 }
 
-export interface offset {
+export interface Offset {
   x: number
   y: number
+}
+
+export interface Gradient {
+  color: Color
+  position: number
 }
 
 export interface Effect {
   blendMode: string
   color: Color
   type: string
-  offset: offset
+  offset: Offset
   radius: number
 }
 
 export interface Paint {
   blendMode: string
-  color: Color
+  gradientHandlePositions?: Offset[]
+  gradientStops?: Gradient[]
+  color?: Color
   type: string
 }
 
