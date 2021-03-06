@@ -9,6 +9,9 @@ authenticate_with_registry: &authenticate_with_registry
   run:
     name: Authenticate with registry
     command: |
+      git config --global -l
+      git config --global user.email $GITHUB_EMAIL
+      git config --global user.name $GITHUB_OWNER
       echo "//registry.npmjs.org/:_authToken=$NPM" > ~/.npmrc
 
 executors:
@@ -117,9 +120,6 @@ jobs:
       - run:
           name: Run release 🏗
           command: |
-            git config --global -l
-            git config --global user.email $GITHUB_EMAIL
-            git config --global user.name $GITHUB_OWNER
             CIRCLE_BRANCH=${CIRCLE_BRANCH} yarn release
 
   latest:
@@ -135,10 +135,22 @@ jobs:
       - run:
           name: Run update latest 🏗
           command: |
-            git config --global -l
-            git config --global user.email $GITHUB_EMAIL
-            git config --global user.name $GITHUB_OWNER
             CIRCLE_BRANCH=${CIRCLE_BRANCH} yarn latest
+
+  publish:
+    executor: default
+    steps:
+      - checkout
+      - add_ssh_keys: &add_ssh_keys
+          firgerprints:
+            - $SSH_KEY
+      - restore_packages
+      - *authenticate_with_registry
+      - *attach_working_directory
+      - run:
+          name: Run release 🏗
+          command: |
+            npm publish
 
 workflows:
   version: 2.1
@@ -168,3 +180,11 @@ workflows:
           filters:
             branches:
               only: /^v.*/
+      - publish:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
