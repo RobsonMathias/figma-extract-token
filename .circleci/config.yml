@@ -148,7 +148,7 @@ jobs:
       - *authenticate_with_registry
       - *attach_working_directory
       - run:
-          name: Run release 🏗
+          name: Run publish npm release 🏗
           command: |
             npm publish
 
@@ -168,11 +168,6 @@ workflows:
           requires:
             - test
             - lint
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              only: /.*/
       - release:
           requires:
             - build
@@ -185,6 +180,16 @@ workflows:
           filters:
             branches:
               only: /^v.*/
+
+  publish_version:
+    jobs:
+      - setup
+      - build:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
       - publish:
           requires:
             - build
