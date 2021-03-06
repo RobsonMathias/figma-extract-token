@@ -168,6 +168,11 @@ workflows:
           requires:
             - test
             - lint
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/
       - release:
           requires:
             - build
