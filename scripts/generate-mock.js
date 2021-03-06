@@ -18,5 +18,5 @@ function fetchApi(document, name) {
     .then(json => generateFile(name, json.data))
 }
 
-fetchApi('lHntZSdoZ15PxKFMWiVV7p', 'material')
-fetchApi('PodXJDGjtBAdWiWtbrNtIP', 'default')
+fetchApi('lHntZSdoZ15PxKFMWiVV7p', 'material/material')
+fetchApi('PodXJDGjtBAdWiWtbrNtIP', 'default/default')

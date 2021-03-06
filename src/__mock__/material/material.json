@@ -3042,7 +3042,7 @@
                 "children": [
                   {
                     "id": "4325:261",
-                    "name": "light",
+                    "name": "default",
                     "type": "TEXT",
                     "blendMode": "PASS_THROUGH",
                     "absoluteBoundingBox": {
@@ -3074,7 +3074,7 @@
                       "fill": "3170:11"
                     },
                     "effects": [],
-                    "characters": "Raleway",
+                    "characters": "Roboto",
                     "style": {
                       "fontFamily": "Roboto",
                       "fontPostScriptName": "Roboto-Light",
@@ -7091,7 +7091,7 @@
           },
           {
             "id": "3167:3837",
-            "name": "pallete",
+            "name": "palette",
             "type": "FRAME",
             "blendMode": "PASS_THROUGH",
             "children": [
@@ -14518,8 +14518,8 @@
     }
   },
   "name": "Material Design System",
-  "lastModified": "2021-03-03T21:20:27Z",
-  "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/7fa3e209-ae80-4b67-9bf2-5b56095ed6ad?Expires=1615766400&Signature=epdyprJuS0uM472XpoWv4-~r2sXdCosLZCOcrRK8SuHRFaFea9Ymlz7pH8X1Gbnqe9IPRBuzFsM5abcYBPOychHLTuT7bLznHhtrJOPw6Fm8T3EVXyabSdZhL-gM42fIDs9jHY8s22uo0cj1Ty8CcK~oxBlMlN18tCLc952tb9Uup5G7f~ezOv9kvR72lP8STTSG1~1Op3zGLVmAaKxufEJmXy2~yEHXviVD6ndL9Mk0s7IRt8tnQQbiybNSJuBztQ3I8mVdpB5E9CcVCXbW3Q8pmzfYt5Nkapjz7RUJEghvwl2-tKLxlcqrnYpdGQr~aZkN4fw28YqhML-N~ejvwQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  "version": "709360379",
+  "lastModified": "2021-03-06T17:45:27Z",
+  "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/255925c1-d12e-4375-b78b-10fce82b6c12?Expires=1615766400&Signature=J9o372dIM4~7nc-Pl1lbYhVWkqyN7rAa0efATBCN2m2ZYZYdW82l3dDaYcJ1upJa2KayOsXhBD4hr8U8cYiukPxlIUrhCweuRyLj2n84zO-slktuh1fA-Sn0HL8nbfu32RoidQ4BAokCcZ3-Byl7IryuMcmt1u2I9x108cyaCEgaU7GSC6hy5hpvEJYIg8-cHzBUHQ1qvTcT0lP5qybtaK45h8ub2eH7sId0K7ok5i7RmSuRIp25z46xGUkS582syhNF2HKHBA1ue4TcxX7V8LPBs1tkxjM1fWXWThLi~HyBNX-aX4urBUiOeBukG4PMXzCAdGud82WBzbga3vOgyA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  "version": "714621085",
   "role": "owner"
 }

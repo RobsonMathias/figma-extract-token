@@ -82,16 +82,18 @@ export class Style {
 
   static radiusValue(node: Node): string {
     if (node.rectangleCornerRadii) {
-      const [top, right, bottom, left] = node.rectangleCornerRadii
-      return `${this.valueByUnit(top, 'PIXELS')} ${this.valueByUnit(
-        right,
-        'PIXELS',
-      )} ${this.valueByUnit(bottom, 'PIXELS')} ${this.valueByUnit(
-        left,
-        'PIXELS',
-      )}`
+      return node.rectangleCornerRadii
+        .map(r => this.valueByUnit(r, 'PIXELS'))
+        .join(' ').trim()
     } else {
-      return this.valueByUnit(node.cornerRadius, 'PIXELS')
+      return [
+        node.cornerRadius,
+        node.cornerRadius,
+        node.cornerRadius,
+        node.cornerRadius,
+      ]
+        .map(r => this.valueByUnit(r, 'PIXELS'))
+        .join(' ').trim()
     }
   }
 
