@@ -5,6 +5,13 @@ orbs:
 
 working_directory: &working_directory ~/app
 
+only-publish-tags: &only-publish-tags
+  filters:
+    tags:
+      only: /^v.*/
+    branches:
+      ignore: /.*/
+
 authenticate_with_registry: &authenticate_with_registry
   run:
     name: Authenticate with registry
@@ -183,18 +190,9 @@ workflows:
 
   publish_version:
     jobs:
-      - setup
-      - build:
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore: /.*/
+      - setup: *only-publish-tags
+      - build: *only-publish-tags
       - publish:
+          <<: *only-publish-tags
           requires:
             - build
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore: /.*/
