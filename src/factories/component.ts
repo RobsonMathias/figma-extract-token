@@ -99,7 +99,7 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
     }
   }
 
-  private deleteEqualValues(compare: any, base: any) {
+  private deleteEqualValues(compare: any = {}, base: any) {
     Object.keys(base).forEach(bKey => {
       const current = base[bKey]
       if (typeof current[Object.keys(current)[0]] === 'object') {
