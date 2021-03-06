@@ -14,11 +14,6 @@ const publishTag = () => ({
         title: 'Push tag',
         task: () => debounce(() => execa('git', ['push', 'origin', '--tags'])),
       },
-      {
-        title: 'Push package',
-        task: () =>
-          debounce(() => execa('npm', [' publish', '--access', 'public'])),
-      },
     ])
   },
 })
