@@ -5,7 +5,7 @@ import { composeArgs } from '../helpers'
 export const composeVersion = {
   title: 'Composing version',
   skip: () => {
-    const { versioning } = composeArgs(process.argv)
+    const { versioning } = composeArgs(process.argv, process.env)
     return !versioning
   },
   task: async ({ factory }: TasksConfig): Promise<any> => {

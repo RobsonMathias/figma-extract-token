@@ -19,7 +19,7 @@ describe('loadConfig', () => {
       .calledWith('file.json')
       .mockReturnValue({ mocked: true })
     when(composeArgs)
-      .calledWith(expect.anything())
+      .calledWith(expect.anything(), expect.anything())
       .mockReturnValue(args)
     when(requiredArgs)
       .calledWith(['config'], args)
@@ -36,7 +36,7 @@ describe('loadConfig', () => {
     const args = { example: 'EXAMPLE' }
     const log = jest.fn()
     when(composeArgs)
-      .calledWith(expect.anything())
+      .calledWith(expect.anything(), expect.anything())
       .mockReturnValue(args)
     when(requiredArgs)
       .calledWith(['config'], args)
