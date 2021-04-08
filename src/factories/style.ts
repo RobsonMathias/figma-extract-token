@@ -36,7 +36,7 @@ export class Style {
       case 'GRADIENT_DIAMOND':
         return this.gradientColor(paint)
       default:
-        return colorToRGB(paint.color!!)
+        return colorToRGB(paint.color!!, paint.opacity)
     }
   }
 

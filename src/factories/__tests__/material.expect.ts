@@ -22,10 +22,10 @@ export const MATERIAL_FOUNDATION_SPEC = {
     },
     divider: {
       type: 'foundation',
-      value: 'rgba(0, 0, 0, 1)',
+      value: 'rgba(0, 0, 0, 0.12)',
     },
     error: {
-      contrasttext: {
+      contrastText: {
         type: 'foundation',
         value: 'rgba(255, 255, 255, 1)',
       },
@@ -101,7 +101,7 @@ export const MATERIAL_FOUNDATION_SPEC = {
       },
     },
     info: {
-      contrasttext: {
+      contrastText: {
         type: 'foundation',
         value: 'rgba(255, 255, 255, 1)',
       },
@@ -119,7 +119,7 @@ export const MATERIAL_FOUNDATION_SPEC = {
       },
     },
     primary: {
-      contrasttext: {
+      contrastText: {
         type: 'foundation',
         value: 'rgba(255, 255, 255, 1)',
       },
@@ -137,7 +137,7 @@ export const MATERIAL_FOUNDATION_SPEC = {
       },
     },
     secondary: {
-      contrasttext: {
+      contrastText: {
         type: 'foundation',
         value: 'rgba(255, 255, 255, 1)',
       },
@@ -155,9 +155,9 @@ export const MATERIAL_FOUNDATION_SPEC = {
       },
     },
     success: {
-      contrasttext: {
+      contrastText: {
         type: 'foundation',
-        value: 'rgba(0, 0, 0, 1)',
+        value: 'rgba(0, 0, 0, 0.87)',
       },
       dark: {
         type: 'foundation',
@@ -175,25 +175,25 @@ export const MATERIAL_FOUNDATION_SPEC = {
     text: {
       disabled: {
         type: 'foundation',
-        value: 'rgba(0, 0, 0, 1)',
+        value: 'rgba(0, 0, 0, 0.38)',
       },
       hint: {
         type: 'foundation',
-        value: 'rgba(0, 0, 0, 1)',
+        value: 'rgba(0, 0, 0, 0.38)',
       },
       primary: {
         type: 'foundation',
-        value: 'rgba(0, 0, 0, 1)',
+        value: 'rgba(0, 0, 0, 0.87)',
       },
       secondary: {
         type: 'foundation',
-        value: 'rgba(0, 0, 0, 1)',
+        value: 'rgba(0, 0, 0, 0.54)',
       },
     },
     warning: {
-      contrasttext: {
+      contrastText: {
         type: 'foundation',
-        value: 'rgba(0, 0, 0, 1)',
+        value: 'rgba(0, 0, 0, 0.87)',
       },
       dark: {
         type: 'foundation',
@@ -479,11 +479,11 @@ export const MATERIAL_FOUNDATION_SPEC = {
         type: 'foundation',
         value: '375',
       },
-      enteringscreen: {
+      enteringScreen: {
         type: 'foundation',
         value: '225',
       },
-      leavingscreen: {
+      leavingScreen: {
         type: 'foundation',
         value: '195',
       },
@@ -505,15 +505,15 @@ export const MATERIAL_FOUNDATION_SPEC = {
       },
     },
     easing: {
-      easein: {
+      easeIn: {
         type: 'foundation',
         value: 'cubic-bezier(0.4, 0, 1, 1)',
       },
-      easeinout: {
+      easeInOut: {
         type: 'foundation',
         value: 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
-      easeout: {
+      easeOut: {
         type: 'foundation',
         value: 'cubic-bezier(0.0, 0, 0.2, 1)',
       },
@@ -523,8 +523,8 @@ export const MATERIAL_FOUNDATION_SPEC = {
       },
     },
   },
-  zindex: {
-    appbar: {
+  zIndex: {
+    appBar: {
       type: 'foundation',
       value: '1100',
     },
@@ -532,7 +532,7 @@ export const MATERIAL_FOUNDATION_SPEC = {
       type: 'foundation',
       value: '1200',
     },
-    mobilestepper: {
+    mobileStepper: {
       type: 'foundation',
       value: '1000',
     },
@@ -544,7 +544,7 @@ export const MATERIAL_FOUNDATION_SPEC = {
       type: 'foundation',
       value: '1400',
     },
-    speeddial: {
+    speedDial: {
       type: 'foundation',
       value: '1050',
     },
