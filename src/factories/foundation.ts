@@ -24,7 +24,7 @@ export class FoundationFactory extends Abstracter<FoundationFactory> {
   get composedName(): string {
     return this.name.length === 1
       ? this.name
-      : camelcase(this.name.toLowerCase().replace(/(.*\.)|(__)/g, ''))
+      : camelcase(this.name.replace(/(.*\.)|(__)/g, ''))
   }
 
   compose(): Dictionary {
