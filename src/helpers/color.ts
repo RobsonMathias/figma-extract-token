@@ -4,12 +4,14 @@ export function calcRGB(value: number) {
   return Math.round(value * 255)
 }
 
-export function colorToRGB(color: Color): string | undefined {
+export function colorToRGB(color: Color, opacity: number = 0): string | undefined {
   if (!color) return undefined
-  const a = color.a < 1 && color.a > 0 ? color.a.toFixed(2) : color.a
+  const _opacity = opacity || color.a;
+  //@ts-ignore
+  const alpha = _opacity < 1 && _opacity > 0 ? _opacity?.toFixed(2) : _opacity
   return `rgba(${calcRGB(color.r)}, ${calcRGB(color.g)}, ${calcRGB(
     color.b,
-  )}, ${a})`
+  )}, ${alpha})`
 }
 
 function calcHex(c: number) {
