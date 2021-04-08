@@ -6,7 +6,7 @@ export const fetchApiTask = {
   title: 'Fetching Figma API JSON',
   task: async ({ factory }: TasksConfig) => {
     return new Promise(async (res, rej) => {
-      const args = composeArgs(process.argv)
+      const args = composeArgs(process.argv, process.env)
       const required = requiredArgs(['token', 'document'], args)
       if (required.length) {
         required.forEach(r => r.log())

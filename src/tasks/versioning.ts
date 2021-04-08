@@ -6,11 +6,11 @@ import { loadMultipleConfig } from '../services/load-multiple-config'
 export const versioning = {
   title: 'Verify versioning',
   skip: () => {
-    const { versioning } = composeArgs(process.argv)
+    const { versioning } = composeArgs(process.argv, process.env)
     return !versioning
   },
   task: async ({ factory }: TasksConfig) => {
-    const { versioning } = composeArgs(process.argv)
+    const { versioning } = composeArgs(process.argv, process.env)
     if (!versioning) return
     return new Promise(async res => {
       const config = (await loadConfig(factory.config.dictionaryConfig)) as any

@@ -11,20 +11,10 @@ jest.mock('../../factories')
 import { versioning } from '../versioning'
 
 describe('version', () => {
-  // it('should call version successfully', async () => {
-  //   when(loadConfig).calledWith(expect.anything()).mockReturnValue({mocked: true});
-  //   when(loadMultipleConfig).calledWith(expect.anything(), /.tokens.json/g).mockResolvedValue({mocked: true});
-  //
-  //   const result = await versioning.task({factory});
-  //
-  //   expect(loadConfig).toHaveBeenCalledWith('file.json');
-  //   expect(result).toEqual({ mocked: true });
-  // });
-
   it('should skip version successfully', async () => {
     const args = { versioning: true }
     when(composeArgs)
-      .calledWith(expect.anything())
+      .calledWith(expect.anything(), expect.anything())
       .mockReturnValue(args)
     const result = await versioning.skip()
     expect(result).toBeFalsy()
@@ -33,7 +23,7 @@ describe('version', () => {
   it('should NOT skip version successfully', async () => {
     const args = {}
     when(composeArgs)
-      .calledWith(expect.anything())
+      .calledWith(expect.anything(), expect.anything())
       .mockReturnValue(args)
     const result = await versioning.skip()
     expect(result).toBeTruthy()

@@ -23,7 +23,7 @@ describe('fetchApiTask', () => {
       .calledWith('TOKEN', 'DOCUMENT')
       .mockReturnValue({ data: { mocked: true } })
     when(composeArgs)
-      .calledWith(expect.anything())
+      .calledWith(expect.anything(), expect.anything())
       .mockReturnValue(args)
     when(requiredArgs)
       .calledWith(['token', 'document'], args)
@@ -42,7 +42,7 @@ describe('fetchApiTask', () => {
     const args = { document: 'DOCUMENT' }
     const log = jest.fn()
     when(composeArgs)
-      .calledWith(expect.anything())
+      .calledWith(expect.anything(), expect.anything())
       .mockReturnValue(args)
     when(requiredArgs)
       .calledWith(['token', 'document'], args)
@@ -57,7 +57,7 @@ describe('fetchApiTask', () => {
     const args = { token: 'TOKEN' }
     const log = jest.fn()
     when(composeArgs)
-      .calledWith(expect.anything())
+      .calledWith(expect.anything(), expect.anything())
       .mockReturnValue(args)
     when(requiredArgs)
       .calledWith(['token', 'document'], args)
