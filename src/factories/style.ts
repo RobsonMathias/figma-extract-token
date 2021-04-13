@@ -73,6 +73,7 @@ export class Style {
 
   static effectShadow(effects: Effect[] = []): string {
     if (!effects || !effects.length) return ''
+    console.log(effects);
     const [effect] = effects
     const x = this.valueByUnit(effect.offset.x, 'PIXELS')
     const y = this.valueByUnit(effect.offset.y, 'PIXELS')
