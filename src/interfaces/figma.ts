@@ -41,7 +41,7 @@ export interface Effect {
 }
 
 export interface Paint {
-  opacity?: number;
+  opacity?: number
   blendMode: string
   gradientHandlePositions?: Offset[]
   gradientStops?: Gradient[]

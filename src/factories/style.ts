@@ -74,25 +74,28 @@ export class Style {
   static effectShadow(effects: Effect[] = []): string {
     if (!effects || !effects.length) return ''
 
-    return effects.map(effect => {
-      const x = this.valueByUnit(effect.offset.x, 'PIXELS')
-      const y = this.valueByUnit(effect.offset.y, 'PIXELS')
-      const radius = this.valueByUnit(effect.radius, 'PIXELS')
+    return effects
+      .map(effect => {
+        const x = this.valueByUnit(effect.offset.x, 'PIXELS')
+        const y = this.valueByUnit(effect.offset.y, 'PIXELS')
+        const radius = this.valueByUnit(effect.radius, 'PIXELS')
 
-      if (effect.spread) {
-        const spread = this.valueByUnit(effect.spread, 'PIXELS')
-        return `${x} ${y} ${radius} ${spread} ${colorToRGB(effect.color)}`
-      }
+        if (effect.spread) {
+          const spread = this.valueByUnit(effect.spread, 'PIXELS')
+          return `${x} ${y} ${radius} ${spread} ${colorToRGB(effect.color)}`
+        }
 
-      return `${x} ${y} ${radius} ${colorToRGB(effect.color)}`
-    }).join(', ')
+        return `${x} ${y} ${radius} ${colorToRGB(effect.color)}`
+      })
+      .join(', ')
   }
 
   static radiusValue(node: Node): string {
     if (node.rectangleCornerRadii) {
       return node.rectangleCornerRadii
         .map(r => this.valueByUnit(r, 'PIXELS'))
-        .join(' ').trim()
+        .join(' ')
+        .trim()
     } else {
       return [
         node.cornerRadius,
@@ -101,7 +104,8 @@ export class Style {
         node.cornerRadius,
       ]
         .map(r => this.valueByUnit(r, 'PIXELS'))
-        .join(' ').trim()
+        .join(' ')
+        .trim()
     }
   }
 
