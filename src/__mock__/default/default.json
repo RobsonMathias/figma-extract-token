@@ -87,7 +87,12 @@
                   }
                 ],
                 "cornerRadius": 8,
-                "rectangleCornerRadii": [8, 8, 8, 8]
+                "rectangleCornerRadii": [
+                  8,
+                  8,
+                  8,
+                  8
+                ]
               },
               {
                 "id": "130:11",
@@ -156,7 +161,12 @@
                   }
                 ],
                 "cornerRadius": 8,
-                "rectangleCornerRadii": [8, 8, 8, 8]
+                "rectangleCornerRadii": [
+                  8,
+                  8,
+                  8,
+                  8
+                ]
               }
             ],
             "absoluteBoundingBox": {
@@ -1378,7 +1388,12 @@
                 },
                 "effects": [],
                 "cornerRadius": 2,
-                "rectangleCornerRadii": [10, 10, 10, 10]
+                "rectangleCornerRadii": [
+                  10,
+                  10,
+                  10,
+                  10
+                ]
               },
               {
                 "id": "137:13",
@@ -1418,7 +1433,12 @@
                 },
                 "effects": [],
                 "cornerRadius": 2,
-                "rectangleCornerRadii": [500, 500, 500, 500]
+                "rectangleCornerRadii": [
+                  500,
+                  500,
+                  500,
+                  500
+                ]
               },
               {
                 "id": "137:14",
@@ -1458,7 +1478,12 @@
                 },
                 "effects": [],
                 "cornerRadius": 2,
-                "rectangleCornerRadii": [50, 50, 50, 50]
+                "rectangleCornerRadii": [
+                  50,
+                  50,
+                  50,
+                  50
+                ]
               }
             ],
             "absoluteBoundingBox": {
@@ -1921,7 +1946,12 @@
                     "strokeAlign": "INSIDE",
                     "effects": [],
                     "cornerRadius": 4,
-                    "rectangleCornerRadii": [4, 4, 4, 4]
+                    "rectangleCornerRadii": [
+                      4,
+                      4,
+                      4,
+                      4
+                    ]
                   },
                   {
                     "id": "313:42",
@@ -1995,7 +2025,12 @@
                     },
                     "effects": [],
                     "cornerRadius": 4,
-                    "rectangleCornerRadii": [4, 4, 4, 4]
+                    "rectangleCornerRadii": [
+                      4,
+                      4,
+                      4,
+                      4
+                    ]
                   },
                   {
                     "id": "230:1",
@@ -6132,7 +6167,12 @@
                         },
                         "effects": [],
                         "cornerRadius": 30,
-                        "rectangleCornerRadii": [30, 30, 30, 30]
+                        "rectangleCornerRadii": [
+                          30,
+                          30,
+                          30,
+                          30
+                        ]
                       },
                       {
                         "id": "198:43",
@@ -6450,7 +6490,12 @@
                     ],
                     "strokes": [],
                     "cornerRadius": 10,
-                    "rectangleCornerRadii": [10, 10, 10, 10],
+                    "rectangleCornerRadii": [
+                      10,
+                      10,
+                      10,
+                      10
+                    ],
                     "strokeWeight": 1,
                     "strokeAlign": "INSIDE",
                     "backgroundColor": {
@@ -6784,7 +6829,12 @@
                     ],
                     "strokes": [],
                     "cornerRadius": 10,
-                    "rectangleCornerRadii": [10, 10, 10, 10],
+                    "rectangleCornerRadii": [
+                      10,
+                      10,
+                      10,
+                      10
+                    ],
                     "strokeWeight": 1,
                     "strokeAlign": "INSIDE",
                     "backgroundColor": {
@@ -7205,7 +7255,12 @@
                     ],
                     "strokes": [],
                     "cornerRadius": 10,
-                    "rectangleCornerRadii": [10, 10, 10, 10],
+                    "rectangleCornerRadii": [
+                      10,
+                      10,
+                      10,
+                      10
+                    ],
                     "strokeWeight": 1,
                     "strokeAlign": "INSIDE",
                     "backgroundColor": {
@@ -11137,7 +11192,12 @@
                                 },
                                 "effects": [],
                                 "cornerRadius": 24,
-                                "rectangleCornerRadii": [24, 24, 24, 24]
+                                "rectangleCornerRadii": [
+                                  24,
+                                  24,
+                                  24,
+                                  24
+                                ]
                               }
                             ],
                             "absoluteBoundingBox": {
@@ -14611,7 +14671,7 @@
   },
   "name": "POC Design Tokens Extract",
   "lastModified": "2021-04-14T17:29:03Z",
-  "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/d61fa677-f242-417b-b56b-e66dd59174ac?Expires=1619395200&Signature=UpiEOn6in70zuBiRK97b0BndP1JPsFPrb0ehSnZqD7JqY4eEX~mkl~alkZ5~ot9sHE~l2hxPu85hbu-ihFmuJLyMOpYarqTqjLKPipolcOrz2lsnmS7dK6jYk2b9T0IQmHZ0TcKfz9FyXbbGZsc011KNsRM~ZMhS45SPp7E3IRUSm~WZlnkuCW2X5BYwStNzTDzBrARDIXSjA4XwhgS6BKKCyRHKlGdYd6FQM467Q9v7K-heOFMdlXw3woe3LQQMzRNUS8tnzgZPqjdJMm0tbo2Goebfd-QCe1eMiCrP~85Sbmy7Km8dGOp0HYcxj5x6JK3SlfdF6~pSn9XNvftjZA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/c59a5d2e-8edd-411a-a098-4aafe530df89?Expires=1619395200&Signature=GxHyI2FjsupaZLxxUVrjzpMUyLE5DP5DHYlwS~lIVE-1hakANDm1Xxe-94dmn0xUGQwt5-VswRSG9Jemu2lRdNPG-x0e1ysFYkUmTHMW5eLaz6LrpDz052dPs4f4xiZqCrEdZYDcYgZNEedp8xkr2QmmoWbuiiQlYcdirv1EqQic87p5riLjzDUbkleQt~Gff-ezDywuvIcftdLlqmGtphr8Ae5AQ8TwGSs1FQ~lSMtMe8Kag8CsnhzWdDEZqGSng7mhG71XvUyYZKctKgn4MdynZ~s99KLgSU6RH-3YA3tKWp8RG5U6Ce6GDprMnOQHAaED69Q0p2oU~pYFZFx2rQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
   "version": "789017545",
   "role": "owner"
 }
