@@ -61,6 +61,7 @@ export interface Node {
   background: Paint[]
   blendMode: string
   clipsContent: boolean
+  preserveRatio?: true
   constraints: { vertical: string; horizontal: string }
   effects: Effect[]
   fills: Paint[]

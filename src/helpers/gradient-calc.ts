@@ -74,11 +74,21 @@ export function calcDiamond(paint: Paint) {
   )}, ${calcPercentageColor(paint.gradientStops)}`
 }
 
-export function calcRadial(paint: Paint) {
-  const [ref1, , ref3] = paint.gradientHandlePositions!!
-  return `${percentageCalc(ref1.x - ref3.x)} ${percentageCalc(
-    ref1.y - ref3.y,
-  )} at ${percentageCalc(ref1.x)} ${percentageCalc(
+export function calcRadial(paint: Paint, preserveRatio?: boolean) {
+  const [ref1, ref2, ref3] = paint.gradientHandlePositions!!
+  let position = ''
+
+  if (preserveRatio) {
+    position = `${percentageCalc(ref1.x - ref3.x)} ${percentageCalc(
+      ref1.y - ref3.y,
+    )}`
+  } else {
+    position = `${percentageCalc(ref2.x - ref3.x)} ${percentageCalc(
+      ref2.y - ref3.y,
+    )}`
+  }
+
+  return `${position} at ${percentageCalc(ref1.x)} ${percentageCalc(
     ref1.y,
   )}, ${calcPercentageColor(paint.gradientStops)}`
 }

@@ -26,7 +26,10 @@ export class Style {
     return data[key] || key
   }
 
-  static fills(colors: Paint[] = []): string | undefined {
+  static fills(
+    colors: Paint[] = [],
+    preserveRatio?: boolean,
+  ): string | undefined {
     const [paint] = colors
     if (!paint) return undefined
     switch (paint.type) {
@@ -34,19 +37,22 @@ export class Style {
       case 'GRADIENT_RADIAL':
       case 'GRADIENT_ANGULAR':
       case 'GRADIENT_DIAMOND':
-        return this.gradientColor(paint)
+        return this.gradientColor(paint, preserveRatio)
       default:
         return colorToRGB(paint.color!!, paint.opacity)
     }
   }
 
-  static gradientColor(paint: Paint): string | undefined {
+  static gradientColor(
+    paint: Paint,
+    preserveRatio?: boolean,
+  ): string | undefined {
     if (!paint) return undefined
     switch (paint.type) {
       case 'GRADIENT_LINEAR':
         return `linear-gradient(${calcLinear(paint)})`
       case 'GRADIENT_RADIAL':
-        return `radial-gradient(${calcRadial(paint)})`
+        return `radial-gradient(${calcRadial(paint, preserveRatio)})`
       case 'GRADIENT_ANGULAR':
         return `conic-gradient(${calcAngular(paint)})`
       case 'GRADIENT_DIAMOND':
@@ -114,7 +120,7 @@ export class Style {
     switch (attribute) {
       case 'fills':
       case 'background':
-        return this.fills(node[attribute])
+        return this.fills(node[attribute], node.preserveRatio)
       case 'lineHeightPx':
         return this.valueByUnit(style.lineHeightPx, style.lineHeightUnit)
       case 'letterSpacing':
