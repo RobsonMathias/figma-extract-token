@@ -39,7 +39,7 @@ export interface Effect {
 }
 
 export interface Paint {
-  opacity?: number;
+  opacity?: number
   blendMode: string
   gradientHandlePositions?: Offset[]
   gradientStops?: Gradient[]
@@ -59,6 +59,7 @@ export interface Node {
   background: Paint[]
   blendMode: string
   clipsContent: boolean
+  preserveRatio?: true
   constraints: { vertical: string; horizontal: string }
   effects: Effect[]
   fills: Paint[]

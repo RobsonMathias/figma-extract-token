@@ -17,19 +17,19 @@ describe('composeArgs', () => {
 
   it('should compose env', () => {
     const argsGiven: any[] = []
-    const envGiven = {token: '456'}
+    const envGiven = { token: '456' }
     const when = composeArgs(argsGiven, envGiven)
     expect(when).toEqual({
-      token: '456'
+      token: '456',
     })
   })
 
   it('should compose args with env equal values', () => {
     const argsGiven = ['--token=123', '456', 'ERROR']
-    const envGiven = {token: '456'}
+    const envGiven = { token: '456' }
     const when = composeArgs(argsGiven, envGiven)
     expect(when).toEqual({
-      token: '456'
+      token: '456',
     })
   })
 })

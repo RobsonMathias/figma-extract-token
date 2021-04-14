@@ -1,4 +1,7 @@
-export function composeArgs(args: string[], envs: any = {}): { [key: string]: string } {
+export function composeArgs(
+  args: string[],
+  envs: any = {},
+): { [key: string]: string } {
   const result: { [key: string]: string } = {}
   args.forEach(i => {
     const regExp = new RegExp('(--)(.*)=(.*)', 'g')

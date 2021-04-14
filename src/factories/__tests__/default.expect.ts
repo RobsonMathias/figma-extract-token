@@ -110,6 +110,16 @@ export const DEFAULT_FOUNDATION_SPEC = {
         value:
           'radial-gradient(57.58% 51.6% at 67.14% 80.88%, #C4C4C4 0%, rgba(196, 196, 196, 0) 100%)',
       },
+      radial2: {
+        type: 'foundation',
+        value:
+          'radial-gradient(50% 50% at 50% 50%, #23DFA8 0%, rgba(35, 223, 168, 0) 100%, rgba(35, 223, 168, 0) 100%)',
+      },
+      radial3: {
+        type: 'foundation',
+        value:
+          'radial-gradient(50% 50% at 50% 50%, #D24242 0%, rgba(196, 196, 196, 0) 100%)',
+      },
     },
     primary: {
       100: {
