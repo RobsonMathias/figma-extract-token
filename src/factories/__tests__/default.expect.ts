@@ -84,7 +84,8 @@ export const DEFAULT_FOUNDATION_SPEC = {
       type: 'foundation',
     },
     xs: {
-      value: '0px 2px 5px rgba(199, 206, 201, 0.16)',
+      value:
+        '0px 2px 5px rgba(199, 206, 201, 0.16), 0px 0px 1px rgba(165, 174, 167, 0.90)',
       type: 'foundation',
     },
   },

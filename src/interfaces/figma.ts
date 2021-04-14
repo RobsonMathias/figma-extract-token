@@ -36,10 +36,12 @@ export interface Effect {
   type: string
   offset: Offset
   radius: number
+  visible: boolean
+  spread?: number
 }
 
 export interface Paint {
-  opacity?: number;
+  opacity?: number
   blendMode: string
   gradientHandlePositions?: Offset[]
   gradientStops?: Gradient[]
