@@ -87,7 +87,12 @@
                   }
                 ],
                 "cornerRadius": 8,
-                "rectangleCornerRadii": [8, 8, 8, 8]
+                "rectangleCornerRadii": [
+                  8,
+                  8,
+                  8,
+                  8
+                ]
               },
               {
                 "id": "130:11",
@@ -156,7 +161,12 @@
                   }
                 ],
                 "cornerRadius": 8,
-                "rectangleCornerRadii": [8, 8, 8, 8]
+                "rectangleCornerRadii": [
+                  8,
+                  8,
+                  8,
+                  8
+                ]
               }
             ],
             "absoluteBoundingBox": {
@@ -1378,7 +1388,12 @@
                 },
                 "effects": [],
                 "cornerRadius": 2,
-                "rectangleCornerRadii": [10, 10, 10, 10]
+                "rectangleCornerRadii": [
+                  10,
+                  10,
+                  10,
+                  10
+                ]
               },
               {
                 "id": "137:13",
@@ -1418,7 +1433,12 @@
                 },
                 "effects": [],
                 "cornerRadius": 2,
-                "rectangleCornerRadii": [500, 500, 500, 500]
+                "rectangleCornerRadii": [
+                  500,
+                  500,
+                  500,
+                  500
+                ]
               },
               {
                 "id": "137:14",
@@ -1458,7 +1478,12 @@
                 },
                 "effects": [],
                 "cornerRadius": 2,
-                "rectangleCornerRadii": [50, 50, 50, 50]
+                "rectangleCornerRadii": [
+                  50,
+                  50,
+                  50,
+                  50
+                ]
               }
             ],
             "absoluteBoundingBox": {
@@ -1862,15 +1887,15 @@
                 "blendMode": "PASS_THROUGH",
                 "children": [
                   {
-                    "id": "314:0",
+                    "id": "318:41",
                     "name": "Radial3",
                     "type": "RECTANGLE",
                     "blendMode": "PASS_THROUGH",
                     "absoluteBoundingBox": {
-                      "x": 4088,
+                      "x": 4098,
                       "y": 145,
-                      "width": 73,
-                      "height": 73
+                      "width": 60,
+                      "height": 60
                     },
                     "constraints": {
                       "vertical": "TOP",
@@ -1882,34 +1907,43 @@
                         "type": "GRADIENT_RADIAL",
                         "gradientHandlePositions": [
                           {
-                            "x": 0.5,
-                            "y": 0.49999999999999994
+                            "x": 0.9999999999999991,
+                            "y": 0.9999998707642335
                           },
                           {
-                            "x": 0.5,
-                            "y": 0.9999999999999999
+                            "x": -0.10833331461582008,
+                            "y": 0.9999998707642328
                           },
                           {
-                            "x": 0,
-                            "y": 0.5
+                            "x": 0.9999999999999998,
+                            "y": -0.08410831714870737
                           }
                         ],
                         "gradientStops": [
                           {
                             "color": {
-                              "r": 0.824999988079071,
-                              "g": 0.2578125,
-                              "b": 0.2578125,
+                              "r": 0.0313725508749485,
+                              "g": 0.2078431397676468,
+                              "b": 0.23529411852359772,
                               "a": 1
                             },
                             "position": 0
                           },
                           {
                             "color": {
-                              "r": 0.7686274647712708,
-                              "g": 0.7686274647712708,
-                              "b": 0.7686274647712708,
-                              "a": 0
+                              "r": 0.0015104115009307861,
+                              "g": 0.10477062314748764,
+                              "b": 0.12083332985639572,
+                              "a": 1
+                            },
+                            "position": 0.00009999999747378752
+                          },
+                          {
+                            "color": {
+                              "r": 0.0313725471496582,
+                              "g": 0.2078431248664856,
+                              "b": 0.23529411852359772,
+                              "a": 1
                             },
                             "position": 1
                           }
@@ -1919,9 +1953,17 @@
                     "strokes": [],
                     "strokeWeight": 1,
                     "strokeAlign": "INSIDE",
+                    "styles": {
+                      "fill": "318:40"
+                    },
                     "effects": [],
                     "cornerRadius": 4,
-                    "rectangleCornerRadii": [4, 4, 4, 4]
+                    "rectangleCornerRadii": [
+                      4,
+                      4,
+                      4,
+                      4
+                    ]
                   },
                   {
                     "id": "313:42",
@@ -1995,7 +2037,12 @@
                     },
                     "effects": [],
                     "cornerRadius": 4,
-                    "rectangleCornerRadii": [4, 4, 4, 4]
+                    "rectangleCornerRadii": [
+                      4,
+                      4,
+                      4,
+                      4
+                    ]
                   },
                   {
                     "id": "230:1",
@@ -2254,7 +2301,7 @@
                 "absoluteBoundingBox": {
                   "x": 3926,
                   "y": 64,
-                  "width": 235.00010681152344,
+                  "width": 235.00009155273438,
                   "height": 154
                 },
                 "constraints": {
@@ -6132,7 +6179,12 @@
                         },
                         "effects": [],
                         "cornerRadius": 30,
-                        "rectangleCornerRadii": [30, 30, 30, 30]
+                        "rectangleCornerRadii": [
+                          30,
+                          30,
+                          30,
+                          30
+                        ]
                       },
                       {
                         "id": "198:43",
@@ -6450,7 +6502,12 @@
                     ],
                     "strokes": [],
                     "cornerRadius": 10,
-                    "rectangleCornerRadii": [10, 10, 10, 10],
+                    "rectangleCornerRadii": [
+                      10,
+                      10,
+                      10,
+                      10
+                    ],
                     "strokeWeight": 1,
                     "strokeAlign": "INSIDE",
                     "backgroundColor": {
@@ -6784,7 +6841,12 @@
                     ],
                     "strokes": [],
                     "cornerRadius": 10,
-                    "rectangleCornerRadii": [10, 10, 10, 10],
+                    "rectangleCornerRadii": [
+                      10,
+                      10,
+                      10,
+                      10
+                    ],
                     "strokeWeight": 1,
                     "strokeAlign": "INSIDE",
                     "backgroundColor": {
@@ -7205,7 +7267,12 @@
                     ],
                     "strokes": [],
                     "cornerRadius": 10,
-                    "rectangleCornerRadii": [10, 10, 10, 10],
+                    "rectangleCornerRadii": [
+                      10,
+                      10,
+                      10,
+                      10
+                    ],
                     "strokeWeight": 1,
                     "strokeAlign": "INSIDE",
                     "backgroundColor": {
@@ -11137,7 +11204,12 @@
                                 },
                                 "effects": [],
                                 "cornerRadius": 24,
-                                "rectangleCornerRadii": [24, 24, 24, 24]
+                                "rectangleCornerRadii": [
+                                  24,
+                                  24,
+                                  24,
+                                  24
+                                ]
                               }
                             ],
                             "absoluteBoundingBox": {
@@ -14542,6 +14614,12 @@
       "styleType": "FILL",
       "description": ""
     },
+    "318:40": {
+      "key": "d076076153c76f729358cb64be20228996441e16",
+      "name": "background.main",
+      "styleType": "FILL",
+      "description": ""
+    },
     "313:40": {
       "key": "ba5fba2614b0cab96b395e7d0b1ccc7620c8d2f3",
       "name": "background.highlight",
@@ -14610,8 +14688,8 @@
     }
   },
   "name": "POC Design Tokens Extract",
-  "lastModified": "2021-04-14T17:29:03Z",
+  "lastModified": "2021-04-15T15:07:22Z",
   "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/c59a5d2e-8edd-411a-a098-4aafe530df89?Expires=1619395200&Signature=GxHyI2FjsupaZLxxUVrjzpMUyLE5DP5DHYlwS~lIVE-1hakANDm1Xxe-94dmn0xUGQwt5-VswRSG9Jemu2lRdNPG-x0e1ysFYkUmTHMW5eLaz6LrpDz052dPs4f4xiZqCrEdZYDcYgZNEedp8xkr2QmmoWbuiiQlYcdirv1EqQic87p5riLjzDUbkleQt~Gff-ezDywuvIcftdLlqmGtphr8Ae5AQ8TwGSs1FQ~lSMtMe8Kag8CsnhzWdDEZqGSng7mhG71XvUyYZKctKgn4MdynZ~s99KLgSU6RH-3YA3tKWp8RG5U6Ce6GDprMnOQHAaED69Q0p2oU~pYFZFx2rQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  "version": "789017545",
+  "version": "791323575",
   "role": "owner"
 }

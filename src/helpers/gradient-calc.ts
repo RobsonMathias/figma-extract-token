@@ -83,12 +83,17 @@ export function calcRadial(paint: Paint, preserveRatio?: boolean) {
       ref1.y - ref3.y,
     )}`
   } else {
-    position = `${percentageCalc(ref2.x - ref3.x)} ${percentageCalc(
-      ref2.y - ref3.y,
-    )}`
+    const x = avoidNegative(ref2.x - ref3.x)
+    const y = avoidNegative(ref2.y - ref3.y)
+    position = `${percentageCalc(x)} ${percentageCalc(y)}`
   }
 
   return `${position} at ${percentageCalc(ref1.x)} ${percentageCalc(
     ref1.y,
   )}, ${calcPercentageColor(paint.gradientStops)}`
+}
+
+
+function avoidNegative(value: number) {
+  return value < 0 ? value * -1 : value;
 }

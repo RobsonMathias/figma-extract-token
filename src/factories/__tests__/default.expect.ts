@@ -119,7 +119,7 @@ export const DEFAULT_FOUNDATION_SPEC = {
       radial3: {
         type: 'foundation',
         value:
-          'radial-gradient(50% 50% at 50% 50%, #D24242 0%, rgba(196, 196, 196, 0) 100%)',
+          'radial-gradient(110.83% 108.41% at 100% 100%, #08353C 0%, #001B1F 0.01%, #08353C 100%)',
       },
     },
     primary: {

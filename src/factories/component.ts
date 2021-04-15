@@ -157,7 +157,7 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
       let current = item[key]
       if (current.value) {
         const value = this.findByValue(current.value, foundation, key)
-        if (value.indexOf('{') === 0) {
+        if (`${value}`.indexOf('{') === 0) {
           item[key] = {
             ...current,
             value: ComponentFactory.composeInheritanceName(value),
