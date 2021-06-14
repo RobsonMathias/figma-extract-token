@@ -93,7 +93,6 @@ export function calcRadial(paint: Paint, preserveRatio?: boolean) {
   )}, ${calcPercentageColor(paint.gradientStops)}`
 }
 
-
 function avoidNegative(value: number) {
-  return value < 0 ? value * -1 : value;
+  return value < 0 ? value * -1 : value
 }

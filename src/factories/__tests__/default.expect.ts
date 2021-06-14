@@ -16,15 +16,15 @@ const spacing = {
 export const DEFAULT_FOUNDATION_SPEC = {
   radius: {
     pill: {
-      value: '500px 500px 500px 500px',
+      value: '500px',
       type: 'foundation',
     },
     round: {
-      value: '50px 50px 50px 50px',
+      value: '50px',
       type: 'foundation',
     },
     xl: {
-      value: '10px 10px 10px 10px',
+      value: '10px',
       type: 'foundation',
     },
   },
@@ -186,7 +186,7 @@ export const DEFAULT_FOUNDATION_SPEC = {
   },
   letterSpacing: {
     xs: {
-      value: '0.3',
+      value: '20.0',
       type: 'foundation',
     },
     md: {
@@ -204,7 +204,7 @@ export const DEFAULT_FOUNDATION_SPEC = {
       type: 'foundation',
     },
     xs: {
-      value: '16px',
+      value: '100%',
       type: 'foundation',
     },
   },
@@ -227,7 +227,7 @@ export const DEFAULT_COMPONENTS_SPEC = {
           type: 'components',
         },
         letterSpacing: {
-          value: '{letterSpacing.xs.value}',
+          value: '0.3',
           comment:
             'Use when we have one action in page, or priority actions, for example: ”simulate now”, ”enter”, ”continue”.',
           type: 'components',

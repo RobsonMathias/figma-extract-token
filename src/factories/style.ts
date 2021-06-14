@@ -22,6 +22,7 @@ export class Style {
   private static getUnit(key: string): string {
     const data: { [key: string]: string } = {
       PIXELS: 'px',
+      PERCENTAGE: '%'
     }
     return data[key] || key
   }
@@ -66,6 +67,14 @@ export class Style {
     return value !== undefined ? `${value}${this.getUnit(unit)}` : ''
   }
 
+  static lineHeight(value: { [key: string]: string }) {
+    if (value.lineHeightUnit === 'FONT_SIZE_%') {
+      return this.valueByUnit(value.lineHeightPercentFontSize, 'PERCENTAGE');
+    } else {
+      return this.valueByUnit(value.lineHeightPx, value.lineHeightUnit);
+    }
+  }
+
   static textTransform(value: string) {
     const data: { [key: string]: string } = {
       UPPER: 'uppercase',
@@ -98,17 +107,16 @@ export class Style {
 
   static radiusValue(node: Node): string {
     if (node.rectangleCornerRadii) {
-      return node.rectangleCornerRadii
+      const radius =
+        new Set(node.rectangleCornerRadii).size > 1
+          ? node.rectangleCornerRadii
+          : [node.rectangleCornerRadii[0]]
+      return radius
         .map(r => this.valueByUnit(r, 'PIXELS'))
         .join(' ')
         .trim()
     } else {
-      return [
-        node.cornerRadius,
-        node.cornerRadius,
-        node.cornerRadius,
-        node.cornerRadius,
-      ]
+      return [node.cornerRadius]
         .map(r => this.valueByUnit(r, 'PIXELS'))
         .join(' ')
         .trim()
@@ -122,7 +130,7 @@ export class Style {
       case 'background':
         return this.fills(node[attribute], node.preserveRatio)
       case 'lineHeightPx':
-        return this.valueByUnit(style.lineHeightPx, style.lineHeightUnit)
+        return this.lineHeight(style)
       case 'letterSpacing':
         return this.toFixed(style[attribute] as any, 1)
       case 'fontSize':

@@ -494,7 +494,7 @@ export const MATERIAL_FOUNDATION_SPEC = {
   shape: {
     default: {
       type: 'foundation',
-      value: '4px 4px 4px 4px',
+      value: '4px',
     },
   },
   transitions: {
