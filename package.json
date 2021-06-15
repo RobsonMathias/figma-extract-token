@@ -1,6 +1,6 @@
 {
   "name": "figma-extract-token",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "description": "Compose and Extract design tokens from Figma",
   "author": "robson.mathias<robsond.mathias@gmail.com>",
   "main": "./dist/index.js",
