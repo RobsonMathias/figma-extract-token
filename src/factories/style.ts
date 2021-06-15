@@ -22,7 +22,7 @@ export class Style {
   private static getUnit(key: string): string {
     const data: { [key: string]: string } = {
       PIXELS: 'px',
-      PERCENTAGE: '%'
+      PERCENTAGE: '%',
     }
     return data[key] || key
   }
@@ -69,9 +69,9 @@ export class Style {
 
   static lineHeight(value: { [key: string]: string }) {
     if (value.lineHeightUnit === 'FONT_SIZE_%') {
-      return this.valueByUnit(value.lineHeightPercentFontSize, 'PERCENTAGE');
+      return this.valueByUnit(value.lineHeightPercentFontSize, 'PERCENTAGE')
     } else {
-      return this.valueByUnit(value.lineHeightPx, value.lineHeightUnit);
+      return this.valueByUnit(value.lineHeightPx, value.lineHeightUnit)
     }
   }
 
@@ -123,6 +123,10 @@ export class Style {
     }
   }
 
+  static justifyContent(value: string): string {
+    return value ? value.replace(/_/gm, '-').toLowerCase() : ''
+  }
+
   static extract(attribute: string, node: Node): string | undefined {
     const style = node.style || {}
     switch (attribute) {
@@ -142,6 +146,13 @@ export class Style {
         return this.textTransform(style[attribute])
       case 'cornerRadius':
         return this.radiusValue(node)
+      case 'primaryAxisAlignItems':
+        return this.justifyContent(node[attribute])
+      case 'itemSpacing':
+      case 'paddingRight':
+      case 'paddingTop':
+      case 'paddingBottom':
+      case 'paddingLeft':
       case 'strokeWeight':
         return this.valueByUnit(node[attribute], 'PIXELS')
       case 'width':
@@ -213,6 +224,7 @@ export class Style {
           : inheritance[key]
       if (name === matchValue) found = inheritance[key].force
     })
+
     return found
   }
 

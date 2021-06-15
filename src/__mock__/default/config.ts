@@ -82,7 +82,12 @@ export const CONFIG_MOCK_DEFAULT = {
         convert: 'weight',
         ref: 'font.weight',
       },
+      itemSpacing: 'spacing',
       textCase: 'textTransform',
+      paddingLeft: 'paddingLeft',
+      paddingRight: 'paddingRight',
+      paddingTop: 'paddingTop',
+      paddingBottom: 'paddingBottom',
       cornerRadius: 'radius',
       icon: {
         convert: 'size',

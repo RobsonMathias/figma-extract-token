@@ -55,7 +55,7 @@ export const CONFIG_MOCK_MATERIAL = {
     inheritance: {
       fills: {
         force: true,
-        convert: 'color',
+        convert: 'palette',
       },
       lineHeightPx: 'lineHeight',
       letterSpacing: 'letterSpacing',
@@ -67,6 +67,12 @@ export const CONFIG_MOCK_MATERIAL = {
         convert: 'family',
         ref: 'font.family',
       },
+      primaryAxisAlignItems: 'justify',
+      itemSpacing: 'spacing',
+      paddingLeft: 'paddingLeft',
+      paddingRight: 'paddingRight',
+      paddingTop: 'paddingTop',
+      paddingBottom: 'paddingBottom',
       cornerRadius: 'shape',
       fontWeight: {
         convert: 'weight',

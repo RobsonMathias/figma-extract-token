@@ -595,6 +595,10 @@ export const MATERIAL_COMPONENTS_SPEC = {
           type: 'components',
           value: '{lineHeight.3.value}',
         },
+        palette: {
+          type: 'components',
+          value: '{palette.primary.main.value}',
+        },
         size: {
           type: 'components',
           value: '{font.size.small.value}',
@@ -613,15 +617,31 @@ export const MATERIAL_COMPONENTS_SPEC = {
         value: '{shape.default.value}',
       },
     },
+    textDisabled: {
+      label: {
+        palette: {
+          type: 'components',
+          value: '{palette.text.disabled.value}',
+        },
+      },
+      palette: {
+        type: 'components',
+        value: '{palette.primary.contrastText.value}',
+      },
+    },
     textDragged: {
       elevation: {
-        shape: {
+        palette: {
           type: 'components',
-          value: '{shape.default.value}',
+          value: '{palette.primary.contrastText.value}',
         },
         shadow: {
           type: 'components',
           value: '{shadow.8.value}',
+        },
+        shape: {
+          type: 'components',
+          value: '{shape.default.value}',
         },
       },
       states: {
@@ -629,6 +649,42 @@ export const MATERIAL_COMPONENTS_SPEC = {
           type: 'components',
           value: '{shape.default.value}',
         },
+      },
+    },
+    textHovered: {
+      justify: {
+        type: 'components',
+        value: 'center',
+      },
+      paddingBottom: {
+        type: 'components',
+        value: '7px',
+      },
+      paddingLeft: {
+        type: 'components',
+        value: '14px',
+      },
+      paddingRight: {
+        type: 'components',
+        value: '14px',
+      },
+      paddingTop: {
+        type: 'components',
+        value: '7px',
+      },
+      palette: {
+        type: 'components',
+        value: '{palette.primary.light.value}',
+      },
+      spacing: {
+        type: 'components',
+        value: '10px',
+      },
+    },
+    textPressed: {
+      palette: {
+        type: 'components',
+        value: '{palette.primary.contrastText.value}',
       },
     },
   },

@@ -68,6 +68,12 @@ export interface Node {
   characters: string
   strokeAlign: string
   opacity: number
+  primaryAxisAlignItems: string
+  paddingLeft: number
+  paddingRight: number
+  paddingTop: number
+  paddingBottom: number
+  itemSpacing: number
   strokeWeight: number
   cornerRadius: number
   strokes: any[]
