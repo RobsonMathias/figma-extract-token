@@ -307,6 +307,96 @@ export const DEFAULT_COMPONENTS_SPEC = {
         type: 'components',
       },
     },
+    'withPath/WithVariant': {
+      default: {
+        color: {
+          comment: 'With Variant',
+          type: 'components',
+          value: '{color.primary.100.value}',
+        },
+        font: {
+          family: {
+            comment: 'With Variant',
+            type: 'components',
+            value: '{font.family.base.value}',
+          },
+          letterSpacing: {
+            comment: 'With Variant',
+            type: 'components',
+            value: '0.3',
+          },
+          lineHeight: {
+            comment: 'With Variant',
+            type: 'components',
+            value: '{lineHeight.sm.value}',
+          },
+          size: {
+            comment: 'With Variant',
+            type: 'components',
+            value: '{font.size.md.value}',
+          },
+          weight: {
+            comment: 'With Variant',
+            type: 'components',
+            value: '{font.weight.md.value}',
+          },
+        },
+        radius: {
+          comment: 'With Variant',
+          type: 'components',
+          value: '{radius.xl.value}',
+        },
+        shadow: {
+          comment: 'With Variant',
+          type: 'components',
+          value: '{shadow.lg.value}',
+        },
+      },
+      hover: {
+        color: {
+          comment: 'With Variant',
+          type: 'components',
+          value: '{color.primary.main.value}',
+        },
+        font: {
+          family: {
+            comment: 'With Variant',
+            type: 'components',
+            value: '{font.family.base.value}',
+          },
+          letterSpacing: {
+            comment: 'With Variant',
+            type: 'components',
+            value: '0.3',
+          },
+          lineHeight: {
+            comment: 'With Variant',
+            type: 'components',
+            value: '{lineHeight.sm.value}',
+          },
+          size: {
+            comment: 'With Variant',
+            type: 'components',
+            value: '{font.size.md.value}',
+          },
+          weight: {
+            comment: 'With Variant',
+            type: 'components',
+            value: '{font.weight.md.value}',
+          },
+        },
+        radius: {
+          comment: 'With Variant',
+          type: 'components',
+          value: '{radius.xl.value}',
+        },
+        shadow: {
+          comment: 'With Variant',
+          type: 'components',
+          value: '{shadow.lg.value}',
+        },
+      },
+    },
   },
   icons: {
     large: {

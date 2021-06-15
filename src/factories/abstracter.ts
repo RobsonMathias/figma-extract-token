@@ -23,6 +23,7 @@ export abstract class Abstracter<C> extends Style {
   static isAGroup(node: Node): boolean {
     switch (node.type) {
       case 'COMPONENT':
+      case 'COMPONENT_SET':
       case 'CANVAS':
       case 'FRAME':
       case 'GROUP':

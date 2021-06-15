@@ -4,6 +4,7 @@ export type TYPE =
   | 'FRAME'
   | 'GROUP'
   | 'COMPONENT'
+  | 'COMPONENT_SET'
   | 'VECTOR'
 
 export interface Document {

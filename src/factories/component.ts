@@ -22,8 +22,8 @@ export class ComponentFactory extends Abstracter<ComponentFactory> {
   }
 
   get composedName(): string {
-    const name = `${this.name.charAt(0).toLowerCase()}${this.name.slice(1)}`
-    return name.replace(/( \/ )+|(__)|\s+/g, '')
+    const name = this.name.replace(/( \/ )+|(__)|(.+=)|\s+/g, '')
+    return `${name.charAt(0).toLowerCase()}${name.slice(1)}`
   }
 
   compose(foundation: any): Dictionary {
